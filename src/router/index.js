@@ -7,7 +7,6 @@ import Register from "../views/Register.vue";
 import Products from "../views/Products.vue";
 
 Vue.use(VueRouter);
-
 const routes = [
   {
     path: "/",
