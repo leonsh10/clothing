@@ -1,59 +1,73 @@
 <template>
-    <div>
-        <Header />
-        <div class="vue-tempalte">
-  <form>
-            <h3 style="margin-bottom:20px; margin-left:75px">Sign In</h3>
-            
-            <div class="form-group">
-                <label>Email address</label>
-                <input type="email" class="form-control form-control-lg" required />
-            </div>
+  <div>
+    <Header />
+    <div class="vue-tempalte">
+      <form>
+        <h3 style="margin-bottom: 20px; margin-left: 75px">Sign In</h3>
 
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control form-control-lg" required />
-            </div>
-
-<b-button type="submit" block variant="primary" class="butoni__sign-in">Login</b-button>
-            <p class="forgot-password text-right mt-2 mb-4">
-               <p>Dont have an account? <router-link style="text-decoration:none" to="/register">Create one</router-link></p>
-
-            <div class="social-icons">
-                <ul>
-                    <li><a href="#"><i class="fa fa-google"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                </ul>
-            </div>
-
-        </form>
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" class="form-control form-control-lg" required />
         </div>
-        <Footer />
+
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            required
+          />
         </div>
+
+        <b-button type="submit" block variant="primary" class="butoni__sign-in"
+          >Login</b-button
+        >
+        <p class="forgot-password text-right mt-2 mb-4"></p>
+        <p>
+          Dont have an account?
+          <router-link style="text-decoration: none" to="/register"
+            >Create one</router-link
+          >
+        </p>
+
+        <div class="social-icons">
+          <ul>
+            <li>
+              <a href="#"><i class="fa fa-google"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+    <Footer />
+  </div>
 </template>
-
 
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 export default {
-    
-    components:{
-        Header,
-        Footer
+  components: {
+    Header,
+    Footer,
+  },
+  data() {
+    return {
+      userId: "",
+    };
+  },
+  computed: {
+    validation() {
+      return this.userId.length > 4 && this.userId.length < 13;
     },
-     data() {
-      return {
-        userId: ''
-      }
-    },
-    computed: {
-      validation() {
-        return this.userId.length > 4 && this.userId.length < 13
-      }
-    }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -62,7 +76,7 @@ export default {
 }
 
 body {
-  background: #2554FF !important;
+  background: #2554ff !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -85,7 +99,7 @@ html,
   display: flex;
   text-align: left;
   justify-content: center;
-  flex-direction: column;    
+  flex-direction: column;
 }
 
 .inner-block {
@@ -95,11 +109,11 @@ html,
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .vertical-center .form-control:focus {
-  border-color: #2554FF;
+  border-color: #2554ff;
   box-shadow: none;
 }
 
@@ -124,7 +138,7 @@ label {
 }
 
 .forgot-password a {
-  color: #2554FF;
+  color: #2554ff;
 }
 
 .social-icons {
@@ -173,28 +187,26 @@ label {
   color: #222222;
 }
 
-.vue-tempalte{
-    width: 500px;
-    height: 500px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin:0 auto;
-    margin-bottom:50px;
-    margin-top:20px;
-    background-color:#e2e2e2;
+.vue-tempalte {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  background-color: #e2e2e2;
 }
-form{
-  margin-top:40px;
-}
-
-.butoni__sign-in{
-    margin-left:1px;
-    margin-top:21px;
-    font-size:20px;
-    width:250px;
-    border-radius:20px;
+form {
+  margin-top: 40px;
 }
 
-
+.butoni__sign-in {
+  margin-left: 1px;
+  margin-top: 21px;
+  font-size: 20px;
+  width: 250px;
+  border-radius: 20px;
+}
 </style>

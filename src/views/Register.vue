@@ -2,22 +2,22 @@
     <div>
         <Header />
         <div class="vue-tempalte">
-  <form>
+  <form @submit.prevent="createUser">
             <h3 style="margin-bottom:20px; margin-left:75px">Register</h3>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control form-control-lg" required />
-            </div>
+                <input type="text" v-model="form.name" class="form-control form-control-lg" required />
+            </div> -->
             
             <div class="form-group">
                 <label>Email address</label>
-                <input type="email" class="form-control form-control-lg" required />
+                <input type="email" v-model="form.email" class="form-control form-control-lg" required />
             </div>
 
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control form-control-lg" required/>
+                <input type="password" v-model="form.password" class="form-control form-control-lg" required/>
             </div>
 
 <b-button type="submit" block variant="primary" class="butoni__sign-in">Register</b-button>
@@ -40,10 +40,32 @@
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
+import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 export default {
     components:{
         Header,
         Footer
+    },
+    data(){
+      return{
+        form:{
+          email: "",
+          password: ""
+        },
+        error: null
+      }
+    },
+    methods: {
+      async createUser(){
+        
+        try{
+          const auth = getAuth();
+          await createUserWithEmailAndPassword(auth, this.form.email, this.form.password);
+       this.$router.push("/login");
+       }catch(err) {
+          this.error = err;
+        }
+      }
     }
 }
 </script>
