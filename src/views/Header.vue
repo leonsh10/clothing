@@ -17,6 +17,7 @@
           <b-nav-item href="/contact">Contact</b-nav-item>
           <b-nav-item href="/login">Login</b-nav-item>
           <b-nav-item href="/register">Register</b-nav-item>
+          <b-nav-item href="/dashboard">Dashboard</b-nav-item>
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">

@@ -5,6 +5,11 @@ import Contact from "../views/Contact.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Products from "../views/Products.vue";
+import Dashboard from "../views/Dashboard.vue";
+import ProductDashboard from "../views/ProductDashboard.vue";
+import AboutDashboard from "../views/AboutDashboard.vue";
+import ContactsDashboard from "../views/ContactsDashboard.vue";
+import UsersDashboard from "../views/UsersDashboard.vue";
 
 Vue.use(VueRouter);
 const routes = [
@@ -32,6 +37,31 @@ const routes = [
     path: "/register",
     name: "Register",
     component: Register,
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: Dashboard,
+  },
+  {
+    path: "/productsDashboard",
+    name: "productsDashboard",
+    component: ProductDashboard,
+  },
+  {
+    path: "/contactsDashboard",
+    name: "contactsDashboard",
+    component: ContactsDashboard,
+  },
+  {
+    path: "/usersDashboard",
+    name: "usersDashboard",
+    component: UsersDashboard,
+  },
+  {
+    path: "/aboutDashboard",
+    name: "aboutDashboard",
+    component: AboutDashboard,
   },
   {
     path: "/about",
