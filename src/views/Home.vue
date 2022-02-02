@@ -2,9 +2,31 @@
   <div class="home">
     <Header />
     <div class="mb-2">
-      <div style="position: absolute; top: 50%; left: 50%; z-index: 1">
-        <h1>Test</h1>
-      </div>
+      <!-- <div style="position: absolute; top: 50%; left: 35%; z-index: 1">
+        <h1 style="font-size: 60px; letter-spacing: 10px; text-align: center">
+          The Biggest Sale
+        </h1>
+        <h4 style="letter-spacing: 10px; text-align: center">
+          New Arrivals On Sale
+        </h4>
+        <div class="d-flex justify-content-center">
+          <button
+            style="
+              display: inline-block;
+              font-size: 13px;
+              font-weight: 700;
+              text-transform: uppercase;
+              padding: 14px 30px;
+              color: #ffffff;
+              background: #000000;
+              letter-spacing: 4px;
+              border: 1px solid #000000;
+            "
+          >
+            Shop Now
+          </button>
+        </div>
+      </div> -->
       <b-carousel
         id="carousel-1"
         v-model="slide"
@@ -18,25 +40,20 @@
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
       >
-        <!-- Text slides with image -->
         <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=52">
           <div style="height: 100%">
             <h1>Test</h1>
           </div>
         </b-carousel-slide>
 
-        <!-- Slides with custom text -->
         <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
           <h1>Hello world!</h1>
         </b-carousel-slide>
 
-        <!-- Slides with image only -->
         <b-carousel-slide
           img-src="https://picsum.photos/1024/480/?image=58"
         ></b-carousel-slide>
 
-        <!-- Slides with img slot -->
-        <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
         <b-carousel-slide>
           <template #img>
             <img
@@ -49,7 +66,6 @@
           </template>
         </b-carousel-slide>
 
-        <!-- Slide with blank fluid image to maintain slide aspect ratio -->
         <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -58,251 +74,374 @@
           </p>
         </b-carousel-slide>
       </b-carousel>
-
-      <!-- <p class="mt-4">
-        Slide #: {{ slide }}<br />
-        Sliding: {{ sliding }}
-      </p> -->
-    </div>
-    <b-row class="p-5">
-      <b-col cols="3">
-        <b-card
-          title="Card Title 1"
-          img-src="https://picsum.photos/600/300/?image=25"
-          img-alt="Image"
-          img-top
-          tag="article"
-        >
-          <b-card-text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </b-card-text>
-          <b-button href="#" variant="primary">Go somewhere</b-button>
-        </b-card>
-      </b-col>
-      <b-col cols="3">
-        <b-card
-          title="Card Title 2"
-          img-src="https://picsum.photos/600/300/?image=25"
-          img-alt="Image"
-          img-top
-          tag="article"
-        >
-          <b-card-text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </b-card-text>
-
-          <b-button href="#" variant="primary">Go somewhere</b-button>
-        </b-card>
-      </b-col>
-
-      <b-col cols="3">
-        <b-card
-          title="Card Title 3"
-          img-src="https://picsum.photos/600/300/?image=25"
-          img-alt="Image"
-          img-top
-          tag="article"
-        >
-          <b-card-text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </b-card-text>
-
-          <b-button href="#" variant="primary">Go somewhere</b-button>
-        </b-card>
-      </b-col>
-      <b-col cols="3">
-        <b-card
-          title="Card Title 4"
-          img-src="https://picsum.photos/600/300/?image=25"
-          img-alt="Image"
-          img-top
-          tag="article"
-        >
-          <b-card-text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </b-card-text>
-
-          <b-button href="#" variant="primary">Go somewhere</b-button>
-        </b-card>
-      </b-col>
-    </b-row>
-    <!-- style={{ marginTop: "445px" }}
-    <div class="banner_bottom_agile_info">
-      <div class="container">
-        <div class="banner_bottom_agile_info_inner_w3ls">
-          <div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
-            <figure class="effect-roxy">
-              <img
-                src="https://picsum.photos/1024/480/?image=52"
-                alt=" "
-                class="img-responsive"
-              />
-              <figcaption>
-                <h3><span>F</span>all Ahead</h3>
-                <p>New Arrivals</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
-            <figure class="effect-roxy">
-              <img
-                src="https://picsum.photos/1024/480/?image=52"
-                alt=" "
-                class="img-responsive"
-              />
-              <figcaption>
-                <h3><span>F</span>all Ahead</h3>
-                <p>New Arrivals</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-      </div>
     </div>
 
-    <div class="banner-bootom-w3-agileits">
-      <div class="container">
-        <h3 class="wthree_text_info">What's <span>Trending</span></h3>
-
-        <div class="col-md-5 bb-grids bb-left-agileits-w3layouts">
-          <a>
-            <div class="bb-left-agileits-w3layouts-inner grid">
-              <figure class="effect-roxy">
+    <!-- <div
+      id="template-mo-zay-hero-carousel"
+      class="carousel slide pointer-event"
+      data-bs-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-bs-target="#template-mo-zay-hero-carousel"
+          data-bs-slide-to="0"
+          class="active"
+        ></li>
+        <li
+          data-bs-target="#template-mo-zay-hero-carousel"
+          data-bs-slide-to="1"
+        ></li>
+        <li
+          data-bs-target="#template-mo-zay-hero-carousel"
+          data-bs-slide-to="2"
+        ></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row p-5">
+              <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
                 <img
+                  class="img-fluid"
                   src="https://picsum.photos/1024/480/?image=52"
-                  alt=" "
-                  class="img-responsive"
+                  alt=""
                 />
-                <figcaption>
-                  <h3><span>S</span>ale{" "}</h3>
-                  <p>Upto 55%</p>
-                </figcaption>
-              </figure>
+              </div>
+              <div class="col-lg-6 mb-0 d-flex align-items-center">
+                <div class="text-align-left align-self-center">
+                  <h1 class="h1 text-success"><b>Zay</b> eCommerce</h1>
+                  <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
+                  <p>
+                    Zay Shop is an eCommerce HTML5 CSS template with latest
+                    version of Bootstrap 5 (beta 1). This template is 100% free
+                    provided by
+                    <a rel="sponsored" class="text-success" href="#"
+                      >TemplateMo</a
+                    >
+                    website. Image credits go to
+                    <a rel="sponsored" class="text-success" href="#"
+                      >Freepik Stories</a
+                    >,
+                    <a rel="sponsored" class="text-success" href="#"
+                      >Unsplash</a
+                    >
+                    and
+                    <a rel="sponsored" class="text-success" href="#">Icons 8</a
+                    >.
+                  </p>
+                </div>
+              </div>
             </div>
-          </a>
+          </div>
         </div>
-        <div class="col-md-7 bb-grids bb-middle-agileits-w3layouts">
-          <a>
-            <div class="bb-middle-agileits-w3layouts grid">
-              <figure class="effect-roxy">
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row p-5">
+              <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
                 <img
+                  class="img-fluid"
                   src="https://picsum.photos/1024/480/?image=52"
-                  alt=" "
-                  class="img-responsive"
+                  alt=""
                 />
-                <figcaption>
-                  <h3><span>S</span>ale{" "}</h3>
-                  <p>Upto 55%</p>
-                </figcaption>
-              </figure>
+              </div>
+              <div class="col-lg-6 mb-0 d-flex align-items-center">
+                <div class="text-align-left">
+                  <h1 class="h1">Proident occaecat</h1>
+                  <h3 class="h2">Aliquip ex ea commodo consequat</h3>
+                  <p>
+                    You are permitted to use this Zay CSS template for your
+                    commercial websites. You are
+                    <strong>not permitted</strong> to re-distribute the template
+                    ZIP file in any kind of template collection websites.
+                  </p>
+                </div>
+              </div>
             </div>
-          </a>
-          <a>
-            <div class="bb-middle-agileits-w3layouts forth grid">
-              <figure class="effect-roxy">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row p-5">
+              <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
                 <img
-                  src="https://picsum.photos/1024/480/?image=52"
-                  alt=" "
-                  class="img-responsive"
+                  class="img-fluid"
+                  src="https://picsum.photos/1024/480/?image=55"
+                  alt=""
                 />
-                <figcaption>
-                  <h3><span>S</span>ale{" "}</h3>
-                  <p>Upto 65%</p>
-                </figcaption>
-              </figure>
+              </div>
+              <div class="col-lg-6 mb-0 d-flex align-items-center">
+                <div class="text-align-left">
+                  <h1 class="h1">Repr in voluptate</h1>
+                  <h3 class="h2">Ullamco laboris nisi ut</h3>
+                  <p>
+                    We bring you 100% free CSS templates for your websites. If
+                    you wish to support TemplateMo, please make a small
+                    contribution via PayPal or tell your friends about our
+                    website. Thank you.
+                  </p>
+                </div>
+              </div>
             </div>
-          </a>
-          <div class="clearfix"></div>
+          </div>
         </div>
       </div>
-    </div>
-    /grids
-    <div class="agile_last_double_sectionw3ls">
-      <div class="col-md-6 multi-gd-img multi-gd-text">
-        <Link to="/products">
-            <img src="./images/bot_1.jpg" alt=" " />
-            <h4>
-              Flat <span>50%</span> offer
-            </h4>
-          </Link>
-        <a>
-          <img src="https://picsum.photos/1024/480/?image=52" alt=" " />
-          <h4>Flat <span>50%</span> offer</h4>
-        </a>
-      </div>
-      <div class="col-md-6 multi-gd-img multi-gd-text">
-        <Link to="/products">
-            <img src="./images/bot_2.jpg" alt=" " />
-            <h4>
-              Flat <span>50%</span> offer
-            </h4>
-          </Link>
-        <a>
-          <img src="https://picsum.photos/1024/480/?image=52" alt=" " />
-          <h4>Flat <span>50%</span> offer</h4>
-        </a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class="sale-w3ls">
-      <div class="container">
-        <h6>We Offer Flat <span>40%</span> Discount</h6>
-
-        <Link class="hvr-outline-out button2" to="/single">
-            Shop Now{" "}
-          </Link>
-        <p class="hvr-outline-out button2">Shop Now{" "}</p>
-      </div>
-    </div>
-    <div class="coupons">
-      <div class="coupons-grids text-center">
-        <div class="w3layouts_mail_grid">
-          <div class="col-md-3 w3layouts_mail_grid_left">
-            <div class="w3layouts_mail_grid_left1 hvr-radial-out">
-              <i class="fa fa-truck" aria-hidden="true"></i>
-            </div>
-            <div class="w3layouts_mail_grid_left2">
-              <h3>FREE SHIPPING</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur</p>
-            </div>
-          </div>
-          <div class="col-md-3 w3layouts_mail_grid_left">
-            <div class="w3layouts_mail_grid_left1 hvr-radial-out">
-              <i class="fa fa-headphones" aria-hidden="true"></i>
-            </div>
-            <div class="w3layouts_mail_grid_left2">
-              <h3>24/7 SUPPORT</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur</p>
-            </div>
-          </div>
-          <div class="col-md-3 w3layouts_mail_grid_left">
-            <div class="w3layouts_mail_grid_left1 hvr-radial-out">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            </div>
-            <div class="w3layouts_mail_grid_left2">
-              <h3>MONEY BACK GUARANTEE</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur</p>
-            </div>
-          </div>
-          <div class="col-md-3 w3layouts_mail_grid_left">
-            <div class="w3layouts_mail_grid_left1 hvr-radial-out">
-              <i class="fa fa-gift" aria-hidden="true"></i>
-            </div>
-            <div class="w3layouts_mail_grid_left2">
-              <h3>FREE GIFT COUPONS</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur</p>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-      </div>
+      <a
+        class="carousel-control-prev text-decoration-none w-auto ps-3"
+        href="#template-mo-zay-hero-carousel"
+        role="button"
+        data-bs-slide="prev"
+      >
+        <i class="fas fa-chevron-left"></i>
+      </a>
+      <a
+        class="carousel-control-next text-decoration-none w-auto pe-3"
+        href="#template-mo-zay-hero-carousel"
+        role="button"
+        data-bs-slide="next"
+      >
+        <i class="fas fa-chevron-right"></i>
+      </a>
     </div> -->
+
+    <section class="container py-5">
+      <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+          <h1 class="h1">Categories of The Month</h1>
+          <p>
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+            officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4 p-5 mt-3">
+          <a href="#"
+            ><img
+              src="https://picsum.photos/1024/480/?image=55"
+              class="rounded-circle img-fluid border"
+          /></a>
+          <h5 class="text-center mt-3 mb-3">Watches</h5>
+          <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3">
+          <a href="#"
+            ><img
+              src="https://picsum.photos/1024/480/?image=55"
+              class="rounded-circle img-fluid border"
+          /></a>
+          <h2 class="h5 text-center mt-3 mb-3">Shoes</h2>
+          <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3">
+          <a href="#"
+            ><img
+              src="https://picsum.photos/1024/480/?image=55"
+              class="rounded-circle img-fluid border"
+          /></a>
+          <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
+          <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-light">
+      <div class="container py-5">
+        <div class="row text-center py-3">
+          <div class="col-lg-6 m-auto">
+            <h1 class="h1">Featured Product</h1>
+            <p>
+              Reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100">
+              <a href="#">
+                <img
+                  src="https://picsum.photos/1024/480/?image=55"
+                  class="card-img-top"
+                  alt="..."
+                />
+              </a>
+              <div class="card-body">
+                <ul class="list-unstyled d-flex justify-content-between">
+                  <li>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-muted fa fa-star"
+                      style="
+                        color: #bcbcbc !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-muted fa fa-star"
+                      style="
+                        color: #bcbcbc !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                  </li>
+                  <li class="text-muted text-right">$240.00</li>
+                </ul>
+                <a href="#" class="h2 text-decoration-none text-dark"
+                  >Gym Weight</a
+                >
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+                  in culpa qui officia deserunt.
+                </p>
+                <p class="text-muted">Reviews (24)</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100">
+              <a href="#">
+                <img
+                  src="https://picsum.photos/1024/480/?image=55"
+                  class="card-img-top"
+                  alt="..."
+                />
+              </a>
+              <div class="card-body">
+                <ul class="list-unstyled d-flex justify-content-between">
+                  <li>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-muted fa fa-star"
+                      style="
+                        color: #bcbcbc !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-muted fa fa-star"
+                      style="
+                        color: #bcbcbc !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                  </li>
+                  <li class="text-muted text-right">$480.00</li>
+                </ul>
+                <a href="#" class="h2 text-decoration-none text-dark"
+                  >Cloud Nike Shoes</a
+                >
+                <p class="card-text">
+                  Aenean gravida dignissim finibus. Nullam ipsum diam, posuere
+                  vitae pharetra sed, commodo ullamcorper.
+                </p>
+                <p class="text-muted">Reviews (48)</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100">
+              <a href="#">
+                <img
+                  src="https://picsum.photos/1024/480/?image=55"
+                  class="card-img-top"
+                  alt="..."
+                />
+              </a>
+              <div class="card-body">
+                <ul class="list-unstyled d-flex justify-content-between">
+                  <li>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                    <i
+                      class="text-warning fa fa-star"
+                      style="
+                        color: #ede861 !important;
+                        font-size: 18px !important;
+                      "
+                    ></i>
+                  </li>
+                  <li class="text-muted text-right">$360.00</li>
+                </ul>
+                <a href="#" class="h2 text-decoration-none text-dark"
+                  >Summer Addides Shoes</a
+                >
+                <p class="card-text">
+                  Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar
+                  sagittis diam, et scelerisque ipsum lobortis nec.
+                </p>
+                <p class="text-muted">Reviews (74)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <Footer />
   </div>
