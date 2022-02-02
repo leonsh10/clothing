@@ -18,8 +18,8 @@
           <b-nav-item href="/login">Login</b-nav-item>
           <b-nav-item href="/register">Register</b-nav-item>
           <b-nav-item href="/dashboard">Dashboard</b-nav-item>
-        </b-navbar-nav>
 
+        </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
             <b-form-input
@@ -28,6 +28,7 @@
               placeholder="Search"
             ></b-form-input>
           </b-nav-form>
+          <div><p>{{user}}</p></div>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -35,6 +36,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 export default {
   data() {
     return {
@@ -46,6 +48,11 @@ export default {
       this.isAddClass = true;
     },
   },
+  computed:{
+    ...mapGetters({
+      user:"user"
+    })
+  }
 };
 </script>
 

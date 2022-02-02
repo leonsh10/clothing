@@ -2,12 +2,18 @@
   <div>
     <Header />
     <div class="vue-tempalte">
-      <form>
+      <form @submit.prevent="loginUser">
         <h3 style="margin-bottom: 20px; margin-left: 75px">Sign In</h3>
 
         <div class="form-group">
           <label>Email address</label>
-          <input type="email" class="form-control form-control-lg" required />
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            name="email"
+            v-model="form.email"
+            required
+          />
         </div>
 
         <div class="form-group">
@@ -15,6 +21,8 @@
           <input
             type="password"
             class="form-control form-control-lg"
+            name="password"
+            v-model="form.password"
             required
           />
         </div>
@@ -52,6 +60,7 @@
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 export default {
   components: {
     Header,
@@ -60,7 +69,26 @@ export default {
   data() {
     return {
       userId: "",
+      form: {
+        email: "",
+        password: "",
+      },
+      error: null,
     };
+  },
+  methods: {
+    async loginUser() {
+      try{
+      await signInWithEmailAndPassword(
+        getAuth(),
+        this.form.email,
+        this.form.password
+      );
+      }catch(err){
+        this.error = err;
+      }
+      this.$router.replace("/");
+    },
   },
   computed: {
     validation() {

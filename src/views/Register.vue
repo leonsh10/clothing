@@ -30,6 +30,11 @@
           />
         </div>
 
+       <div class="form-group">
+          
+         <p v-if="error">{{this.error}}</p>
+        </div>
+
         <b-button type="submit" block variant="primary" class="butoni__sign-in"
           >Register</b-button
         >
@@ -83,7 +88,7 @@ export default {
         // apiRequests.get('/users/list');
         this.$router.push("/login");
       } catch (err) {
-        this.error = err;
+        this.error = err.response.data.error;
       }
     },
   },
