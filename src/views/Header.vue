@@ -28,7 +28,7 @@
               placeholder="Search"
             ></b-form-input>
           </b-nav-form>
-          <div><p>{{user}}</p></div>
+         useri: {{user.data && user.data.email}}
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
