@@ -7,7 +7,7 @@ const headers = {
 
 const apiRequests = axios.create({
     baseURL: 'http://localhost:3000/',
-    timeout: 10*100,
+    timeout: 60*100,
     headers
 });
 

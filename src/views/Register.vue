@@ -84,11 +84,11 @@ export default {
           email: this.form.email,
           password: this.form.password,
         });
-
+      console.log(this.form.email)
         // apiRequests.get('/users/list');
         this.$router.push("/login");
       } catch (err) {
-        this.error = err.response.data.error;
+        this.error = err;
       }
     },
   },
