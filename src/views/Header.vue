@@ -29,6 +29,7 @@
             ></b-form-input>
           </b-nav-form>
          useri: {{user.data && user.data.email}}
+         <b-nav-item href="#" @click="logout()">Logout</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -37,6 +38,7 @@
 
 <script>
 import {mapGetters} from 'vuex';
+import { getAuth } from 'firebase/auth';
 export default {
   data() {
     return {
@@ -47,6 +49,15 @@ export default {
     addClass() {
       this.isAddClass = true;
     },
+    logout(){
+      getAuth().signOut()
+      .then(() => {
+        this.$router.replace('/')
+      })
+      .catch((err) =>{
+        console.log(err)
+      });
+    }
   },
   computed:{
     ...mapGetters({
