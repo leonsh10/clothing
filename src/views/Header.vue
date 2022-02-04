@@ -15,21 +15,21 @@
           >
           <b-nav-item href="/about">About</b-nav-item>
           <b-nav-item href="/contact">Contact</b-nav-item>
-          <b-nav-item href="/login">Login</b-nav-item>
-          <b-nav-item href="/register">Register</b-nav-item>
-          <b-nav-item href="/dashboard">Dashboard</b-nav-item>
+          <b-nav-item v-if="!user.data" href="/login">Login</b-nav-item>
+          <b-nav-item v-if="!user.data" href="/register">Register</b-nav-item>
+          <b-nav-item v-if="user.data" href="/dashboard">Dashboard</b-nav-item>
 
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-form>
+          <!-- <b-nav-form>
             <b-form-input
               size="sm"
               class="mr-sm-2"
               placeholder="Search"
             ></b-form-input>
-          </b-nav-form>
-         useri: {{user.data && user.data.email}}
-         <b-nav-item href="#" @click="logout()">Logout</b-nav-item>
+          </b-nav-form> -->
+         <!-- useri: {{user.data && user.data.email}} -->
+         <b-nav-item v-if="user.data" href="#" @click="logout()">Logout</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -52,7 +52,7 @@ export default {
     logout(){
       getAuth().signOut()
       .then(() => {
-        this.$router.replace('/')
+        this.$router.replace('/login')
       })
       .catch((err) =>{
         console.log(err)
