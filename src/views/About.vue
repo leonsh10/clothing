@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <Header />
-    <h1>This is an about page</h1>
+    
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="w-100 pt-1 mb-5 text-right">
