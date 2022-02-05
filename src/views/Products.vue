@@ -5,59 +5,101 @@
       <div class="row">
         <div class="col-lg-3">
           <h1 class="h2 pb-4">Categories</h1>
-          <ul class="list-unstyled templatemo-accordion">
-            <li class="pb-3">
-              <a
-                class="collapsed d-flex justify-content-between h3 text-decoration-none"
-                href="#"
-              >
-                Gender
-                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-              </a>
-              <ul
-                class="collapse show list-unstyled pl-3"
-                style="display: none"
-              >
-                <li><a class="text-decoration-none" href="#">Men</a></li>
-                <li><a class="text-decoration-none" href="#">Women</a></li>
+          <div class="row">
+            <b-button
+              :class="visibleGender ? null : 'collapsed'"
+              :aria-expanded="visibleGender ? 'true' : 'false'"
+              aria-controls="collapse-4"
+              @click="visibleGender = !visibleGender"
+              style="
+                display: flex;
+                justify-content: space-between;
+                background-color: transparent;
+                border: none;
+                font-size: 22px;
+              "
+            >
+              Gender <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </b-button>
+            <b-collapse id="collapse-4" v-model="visibleGender" class="mt-2">
+              <ul class="collapse show list-unstyled pl-3">
+                <li>
+                  <a class="text-decoration-none collapse-links" href="#"
+                    >Men</a
+                  >
+                </li>
+                <li>
+                  <a class="text-decoration-none collapse-links" href="#"
+                    >Women</a
+                  >
+                </li>
               </ul>
-            </li>
-            <li class="pb-3">
-              <a
-                class="collapsed d-flex justify-content-between h3 text-decoration-none"
-                href="#"
-              >
-                Sale
-                <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-              </a>
-              <ul
-                id="collapseTwo"
-                class="collapse list-unstyled pl-3"
-                style="display: none"
-              >
-                <li><a class="text-decoration-none" href="#">Sport</a></li>
-                <li><a class="text-decoration-none" href="#">Luxury</a></li>
+            </b-collapse>
+            <b-button
+              :class="visibleSale ? null : 'collapsed'"
+              :aria-expanded="visibleSale ? 'true' : 'false'"
+              aria-controls="collapse-4"
+              @click="visibleSale = !visibleSale"
+              style="
+                display: flex;
+                justify-content: space-between;
+                background-color: transparent;
+                border: none;
+                font-size: 22px;
+              "
+            >
+              Sale
+              <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </b-button>
+            <b-collapse id="collapse-4" v-model="visibleSale" class="mt-2">
+              <ul class="collapse show list-unstyled pl-3">
+                <li>
+                  <a class="text-decoration-none collapse-links" href="#"
+                    >Sport</a
+                  >
+                </li>
+                <li>
+                  <a class="text-decoration-none collapse-links" href="#"
+                    >Luxury</a
+                  >
+                </li>
               </ul>
-            </li>
-            <li class="pb-3">
-              <a
-                class="collapsed d-flex justify-content-between h3 text-decoration-none"
-                href="#"
-              >
-                Product
-                <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-              </a>
-              <ul
-                id="collapseThree"
-                class="collapse list-unstyled pl-3"
-                style="display: none"
-              >
-                <li><a class="text-decoration-none" href="#">Bag</a></li>
-                <li><a class="text-decoration-none" href="#">Sweather</a></li>
-                <li><a class="text-decoration-none" href="#">Sunglass</a></li>
+            </b-collapse>
+            <b-button
+              :class="visibleProduct ? null : 'collapsed'"
+              :aria-expanded="visibleProduct ? 'true' : 'false'"
+              aria-controls="collapse-4"
+              @click="visibleProduct = !visibleProduct"
+              style="
+                display: flex;
+                justify-content: space-between;
+                background-color: transparent;
+                border: none;
+                font-size: 22px;
+              "
+            >
+              Product <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+            </b-button>
+            <b-collapse id="collapse-4" v-model="visibleProduct" class="mt-2">
+              <ul class="collapse show list-unstyled pl-3">
+                <li>
+                  <a class="text-decoration-none collapse-links" href="#"
+                    >Bag</a
+                  >
+                </li>
+                <li>
+                  <a class="text-decoration-none collapse-links" href="#"
+                    >Sweather</a
+                  >
+                </li>
+                <li>
+                  <a class="text-decoration-none collapse-links" href="#"
+                    >Sunglass</a
+                  >
+                </li>
               </ul>
-            </li>
-          </ul>
+            </b-collapse>
+          </div>
         </div>
 
         <div class="col-lg-9">
@@ -900,6 +942,13 @@ export default {
   components: {
     Header,
     Footer,
+  },
+  data() {
+    return {
+      visibleGender: false,
+      visibleSale: false,
+      visibleProduct: false,
+    };
   },
 };
 </script>
