@@ -5,6 +5,9 @@
       <form @submit.prevent="loginUser">
         <h3 style="margin-bottom: 20px; margin-left: 75px">Sign In</h3>
 
+
+      <div v-if="error" class="alert alert-danger">{{error}}</div>
+
         <div class="form-group">
           <label>Email address</label>
           <input
@@ -84,10 +87,11 @@ export default {
         this.form.email,
         this.form.password
       );
+       this.$router.replace("/");
       }catch(err){
         this.error = err;
       }
-      this.$router.replace("/");
+     
     },
   },
   computed: {

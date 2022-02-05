@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header />
+
     <div class="vue-tempalte">
       <form @submit.prevent="createUser">
         <h3 style="margin-bottom: 20px; margin-left: 75px">Register</h3>
@@ -9,7 +10,9 @@
                 <label>Name</label>
                 <input type="text" v-model="form.name" class="form-control form-control-lg" required />
             </div> -->
-
+            <div>
+      <div v-if="error" class="alert alert-danger">{{error}}</div>
+    </div>
         <div class="form-group">
           <label>Email address</label>
           <input
@@ -30,10 +33,10 @@
           />
         </div>
 
-       <div class="form-group">
+       <!-- <div class="form-group">
           
          <p v-if="error">{{this.error}}</p>
-        </div>
+        </div> -->
 
         <b-button type="submit" block variant="primary" class="butoni__sign-in"
           >Register</b-button
@@ -84,7 +87,6 @@ export default {
           email: this.form.email,
           password: this.form.password,
         });
-      console.log(this.form.email)
         // apiRequests.get('/users/list');
         this.$router.push("/login");
       } catch (err) {
