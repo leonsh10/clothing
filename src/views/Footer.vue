@@ -47,56 +47,24 @@
               <a
                 class="text-decoration-none"
                 style="color: #cfd6e1 !important"
-                href="#"
-                >Luxury</a
+                href="/products"
+                >All</a
               >
             </li>
             <li>
               <a
                 class="text-decoration-none"
                 style="color: #cfd6e1 !important"
-                href="#"
-                >Sport Wear</a
+                href="/products"
+                >Men's Products</a
               >
             </li>
             <li>
               <a
                 class="text-decoration-none"
                 style="color: #cfd6e1 !important"
-                href="#"
-                >Men's Shoes</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-decoration-none"
-                style="color: #cfd6e1 !important"
-                href="#"
-                >Women's Shoes</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-decoration-none"
-                style="color: #cfd6e1 !important"
-                href="#"
-                >Popular Dress</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-decoration-none"
-                href="#"
-                style="color: #cfd6e1 !important"
-                >Gym Accessories</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-decoration-none"
-                href="#"
-                style="color: #cfd6e1 !important"
-                >Sport Shoes</a
+                href="/products"
+                >Women's Products</a
               >
             </li>
           </ul>
@@ -113,7 +81,7 @@
             <li>
               <a
                 class="text-decoration-none"
-                href="#"
+                href="/"
                 style="color: #cfd6e1 !important"
                 >Home</a
               >
@@ -121,33 +89,34 @@
             <li>
               <a
                 class="text-decoration-none"
-                href="#"
+                href="/about"
                 style="color: #cfd6e1 !important"
                 >About Us</a
               >
             </li>
+
             <li>
               <a
                 class="text-decoration-none"
-                href="#"
-                style="color: #cfd6e1 !important"
-                >Shop Locations</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-decoration-none"
-                href="#"
-                style="color: #cfd6e1 !important"
-                >FAQs</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-decoration-none"
-                href="#"
+                href="/contact"
                 style="color: #cfd6e1 !important"
                 >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-decoration-none"
+                href="/login"
+                style="color: #cfd6e1 !important"
+                >Login</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-decoration-none"
+                href="/register"
+                style="color: #cfd6e1 !important"
+                >Register</a
               >
             </li>
           </ul>

@@ -1,6 +1,11 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar
+      toggleable="lg"
+      type="dark"
+      variant="info"
+      style="background-color: #212934 !important"
+    >
       <b-navbar-brand href="/">Shop</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -18,7 +23,6 @@
           <b-nav-item v-if="!user.data" href="/login">Login</b-nav-item>
           <b-nav-item v-if="!user.data" href="/register">Register</b-nav-item>
           <b-nav-item v-if="user.data" href="/dashboard">Dashboard</b-nav-item>
-
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <!-- <b-nav-form>
@@ -28,8 +32,10 @@
               placeholder="Search"
             ></b-form-input>
           </b-nav-form> -->
-         <!-- useri: {{user.data && user.data.email}} -->
-         <b-nav-item v-if="user.data" href="#" @click="logout()">Logout</b-nav-item>
+          <!-- useri: {{user.data && user.data.email}} -->
+          <b-nav-item v-if="user.data" href="#" @click="logout()"
+            >Logout</b-nav-item
+          >
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -37,8 +43,8 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
-import { getAuth } from 'firebase/auth';
+import { mapGetters } from "vuex";
+import { getAuth } from "firebase/auth";
 export default {
   data() {
     return {
@@ -49,21 +55,22 @@ export default {
     addClass() {
       this.isAddClass = true;
     },
-    logout(){
-      getAuth().signOut()
-      .then(() => {
-        this.$router.replace('/login')
-      })
-      .catch((err) =>{
-        console.log(err)
-      });
-    }
+    logout() {
+      getAuth()
+        .signOut()
+        .then(() => {
+          this.$router.replace("/login");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
-  computed:{
+  computed: {
     ...mapGetters({
-      user:"user"
-    })
-  }
+      user: "user",
+    }),
+  },
 };
 </script>
 
