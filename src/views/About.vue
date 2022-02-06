@@ -29,11 +29,14 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="assets/img/about-hero.svg" alt="About Hero">
+                    <img src="https://technext.github.io/zay-shop/assets/img/about-hero.svg" alt="About Hero">
                 </div>
             </div>
         </div>
     </section>
+<!--  -->
+
+
     <section class="container py-5">
         <div class="row text-center pt-5 pb-3">
             <div class="col-lg-6 m-auto">
@@ -75,8 +78,12 @@
             </div>
         </div>
 
+
         <!-- perfundon qiky section -->
+  
+        
     </section>
+    
     <Footer />
   </div>
   
