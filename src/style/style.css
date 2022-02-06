@@ -24,6 +24,10 @@ div {
   font-family: "Roboto", sans-serif;
   font-size: 22px !important;
 }
+
+.v-application--wrap {
+  width: 400px;
+}
 /* General */
 .logo {
   font-weight: 500 !important;
