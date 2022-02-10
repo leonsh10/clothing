@@ -169,6 +169,9 @@
       </div>
 
       <!-- perfundon qiky section -->
+
+
+      <!--  -->
      
     </section>
  <div class="features">
@@ -203,6 +206,31 @@
                                 </div>          
                         </div>
             </div>
+
+            <section class="features6 cid-raSLS2Jnck" id="features6-g">
+
+    
+
+    
+
+    <div class="container" style="margin-bottom:5cm;">
+        <div class="row justify-content-center align-items-center">
+            
+            <div class="col-sm-12 text-block col-md-6">
+                
+                <h3 class="mbr-white mbr-section-title mbr-fonts-style align-center display-2" style="
+            font-family: Times New Roman, Times, serif;padding-left:3.3cm;"><strong>
+                    Our Team!</strong></h3>
+                <div class="mbr-white mbr-section-text mbr-fonts-style align-center display-7">She is the founder of the first confectionery school of the studio in the city. The master pastry chef with ten years of experience. She won the confectionery championship in 2013. Also, she is the author of books. She has articles in specialized journals. She teaches pastry courses at a pastry school. Put zour own info in this Bootstrap landing page template.</div>
+            </div>
+            <div class="col-sm-12 col-md-6 img-block align-center">
+                <div class="mbr-figure" style="padding-left:1.5cm">
+                    <img src="https://aeworld.com/wp-content/uploads/2020/01/DIOR-MENS-WINTER-20-21-GROUPSHOT-BY-BRETT-LLOYD-FOR-DIOR.jpg" alt="Mobirise Bootstrap landing page template" title="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
       
     <Footer />
   </div>
