@@ -92,7 +92,7 @@ export default {
       async createContact() {
      await apiRequests.createContact({ ...this.form });
       alert("Forma u dergua me sukses")
-      // this.$router.push(`/view/${newRealEstate._id}`);
+      // this.$router.push('/');
   }
 
   }
