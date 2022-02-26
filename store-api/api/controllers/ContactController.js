@@ -16,7 +16,6 @@ export default {
 
     post: async (req, res) => {
         const contact = await new ContactModel(req.body);
-
         contact.save();
         return res.json(contact);
     },

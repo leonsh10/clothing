@@ -31,27 +31,27 @@
              Send us a message!
             </h1>
     
-            <form class="col-md-9 m-auto" method="post" role="form">
+            <form class="col-md-9 m-auto" @submit.prevent="createContact">
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         
 
                         <label for="inputname"  style=" font-weight:bold;font-family: Times New Roman, Times, serif;">
                             Name:</label>
-                        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name">
+                        <input type="text" v-model="form.name" class="form-control mt-1" id="name" name="name" placeholder="Name">
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="inputemail" style=" font-weight:bold;font-family: Times New Roman, Times, serif;">Email:</label>
-                        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Email">
+                        <input type="email" v-model="form.email" class="form-control mt-1" id="email" name="email" placeholder="Email">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="inputsubject" style=" font-weight:bold;font-family: Times New Roman, Times, serif;">Subject:</label>
-                    <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Subject">
+                    <input type="text" v-model="form.subject" class="form-control mt-1" id="subject" name="subject" placeholder="Subject">
                 </div>
                 <div class="mb-3">
                     <label for="inputmessage" style=" font-weight:bold;font-family: Times New Roman, Times, serif;">Message:</label>
-                    <textarea class="form-control mt-1" id="message" name="message" placeholder="Message" rows="8"></textarea>
+                    <textarea class="form-control mt-1" v-model="form.message" id="message" name="message" placeholder="Message" rows="8"></textarea>
                 </div>
                 <div class="row">
                     <div class="col text-end mt-2">
@@ -70,11 +70,32 @@
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
+import apiRequests from "../utils/apiRequests"
 export default {
   components: {
     Header,
     Footer,
   },
+
+  data() {
+    return {
+      form: {
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      },
+      error: null,
+    };
+  },
+  methods:{
+      async createContact() {
+     await apiRequests.createContact({ ...this.form });
+      alert("Forma u dergua me sukses")
+      // this.$router.push(`/view/${newRealEstate._id}`);
+  }
+
+  }
 
 };
 </script>

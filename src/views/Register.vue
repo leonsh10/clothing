@@ -65,7 +65,7 @@
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
-import apiRequests from "../utils/axios";
+import apiCaller from "../utils/apiRequests/apiCaller";
 export default {
   components: {
     Header,
@@ -83,7 +83,7 @@ export default {
   methods: {
     async createUser() {
       try {
-       await apiRequests.post("users/register", {
+       await apiCaller.post("users/register", {
           email: this.form.email,
           password: this.form.password,
         });
