@@ -6,10 +6,9 @@ const headers = {
 };
 
 const apiCaller = axios.create({
-    baseURL: 'http://localhost:3000/',
-    timeout: 60*100,
-    headers
+  baseURL: "http://localhost:3000/",
+  timeout: 60 * 100,
+  headers,
 });
-
 
 export default apiCaller;
