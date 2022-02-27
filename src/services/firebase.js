@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import store from "../store";
 const firebaseConfig = {
   apiKey: "AIzaSyCvJF00gaYmUIs3XvEi0uC8_iou_gxZ4lc",
@@ -13,5 +13,4 @@ initializeApp(firebaseConfig);
 
 onAuthStateChanged(getAuth(), (user) => {
   store.dispatch("fetchUser", user);
-} );
-
+});

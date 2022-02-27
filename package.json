@@ -39,6 +39,7 @@
     "root": true,
     "env": {
       "node": true
+
     },
     "extends": [
       "plugin:vue/essential",
@@ -49,6 +50,7 @@
       "parser": "babel-eslint"
     },
     "rules": {}
+
   },
   "browserslist": [
     "> 1%",

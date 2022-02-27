@@ -21,9 +21,12 @@
           <b-nav-item href="/about">About</b-nav-item>
           <b-nav-item href="/contact">Contact</b-nav-item>
           <b-nav-item v-if="!user.loggedIn" href="/login">Login</b-nav-item>
-          <b-nav-item v-if="!user.loggedIn" href="/register">Register</b-nav-item>
-          <b-nav-item v-if="user.loggedIn" href="/dashboard">Dashboard</b-nav-item>
-
+          <b-nav-item v-if="!user.loggedIn" href="/register"
+            >Register</b-nav-item
+          >
+          <b-nav-item v-if="user.loggedIn" href="/dashboard"
+            >Dashboard</b-nav-item
+          >
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <!-- <b-nav-form>

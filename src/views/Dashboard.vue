@@ -2,7 +2,7 @@
   <div>
     <Header />
     <SideBar />
-       <!-- <b-button v-b-toggle.sidebar-no-header>Toggle Sidebar</b-button>
+    <!-- <b-button v-b-toggle.sidebar-no-header>Toggle Sidebar</b-button>
     <b-sidebar id="sidebar-no-header" aria-labelledby="sidebar-no-header-title" no-header shadow>
       <template #default="{ hide }">
         <div class="p-3">
@@ -38,7 +38,7 @@ export default {
   components: {
     Header,
     Footer,
-    SideBar
+    SideBar,
   },
 };
 </script>

@@ -170,68 +170,97 @@
 
       <!-- perfundon qiky section -->
 
-
       <!--  -->
-     
     </section>
- <div class="features">
-                    <div class="container">
-                        <div class="row mb-5 ">
-                                <div class="col-12 mt-5">
-                                        <h3 class="text-center" style="">Features</h3>
-                                        <p class="text-center"> Some of the main and characteristics and benefits</p>
-                                </div>
-                            
-                        </div>
-                            <div class="row" style="margin-bottom:3cm;">
-                                    <div class="col-4 mt-5">
-                                      <i class="fa fa-camera-retro fa-4x" style="margin-left:4.5cm; margin-bottom:5mm;"></i>
-                                            <img class="center"  alt="">
-                                            <h4 class="text-center">Graphical and Numerical reports</h4>
-                                          <p class="text-center">Graphical and numerical reports(daily, weekly,<br>monthly, and annually) and regular invoice<br>generation</p>
-                                        </div>
-                                    <div class="col-4 mt-5">
-                                     <i class="fa fa-bell fa-4x" aria-hidden="true" style="margin-left:4.5cm;margin-bottom:5mm;"></i>
-                                        <img class="center" src="" alt="">
-                                        <h4 class="text-center">Happy-hour pricing</h4>
-                                        <p class="text-center">Full management of articles and happy-hour <br>pricing felxibility</p>
-                                    </div>
-                                    <div class="col-4 mt-5">
-                                      <i class="fa fa-user-circle-o fa-4x" aria-hidden="true" style="margin-left:4.5cm;margin-bottom:5mm;"></i>
-                                        <img class="center" src="" alt="">
-                                      <h4 class="text-center">Jobs</h4>
-                                        <p class="text-center">Job management opportunities from anywhere.Every month.</p>
-                                    </div>
-                                  
-                                </div>          
-                        </div>
-            </div>
-
-            <section class="features6 cid-raSLS2Jnck" id="features6-g">
-
-    
-
-    
-
-    <div class="container" style="margin-bottom:5cm;">
-        <div class="row justify-content-center align-items-center">
-            
-            <div class="col-sm-12 text-block col-md-6">
-                
-                <h3 class="mbr-white mbr-section-title mbr-fonts-style align-center display-2" style="
-            font-family: Times New Roman, Times, serif;padding-left:3.3cm;"><strong>
-                    Our Team!</strong></h3>
-                <div class="mbr-white mbr-section-text mbr-fonts-style align-center display-7">She is the founder of the first confectionery school of the studio in the city. The master pastry chef with ten years of experience. She won the confectionery championship in 2013. Also, she is the author of books. She has articles in specialized journals. She teaches pastry courses at a pastry school. Put zour own info in this Bootstrap landing page template.</div>
-            </div>
-            <div class="col-sm-12 col-md-6 img-block align-center">
-                <div class="mbr-figure" style="padding-left:1.5cm">
-                    <img src="https://aeworld.com/wp-content/uploads/2020/01/DIOR-MENS-WINTER-20-21-GROUPSHOT-BY-BRETT-LLOYD-FOR-DIOR.jpg" alt="Mobirise Bootstrap landing page template" title="">
-                </div>
-            </div>
+    <div class="features">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 mt-5">
+            <h3 class="text-center" style="">Features</h3>
+            <p class="text-center">
+              Some of the main and characteristics and benefits
+            </p>
+          </div>
         </div>
+        <div class="row" style="margin-bottom: 3cm">
+          <div class="col-4 mt-5">
+            <i
+              class="fa fa-camera-retro fa-4x"
+              style="margin-left: 4.5cm; margin-bottom: 5mm"
+            ></i>
+            <img class="center" alt="" />
+            <h4 class="text-center">Graphical and Numerical reports</h4>
+            <p class="text-center">
+              Graphical and numerical reports(daily, weekly,<br />monthly, and
+              annually) and regular invoice<br />generation
+            </p>
+          </div>
+          <div class="col-4 mt-5">
+            <i
+              class="fa fa-bell fa-4x"
+              aria-hidden="true"
+              style="margin-left: 4.5cm; margin-bottom: 5mm"
+            ></i>
+            <img class="center" src="" alt="" />
+            <h4 class="text-center">Happy-hour pricing</h4>
+            <p class="text-center">
+              Full management of articles and happy-hour <br />pricing
+              felxibility
+            </p>
+          </div>
+          <div class="col-4 mt-5">
+            <i
+              class="fa fa-user-circle-o fa-4x"
+              aria-hidden="true"
+              style="margin-left: 4.5cm; margin-bottom: 5mm"
+            ></i>
+            <img class="center" src="" alt="" />
+            <h4 class="text-center">Jobs</h4>
+            <p class="text-center">
+              Job management opportunities from anywhere.Every month.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
-      
+
+    <section class="features6 cid-raSLS2Jnck" id="features6-g">
+      <div class="container" style="margin-bottom: 5cm">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-sm-12 text-block col-md-6">
+            <h3
+              class="mbr-white mbr-section-title mbr-fonts-style align-center display-2"
+              style="
+                font-family: Times New Roman, Times, serif;
+                padding-left: 3.3cm;
+              "
+            >
+              <strong> Our Team!</strong>
+            </h3>
+            <div
+              class="mbr-white mbr-section-text mbr-fonts-style align-center display-7"
+            >
+              She is the founder of the first confectionery school of the studio
+              in the city. The master pastry chef with ten years of experience.
+              She won the confectionery championship in 2013. Also, she is the
+              author of books. She has articles in specialized journals. She
+              teaches pastry courses at a pastry school. Put zour own info in
+              this Bootstrap landing page template.
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 img-block align-center">
+            <div class="mbr-figure" style="padding-left: 1.5cm">
+              <img
+                src="https://aeworld.com/wp-content/uploads/2020/01/DIOR-MENS-WINTER-20-21-GROUPSHOT-BY-BRETT-LLOYD-FOR-DIOR.jpg"
+                alt="Mobirise Bootstrap landing page template"
+                title=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <Footer />
   </div>
 

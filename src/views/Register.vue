@@ -10,9 +10,9 @@
                 <label>Name</label>
                 <input type="text" v-model="form.name" class="form-control form-control-lg" required />
             </div> -->
-            <div>
-      <div v-if="error" class="alert alert-danger">{{error}}</div>
-    </div>
+        <div>
+          <div v-if="error" class="alert alert-danger">{{ error }}</div>
+        </div>
         <div class="form-group">
           <label>Email address</label>
           <input
@@ -33,7 +33,7 @@
           />
         </div>
 
-       <!-- <div class="form-group">
+        <!-- <div class="form-group">
           
          <p v-if="error">{{this.error}}</p>
         </div> -->
@@ -61,7 +61,6 @@
   </div>
 </template>
 
-
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
@@ -83,7 +82,7 @@ export default {
   methods: {
     async createUser() {
       try {
-       await apiRequests.post("users/register", {
+        await apiRequests.post("users/register", {
           email: this.form.email,
           password: this.form.password,
         });

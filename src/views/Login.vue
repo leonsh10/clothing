@@ -5,8 +5,7 @@
       <form @submit.prevent="loginUser">
         <h3 style="margin-bottom: 20px; margin-left: 75px">Sign In</h3>
 
-
-      <div v-if="error" class="alert alert-danger">{{error}}</div>
+        <div v-if="error" class="alert alert-danger">{{ error }}</div>
 
         <div class="form-group">
           <label>Email address</label>
@@ -81,17 +80,16 @@ export default {
   },
   methods: {
     async loginUser() {
-      try{
-      await signInWithEmailAndPassword(
-        getAuth(),
-        this.form.email,
-        this.form.password
-      );
-       this.$router.replace("/");
-      }catch(err){
+      try {
+        await signInWithEmailAndPassword(
+          getAuth(),
+          this.form.email,
+          this.form.password
+        );
+        this.$router.replace("/");
+      } catch (err) {
         this.error = err;
       }
-     
     },
   },
   computed: {
