@@ -9,18 +9,6 @@
         <h3 style="margin-bottom: 24px; font-family:sans-serif; margin-top:20px;">Register</h3>
 
 
-<<<<<<< HEAD
-
-        <!-- <div class="form-group">
-                <label>Name</label>
-                <input type="text" v-model="form.name" class="form-control form-control-lg" required />
-            </div> -->
-        <div>
-          <div v-if="error" class="alert alert-danger">{{ error }}</div>
-        </div>
-
-=======
->>>>>>> d0412026f4a23d413d1eb47b3c193d102412fd5c
       <div v-if="error" class="alert alert-danger">{{error}}</div>
 
         <div class="form-group">
@@ -53,18 +41,7 @@
           />
         </div>
 
-<<<<<<< HEAD
-        <!-- <div class="form-group">
-          
-         <p v-if="error">{{this.error}}</p>
-        </div> -->
-
-        <b-button type="submit" block variant="primary" class="butoni__sign-in">
         <b-button style="background:#e3b04b; border:none; width:350px; border-radius:5px;" type="submit" block variant="primary" class="butoni__sign-in"
-
-=======
-        <b-button style="background:#e3b04b; border:none; width:350px; border-radius:5px;" type="submit" block variant="primary" class="butoni__sign-in"
->>>>>>> d0412026f4a23d413d1eb47b3c193d102412fd5c
           >Register</b-button
         >
 
@@ -107,16 +84,8 @@ export default {
   },
   methods: {
     async createUser() {
-<<<<<<< HEAD
-
-        await apiRequests.post("users/register", {
-
-       await apiCaller.post("users/register", {
-
-=======
       try {
        await apiCaller.post("users/register", {
->>>>>>> d0412026f4a23d413d1eb47b3c193d102412fd5c
           email: this.form.email,
           password: this.form.password,
         });
@@ -271,12 +240,6 @@ form {
   width: 250px;
   border-radius: 20px;
 }
-<<<<<<< HEAD
-
-</style>
-
-=======
->>>>>>> d0412026f4a23d413d1eb47b3c193d102412fd5c
 
 .labels_style{
   font-size:15px !important;
@@ -299,8 +262,4 @@ input:focus {
   font-size:15px;
   color:#eeeeee;
 }
-<<<<<<< HEAD
-
-=======
 </style>
->>>>>>> d0412026f4a23d413d1eb47b3c193d102412fd5c
