@@ -1,48 +1,51 @@
 <template>
-  <div>
+  <div style="background-color:#ebebeb;">
     <Header />
-
+    <div>
+      <img style="position:absolute; bottom:131px; right:781px;" width="500" height="500" src="../assets/bg-1.jpg" />
+      </div>
     <div class="vue-tempalte">
       <form @submit.prevent="createUser">
-        <h3 style="margin-bottom: 20px; margin-left: 75px">Register</h3>
+        <h3 style="margin-bottom: 24px; font-family:sans-serif; margin-top:20px;">Register</h3>
 
-        <!-- <div class="form-group">
-                <label>Name</label>
-                <input type="text" v-model="form.name" class="form-control form-control-lg" required />
-            </div> -->
-            <div>
+
       <div v-if="error" class="alert alert-danger">{{error}}</div>
-    </div>
+
         <div class="form-group">
-          <label>Email address</label>
+          <label class="labels_style"
+            style="margin-top:6px;"
+          >Email address</label>
           <input
             type="email"
-            v-model="form.email"
             class="form-control form-control-lg"
+            style="margin-top:8px;"
+            name="email"
+            v-model="form.email"
             required
+            placeholder="Email"
           />
         </div>
 
         <div class="form-group">
-          <label>Password</label>
+          <label class="labels_style" 
+            style="margin-top:22px;"
+           >Password</label>
           <input
             type="password"
-            v-model="form.password"
             class="form-control form-control-lg"
+            name="password"
+            style="margin-top:6px;"
+            placeholder="Password"
+            v-model="form.password"
             required
           />
         </div>
 
-       <!-- <div class="form-group">
-          
-         <p v-if="error">{{this.error}}</p>
-        </div> -->
-
-        <b-button type="submit" block variant="primary" class="butoni__sign-in"
+        <b-button style="background:#e3b04b; border:none; width:350px; border-radius:5px;" type="submit" block variant="primary" class="butoni__sign-in"
           >Register</b-button
         >
 
-        <div style="margin-top: 20px" class="social-icons">
+        <!-- <div class="social-icons">
           <ul>
             <li>
               <a href="#"><i class="fa fa-google"></i></a>
@@ -54,13 +57,12 @@
               <a href="#"><i class="fa fa-twitter"></i></a>
             </li>
           </ul>
-        </div>
+        </div> -->
       </form>
     </div>
     <Footer />
   </div>
 </template>
-
 
 <script>
 import Header from "./Header.vue";
@@ -214,6 +216,7 @@ label {
   color: #222222;
 }
 
+
 .vue-tempalte {
   width: 500px;
   height: 500px;
@@ -223,7 +226,8 @@ label {
   margin: 0 auto;
   margin-bottom: 50px;
   margin-top: 20px;
-  background-color: #e2e2e2;
+  margin-left:736px;
+  background-color: white;
 }
 form {
   margin-top: 40px;
@@ -235,5 +239,27 @@ form {
   font-size: 20px;
   width: 250px;
   border-radius: 20px;
+}
+
+.labels_style{
+  font-size:15px !important;
+  font-weight:500 !important;
+  font-family: sans-serif;
+}
+
+input{
+  width:350px;
+}
+
+input:focus {
+  border:1px solid #e3b04b;
+    box-shadow: 0 0 1px #e3b04b;
+    outline-offset: 0px;
+    outline: none;
+}
+
+::placeholder{
+  font-size:15px;
+  color:#eeeeee;
 }
 </style>
