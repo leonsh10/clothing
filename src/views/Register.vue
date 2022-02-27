@@ -9,7 +9,7 @@
         <h3 style="margin-bottom: 24px; font-family:sans-serif; margin-top:20px;">Register</h3>
 
 
-<<<<<<< HEAD
+
         <!-- <div class="form-group">
                 <label>Name</label>
                 <input type="text" v-model="form.name" class="form-control form-control-lg" required />
@@ -17,10 +17,9 @@
         <div>
           <div v-if="error" class="alert alert-danger">{{ error }}</div>
         </div>
-=======
+
       <div v-if="error" class="alert alert-danger">{{error}}</div>
 
->>>>>>> d845634711c0df78c34ec49b03d56072b1023638
         <div class="form-group">
           <label class="labels_style"
             style="margin-top:6px;"
@@ -51,16 +50,14 @@
           />
         </div>
 
-<<<<<<< HEAD
         <!-- <div class="form-group">
           
          <p v-if="error">{{this.error}}</p>
         </div> -->
 
-        <b-button type="submit" block variant="primary" class="butoni__sign-in"
-=======
+        <b-button type="submit" block variant="primary" class="butoni__sign-in">
         <b-button style="background:#e3b04b; border:none; width:350px; border-radius:5px;" type="submit" block variant="primary" class="butoni__sign-in"
->>>>>>> d845634711c0df78c34ec49b03d56072b1023638
+
           >Register</b-button
         >
 
@@ -103,18 +100,17 @@ export default {
   },
   methods: {
     async createUser() {
-      try {
-<<<<<<< HEAD
+
         await apiRequests.post("users/register", {
-=======
+
        await apiCaller.post("users/register", {
->>>>>>> d845634711c0df78c34ec49b03d56072b1023638
+
           email: this.form.email,
           password: this.form.password,
         });
         // apiRequests.get('/users/list');
         this.$router.push("/login");
-      } catch (err) {
+        } catch (err) {
         this.error = err;
       }
     },
@@ -263,9 +259,9 @@ form {
   width: 250px;
   border-radius: 20px;
 }
-<<<<<<< HEAD
+
 </style>
-=======
+
 
 .labels_style{
   font-size:15px !important;
@@ -288,5 +284,4 @@ input:focus {
   font-size:15px;
   color:#eeeeee;
 }
-</style>
->>>>>>> d845634711c0df78c34ec49b03d56072b1023638
+

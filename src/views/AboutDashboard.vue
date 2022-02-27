@@ -95,8 +95,7 @@ export default {
     Header,
     Footer,
     SideBar,
-<<<<<<< HEAD
-=======
+
   },
   data() {
     return {
@@ -222,7 +221,7 @@ export default {
       alert("About Info u krijua me sukses");
       // this.$router.push('/');
     },
->>>>>>> d845634711c0df78c34ec49b03d56072b1023638
+
   },
 };
 </script>
