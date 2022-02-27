@@ -95,7 +95,10 @@ export default {
     Header,
     Footer,
     SideBar,
+<<<<<<< HEAD
 
+=======
+>>>>>>> d0412026f4a23d413d1eb47b3c193d102412fd5c
   },
   data() {
     return {
@@ -221,7 +224,10 @@ export default {
       alert("About Info u krijua me sukses");
       // this.$router.push('/');
     },
+<<<<<<< HEAD
 
+=======
+>>>>>>> d0412026f4a23d413d1eb47b3c193d102412fd5c
   },
 };
 </script>

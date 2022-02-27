@@ -1,63 +1,5 @@
 <template>
   <footer class="footer-48201">
-<<<<<<< HEAD
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 pr-md-5">
-          <a href="/" class="footer-site-logo d-block mb-4"
-            >Online Clothing Store</a
-          >
-          <p>
-            The customer is at the heart of our unique business model, which
-            includes design.
-          </p>
-        </div>
-        <div class="col-md">
-          <ul class="list-unstyled nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/login">Login</a></li>
-          </ul>
-        </div>
-        <div class="col-md">
-          <ul class="list-unstyled nav-links">
-            <li><a href="#">Clients</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Return & Exchanges</a></li>
-            <li><a href="#">Payment Methods</a></li>
-            <li><a href="#">Delivery</a></li>
-          </ul>
-        </div>
-        <div class="col-md">
-          <ul class="list-unstyled nav-links">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms &amp; Conditions</a></li>
-            <li><a href="#">Partners</a></li>
-          </ul>
-        </div>
-        <div class="col-md text-md-center">
-          <ul class="social list-unstyled">
-            <li>
-              <a href="#"><span class="icon-facebook"></span></a>
-            </li>
-            <li>
-              <a href="#"><span class="icon-twitter"></span></a>
-            </li>
-            <li>
-              <a href="#"><span class="icon-twitter"></span></a>
-            </li>
-            <li>
-              <a href="#"><span class="icon-facebook"></span></a>
-            </li>
-          </ul>
-          <p class="">
-            <a href="/contact" class="btn btn-tertiary">Contact Us</a>
-          </p>
-        </div>
-      </div>
-=======
       
       <div class="container">
         <div class="row">
@@ -101,7 +43,6 @@
             <p class=""><a href="/contact" class="btn btn-tertiary">Contact Us</a></p>
           </div>
         </div> 
->>>>>>> d845634711c0df78c34ec49b03d56072b1023638
 
       <div class="row">
         <div class="col-12 text-center">

@@ -26,17 +26,9 @@
           <b-nav-item href="/contact">Contact</b-nav-item>
          
           <b-nav-item v-if="!user.loggedIn" href="/login">Login</b-nav-item>
-<<<<<<< HEAD
-          <b-nav-item v-if="!user.loggedIn" href="/register"
-            >Register</b-nav-item
-          >
-          <b-nav-item v-if="user.loggedIn" href="/dashboard"
-            >Dashboard</b-nav-item
-=======
           <b-nav-item v-if="user.loggedIn" href="/dashboard">Dashboard</b-nav-item>
           <b-nav-item v-if="user.data" href="#" @click="logout()"
             >Logout</b-nav-item
->>>>>>> d845634711c0df78c34ec49b03d56072b1023638
           >
         </b-navbar-nav>
           <!-- <b-nav-form>
