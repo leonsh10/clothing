@@ -1,46 +1,58 @@
 <template>
-  <div>
+  <div style="background-color:#ebebeb;">
     <Header />
+    <div>
+      <img style="position:absolute; bottom:131px; right:781px;" width="500" height="500" src="../assets/bg-1.jpg" />
+      </div>
     <div class="vue-tempalte">
       <form @submit.prevent="loginUser">
-        <h3 style="margin-bottom: 20px; margin-left: 75px">Sign In</h3>
+        <h3 style="margin-bottom: 24px; font-family:sans-serif;">Sign In</h3>
 
         <div v-if="error" class="alert alert-danger">{{ error }}</div>
 
         <div class="form-group">
-          <label>Email address</label>
+          <label class="labels_style"
+            style="margin-top:6px;"
+          >Email address</label>
           <input
             type="email"
             class="form-control form-control-lg"
+            style="margin-top:8px;"
             name="email"
             v-model="form.email"
             required
+            placeholder="Email"
           />
         </div>
 
         <div class="form-group">
-          <label>Password</label>
+          <label class="labels_style" 
+            style="margin-top:22px;"
+           >Password</label>
           <input
             type="password"
             class="form-control form-control-lg"
             name="password"
+            style="margin-top:6px;"
+            placeholder="Password"
             v-model="form.password"
             required
           />
         </div>
 
-        <b-button type="submit" block variant="primary" class="butoni__sign-in"
-          >Login</b-button
+        <b-button style="background:#e3b04b; border:none; width:350px; border-radius:5px;" type="submit" block variant="primary" class="butoni__sign-in"
+          >Sign In</b-button
         >
-        <p class="forgot-password text-right mt-2 mb-4"></p>
-        <p>
-          Dont have an account?
-          <router-link style="text-decoration: none" to="/register"
-            >Create one</router-link
+        <a href="#" style="text-decoration:none; ">
+        <p style="font-family:sans-serif; font-size:17px !important;" class="forgot-password text-right mt-2 mb-4">Forgot Password</p></a>
+        <p style="font-family:sans-serif; text-align:center; font-size:17px !important; color:#7a7a7a;">
+          Not a member?
+          <router-link style="text-decoration: none; font-family:sans-serif; color:#e3b04b; font-size:17px !important;" to="/register"
+            >Sign Up</router-link
           >
         </p>
 
-        <div class="social-icons">
+        <!-- <div class="social-icons">
           <ul>
             <li>
               <a href="#"><i class="fa fa-google"></i></a>
@@ -52,7 +64,7 @@
               <a href="#"><i class="fa fa-twitter"></i></a>
             </li>
           </ul>
-        </div>
+        </div> -->
       </form>
     </div>
     <Footer />
@@ -226,7 +238,8 @@ label {
   margin: 0 auto;
   margin-bottom: 50px;
   margin-top: 20px;
-  background-color: #e2e2e2;
+  margin-left:736px;
+  background-color: white;
 }
 form {
   margin-top: 40px;
@@ -238,5 +251,27 @@ form {
   font-size: 20px;
   width: 250px;
   border-radius: 20px;
+}
+
+.labels_style{
+  font-size:15px !important;
+  font-weight:500 !important;
+  font-family: sans-serif;
+}
+
+input{
+  width:350px;
+}
+
+input:focus {
+  border:1px solid #e3b04b;
+    box-shadow: 0 0 1px #e3b04b;
+    outline-offset: 0px;
+    outline: none;
+}
+
+::placeholder{
+  font-size:15px;
+  color:#eeeeee;
 }
 </style>

@@ -6,20 +6,20 @@
         <SideBar />
       </div>
       <div
-        class="col-md-10 col-lg-10 col-sm-12 col-xs-12 d-flex justify-content-center"
+        class="col-md-9 col-lg-9 col-sm-11 col-xs-11 d-flex justify-content-center"
       >
         <div
           class="row justify-content-center row-md-10 row-lg-10 row-sm-12 row-xs-12"
         >
           <div
-            class="row row-md-10 row-lg-10 row-sm-12 row-xs-12 justify-content-center"
+            class="row row-md-9 row-lg-9 row-sm-12 row-xs-12 justify-content-center"
           >
             <h1 style="text-align: center">Add Product</h1>
           </div>
           <div
-            class="row row-md-10 row-lg-10 row-sm-12 row-xs-12 justify-content-center"
+            class="row row-md-9 row-lg-9 row-sm-12 row-xs-12 justify-content-center"
           >
-            <v-app id="inspire" class="w-75" style="height: 400px">
+            <v-app id="inspire" style="height: 400px; width: 90%">
               <v-form
                 ref="form"
                 v-model="valid"
@@ -61,20 +61,6 @@
                   prepend-icon="fa fa-upload"
                   required
                 ></v-file-input>
-                <!-- <v-text-field
-              v-model="email"
-              :rules="emailRules"
-              label="E-mail"
-              required
-            ></v-text-field>
-
-            <v-select
-              v-model="select"
-              :items="items"
-              :rules="[(v) => !!v || 'Item is required']"
-              label="Item"
-              required
-            ></v-select> -->
 
                 <v-btn
                   :disabled="!valid"
@@ -82,23 +68,15 @@
                   class="mr-4"
                   @click="validate"
                 >
-                  Validate
+                  Add
                 </v-btn>
-
-                <!-- <v-btn color="error" class="mr-4" @click="reset">
-              Reset Form
-            </v-btn>
-
-            <v-btn color="warning" @click="resetValidation">
-              Reset Validation
-            </v-btn> -->
               </v-form>
             </v-app>
           </div>
           <div
             class="row row-md-10 row-lg-10 row-sm-12 row-xs-12 justify-content-center"
           >
-            <v-card class="w-75 mb-5">
+            <v-card class="mb-5" style="width: 90%">
               <v-card-title>
                 <v-text-field
                   v-model="search"
