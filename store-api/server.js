@@ -6,6 +6,7 @@ import cors from "cors";
 import helmet from "helmet";
 import contactRoute from "./api/routes/contactRoute";
 import productsRoute from "./api/routes/productsRoute";
+import aboutRoute from "./api/routes/aboutRoute";
 
 mongoose.connect("mongodb://localhost:27017/clothing-store-db").then(() => {
   console.log("Mongodb is connected, port: 27017");
@@ -36,6 +37,7 @@ app.use(getAuthToken);
 app.use("/users", usersRoute);
 app.use("/contact", contactRoute);
 app.use("/products", productsRoute);
+app.use("/about", aboutRoute);
 
 app.listen(port, () => {
   console.log(`Store app listening on ${port}`);
