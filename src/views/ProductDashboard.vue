@@ -19,15 +19,15 @@
           <div
             class="row row-md-9 row-lg-9 row-sm-12 row-xs-12 justify-content-center"
           >
-            <v-app id="inspire" style="height: 400px; width: 90%">
+            <v-app id="inspire" style="height: 300px; width: 90%">
               <v-form
                 ref="form"
                 v-model="valid"
-                lazy-validation
-                style="height: 400px"
+                style="height: 300px"
+                @submit.prevent="createProduct"
               >
                 <v-text-field
-                  v-model="name"
+                  v-model="form.name"
                   :counter="15"
                   :rules="nameRules"
                   label="Title"
@@ -36,7 +36,7 @@
                 ></v-text-field>
 
                 <v-text-field
-                  v-model="sizes"
+                  v-model="form.sizes"
                   :counter="15"
                   :rules="sizesRules"
                   label="Sizes"
@@ -45,7 +45,7 @@
                 ></v-text-field>
 
                 <v-text-field
-                  v-model="price"
+                  v-model="form.price"
                   :counter="4"
                   :rules="priceRules"
                   label="Price"
@@ -53,20 +53,20 @@
                   placeholder="example: 250"
                 ></v-text-field>
 
-                <v-file-input
+                <!-- <v-file-input
                   class="mt-2 w-100"
                   v-model="photo"
                   :rules="photoRules"
                   label="File input"
                   prepend-icon="fa fa-upload"
                   required
-                ></v-file-input>
+                ></v-file-input> -->
 
                 <v-btn
                   :disabled="!valid"
                   color="success"
                   class="mr-4"
-                  @click="validate"
+                  type="submit"
                 >
                   Add
                 </v-btn>
@@ -77,20 +77,7 @@
             class="row row-md-10 row-lg-10 row-sm-12 row-xs-12 justify-content-center"
           >
             <v-card class="mb-5" style="width: 90%">
-              <v-card-title>
-                <v-text-field
-                  v-model="search"
-                  append-icon="mdi-magnify"
-                  label="Search"
-                  single-line
-                  hide-details
-                ></v-text-field>
-              </v-card-title>
-              <v-data-table
-                :headers="headers"
-                :items="desserts"
-                :search="search"
-              ></v-data-table>
+              <v-data-table :headers="headers" :items="desserts"></v-data-table>
             </v-card>
           </div>
         </div>
@@ -107,6 +94,7 @@
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import SideBar from "./sideBar.vue";
+import apiRequests from "../utils/apiRequests";
 
 export default {
   components: {
@@ -114,119 +102,108 @@ export default {
     Footer,
     SideBar,
   },
-  data: () => ({
-    valid: true,
-    name: "",
-    nameRules: [
-      (v) => !!v || "Title is required",
-      (v) => (v && v.length <= 15) || "Title must be less than 10 characters",
-    ],
-    sizes: "",
-    sizesRules: [
-      (v) => !!v || "Sizes are required",
-      (v) => (v && v.length <= 15) || "Sizes must be less than 15 characters",
-    ],
-    price: "",
-    priceRules: [
-      (v) => !!v || "Price is required",
-      (v) => (v && v.length <= 4) || "Sizes must be less than 4 characters",
-    ],
-    search: "",
-    headers: [
-      {
-        text: "Dessert (100g serving)",
-        align: "start",
-        filterable: false,
-        value: "name",
+  data() {
+    return {
+      form: {
+        name: "",
+        sizes: "",
+        price: 0,
       },
-      { text: "Calories", value: "calories" },
-      { text: "Fat (g)", value: "fat" },
-      { text: "Carbs (g)", value: "carbs" },
-      { text: "Protein (g)", value: "protein" },
-      { text: "Iron (%)", value: "iron" },
-    ],
-    desserts: [
-      {
-        name: "Frozen Yogurt",
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        iron: "1%",
-      },
-      {
-        name: "Ice cream sandwich",
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        iron: "1%",
-      },
-      {
-        name: "Eclair",
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0,
-        iron: "7%",
-      },
-      {
-        name: "Cupcake",
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3,
-        iron: "8%",
-      },
-      {
-        name: "Gingerbread",
-        calories: 356,
-        fat: 16.0,
-        carbs: 49,
-        protein: 3.9,
-        iron: "16%",
-      },
-      {
-        name: "Jelly bean",
-        calories: 375,
-        fat: 0.0,
-        carbs: 94,
-        protein: 0.0,
-        iron: "0%",
-      },
-      {
-        name: "Lollipop",
-        calories: 392,
-        fat: 0.2,
-        carbs: 98,
-        protein: 0,
-        iron: "2%",
-      },
-      {
-        name: "Honeycomb",
-        calories: 408,
-        fat: 3.2,
-        carbs: 87,
-        protein: 6.5,
-        iron: "45%",
-      },
-      {
-        name: "Donut",
-        calories: 452,
-        fat: 25.0,
-        carbs: 51,
-        protein: 4.9,
-        iron: "22%",
-      },
-      {
-        name: "KitKat",
-        calories: 518,
-        fat: 26.0,
-        carbs: 65,
-        protein: 7,
-        iron: "6%",
-      },
-    ],
-  }),
+      error: null,
+      valid: true,
+      nameRules: [
+        (v) => !!v || "Title is required",
+        (v) => (v && v.length <= 15) || "Title must be less than 10 characters",
+      ],
+      sizesRules: [
+        (v) => !!v || "Sizes are required",
+        (v) => (v && v.length <= 15) || "Sizes must be less than 15 characters",
+      ],
+      priceRules: [
+        (v) => !!v || "Price is required",
+        (v) => (v && v.length <= 4) || "Sizes must be less than 4 characters",
+      ],
+      headers: [
+        {
+          text: "Image",
+          align: "start",
+          filterable: false,
+          value: "image",
+        },
+        { text: "Title", value: "name" },
+        { text: "Sizes", value: "sizes" },
+        { text: "Price", value: "price" },
+      ],
+      desserts: [
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+        {
+          image: "test",
+          name: "Frozen Yogurt",
+          sizes: "M/L",
+          price: 24,
+        },
+      ],
+    };
+  },
+  methods: {
+    async createProduct() {
+      const newProduct = await apiRequests.createProduct({ ...this.form });
+      this.$router.push({ name: "View", params: { id: newProduct._id } });
+      // this.$router.push(`/view/${newRealEstate._id}`);
+    },
+  },
 };
 </script>

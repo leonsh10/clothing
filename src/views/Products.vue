@@ -134,7 +134,12 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4">
+            <Card
+              v-for="entry in productsList"
+              :key="entry._id"
+              :product="entry"
+            />
+            <!-- <div class="col-md-4">
               <div class="card mb-4 product-wap rounded-0">
                 <div class="card rounded-0">
                   <img
@@ -727,7 +732,7 @@
                   <p class="text-center mb-0">$250.00</p>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div div="row">
             <ul class="pagination pagination-lg justify-content-end">
@@ -938,10 +943,24 @@
 <script>
 import Footer from "./Footer.vue";
 import Header from "./Header.vue";
+import Card from "@/components/Card.vue";
+import apiRequests from "../utils/apiRequests";
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     Header,
     Footer,
+    Card,
+  },
+  created() {
+    this.fetchProducts();
+  },
+  methods: {
+    async fetchProducts() {
+      const result = await apiRequests.getProductsList();
+      this.$store.dispatch("fetchProducts", result);
+    },
   },
   data() {
     return {
@@ -949,6 +968,11 @@ export default {
       visibleSale: false,
       visibleProduct: false,
     };
+  },
+  computed: {
+    ...mapGetters({
+      productsList: "productsList",
+    }),
   },
 };
 </script>

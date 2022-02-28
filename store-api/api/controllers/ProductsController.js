@@ -1,44 +1,118 @@
 import productsSchema from "../validators/productsSchema";
 import ProductsModel from "../models/ProductsModel";
 import express from "express";
+const asyncHandler = require("../middlewares/asyncHandler");
+const { ApiError } = require("../utils/classes");
+const { statusCodes } = require("../config");
+import FileService from "../services/FileService";
 
 export default {
-  list: async (req, res) => {
+  list: asyncHandler(async (req, res, next) => {
     const list = await ProductsModel.find();
 
+    if (!list) {
+      next(new ApiError("Cannot list products!", statusCodes.BAD_REQUEST));
+      return;
+    }
+
     return res.json(list);
-  },
-  get: async (req, res) => {
+  }),
+  get: asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const foundItem = await ProductsModel.findOne({ _id: id });
 
-    return res.json(foundItem);
-  },
-  post: async (req, res) => {
-    const product = new ProductsModel(req.body);
+    if (!foundItem) {
+      next(new ApiError("Cannot find product!", statusCodes.BAD_REQUEST));
+      return;
+    }
 
-    await product.save();
+    return res.json(foundItem);
+  }),
+  post: asyncHandler(async (req, res, next) => {
+    const product = await ProductsModel.create(req.body);
+    if (!product) {
+      next(new ApiError("Cannot create product!", statusCodes.BAD_REQUEST));
+      return;
+    }
 
     return res.json(product);
-  },
-  put: async (req, res) => {
+  }),
+  put: asyncHandler(async (req, res, next) => {
     const product = req.body;
 
     const validationResult = productsSchema.validate(product);
 
     if (validationResult.error) {
-      return res.status(401).json({
-        message: "Validation failed while updating",
-        error: validationResult.error,
-      });
+      next(new ApiError("Cannot update product!", statusCodes.BAD_REQUEST));
+      return;
     }
 
-    await ProductsModel.updateOne({ _id: product._id }, products);
+    const updatedProduct = await ProductsModel.findOneAndUpdate(
+      { _id: product._id },
+      product,
+      { new: true }
+    );
+    if (!updatedProduct) {
+      next(new ApiError("Failed to update product!", statusCodes.BAD_REQUEST));
+      return;
+    }
+    return res.json(updatedProduct);
+  }),
+  uploadFile: asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
 
-    const updatedProduct = await ProductsModel.find({
-      _id: product._id,
-    });
+    const receivedFiles = [req.files.file];
+
+    try {
+      const files = await FileService.uploadFiles(receivedFiles);
+
+      const products = await ProductsModel.find({ _id: id }, { files: 1 });
+      const oldFiles = products.files;
+
+      const newFiles = `${oldFiles || ""}${oldFiles ? ";" : ""}${files}`;
+
+      await ProductsModel.updateOne({ _id: id }, [
+        {
+          $set: { files: newFiles },
+        },
+      ]);
+
+      const updatedProducts = await ProductsModel.find({ _id: id });
+      return res.json(updatedProducts);
+    } catch (err) {
+      res.status(500).json({ err: err.toString() });
+      // next(new ApiError("Failed to upload file!", statusCodes.BAD_REQUEST));
+      // return;
+    }
+  }),
+  deleteFile: asyncHandler(async (req, res) => {
+    const { productId, filename } = req.params;
+
+    FileService.deleteFiles([filename]);
+
+    const productData = await ProductsModel.findOne(
+      { _id: productId },
+      { files: 1 }
+    );
+
+    const updatedFilenames = productData.files
+      .replace(`${filename};`, "")
+      .replace(filename, "");
+
+    await ProductsModel.updateOne(
+      { _id: productId },
+      {
+        files: updatedFilenames,
+      }
+    );
+
+    const updatedProduct = await ProductsModel.findOne(
+      { _id: productId },
+      {
+        files: updatedFilenames,
+      }
+    );
 
     return res.json(updatedProduct);
-  },
+  }),
 };

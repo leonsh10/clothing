@@ -20,20 +20,7 @@
             class="row row-md-9 row-lg-9 row-sm-12 row-xs-12 justify-content-center p-4"
           >
             <v-card class="w-100 mb-5 mr-5">
-              <v-card-title>
-                <v-text-field
-                  v-model="search"
-                  append-icon="mdi-magnify"
-                  label="Search"
-                  single-line
-                  hide-details
-                ></v-text-field>
-              </v-card-title>
-              <v-data-table
-                :headers="headers"
-                :items="desserts"
-                :search="search"
-              ></v-data-table>
+              <v-data-table :headers="headers" :items="desserts"></v-data-table>
             </v-card>
           </div>
         </div>

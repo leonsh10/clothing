@@ -7,6 +7,7 @@ import helmet from "helmet";
 import contactRoute from "./api/routes/contactRoute";
 import productsRoute from "./api/routes/productsRoute";
 import aboutRoute from "./api/routes/aboutRoute";
+import fileupload from "express-fileupload";
 
 mongoose.connect("mongodb://localhost:27017/clothing-store-db").then(() => {
   console.log("Mongodb is connected, port: 27017");
@@ -22,7 +23,11 @@ app.use(
   })
 );
 
+app.use("/static", express.static(`${__dirname}/public/files`));
+
 app.use(helmet());
+
+app.use(fileupload());
 
 app.use(
   express.urlencoded({
