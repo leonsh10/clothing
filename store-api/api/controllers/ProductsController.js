@@ -8,7 +8,7 @@ import FileService from "../services/FileService";
 
 export default {
   list: asyncHandler(async (req, res, next) => {
-    const list = await ProductsModel.find();
+    const list = await ProductsModel.find({ isDeleted: false });
 
     if (!list) {
       next(new ApiError("Cannot list products!", statusCodes.BAD_REQUEST));
@@ -40,12 +40,12 @@ export default {
   put: asyncHandler(async (req, res, next) => {
     const product = req.body;
 
-    const validationResult = productsSchema.validate(product);
+    // const validationResult = productsSchema.validate(product);
 
-    if (validationResult.error) {
-      next(new ApiError("Cannot update product!", statusCodes.BAD_REQUEST));
-      return;
-    }
+    // if (validationResult.error) {
+    //   next(new ApiError("Cannot update product!", statusCodes.BAD_REQUEST));
+    //   return;
+    // }
 
     const updatedProduct = await ProductsModel.findOneAndUpdate(
       { _id: product._id },
@@ -57,6 +57,36 @@ export default {
       return;
     }
     return res.json(updatedProduct);
+  }),
+  delete: asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const foundItem = await ProductsModel.findOne({
+      _id: id,
+      isDeleted: false,
+    });
+
+    if (!foundItem) {
+      next(new ApiError("Product not found with id!", statusCodes.NOT_FOUND));
+      return;
+    }
+
+    const deletedProduct = await ProductsModel.findOneAndUpdate(
+      { _id: id, isDeleted: false },
+      {
+        $set: {
+          isDeleted: true,
+        },
+      },
+      { new: true }
+    );
+    if (!deletedProduct) {
+      next(
+        new ApiError("Failed to delete product!", statusCodes.INTERNAL_ERROR)
+      );
+      return;
+    }
+
+    return res.json(deletedProduct);
   }),
   uploadFile: asyncHandler(async (req, res, next) => {
     const { id } = req.params;
@@ -80,9 +110,9 @@ export default {
       const updatedProducts = await ProductsModel.find({ _id: id });
       return res.json(updatedProducts);
     } catch (err) {
-      res.status(500).json({ err: err.toString() });
-      // next(new ApiError("Failed to upload file!", statusCodes.BAD_REQUEST));
-      // return;
+      // res.status(500).json({ err: err.toString() });
+      next(new ApiError("Failed to upload file!", statusCodes.INTERNAL_ERROR));
+      return;
     }
   }),
   deleteFile: asyncHandler(async (req, res) => {

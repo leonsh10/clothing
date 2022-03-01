@@ -23,12 +23,13 @@ const productsSchema = {
     }),
   },
   put: {
-    params: Joi.object({
+    // params: Joi.object({
+
+    // }),
+    body: Joi.object({
       _id: Joi.string()
         .regex(/^[0-9a-fA-F]{24}$/)
         .required(),
-    }),
-    body: Joi.object({
       name: Joi.string().required(),
       sizes: Joi.string().required(),
       price: Joi.number().required(),

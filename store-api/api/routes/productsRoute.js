@@ -20,6 +20,10 @@ productsRoute
   .put(validate(productsSchema.put), ProductsController.put);
 
 productsRoute
+  .route("/delete/:id")
+  .put(validate(productsSchema.validateId), ProductsController.delete);
+
+productsRoute
   .route("/:id/uploadFile")
   .put(validate(productsSchema.validateId), ProductsController.uploadFile);
 
