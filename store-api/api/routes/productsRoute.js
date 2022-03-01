@@ -21,7 +21,7 @@ productsRoute
 
 productsRoute
   .route("/delete/:id")
-  .put(validate(productsSchema.validateId), ProductsController.delete);
+  .delete(validate(productsSchema.validateId), ProductsController.delete);
 
 productsRoute
   .route("/:id/uploadFile")
