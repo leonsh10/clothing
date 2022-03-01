@@ -21,9 +21,6 @@
               <b-nav-item href="/contactsDashboard" @click="hide"
                 >Contacts</b-nav-item
               >
-              <b-nav-item href="/usersDashboard" @click="hide"
-                >Users</b-nav-item
-              >
             </b-nav>
           </nav>
           <b-button variant="primary" block @click="hide"
