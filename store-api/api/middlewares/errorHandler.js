@@ -9,13 +9,11 @@ const { ApiError } = require("../utils/classes");
 const errorHandler = (error, request, response, next) => {
   const err = new ApiError(
     error.message || "Internal Server Error!",
-    error.type || "INTERNAL_ERROR",
     error.statusCode || statusCodes.INTERNAL_ERROR
   );
 
   if (error instanceof ValidationError) {
     err.statusCode = statusCodes.BAD_REQUEST;
-    err.type = "BAD_REQUEST";
     err.message = Object.keys(error.details[0])
       .map((key) => error.details[0][key])
       .join(",");

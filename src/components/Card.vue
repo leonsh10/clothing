@@ -2,7 +2,12 @@
   <div class="col-md-4">
     <div class="card mb-4 product-wap rounded-0">
       <div class="card rounded-0">
-        <img class="card-img rounded-0 img-fluid" v-if="src" :src="src" />
+        <img
+          class="card-img rounded-0 img-fluid"
+          style="object-fit: cover"
+          v-if="src"
+          :src="src"
+        />
         <div
           class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center"
         >

@@ -6,7 +6,6 @@ const genericErrorHandler = (error, request, response, next) => {
   const payload = {
     success: false,
     error: error.message || "Internal Server Error!",
-    errorType: error.type || "INTERNAL_ERROR",
     data: null,
   };
 

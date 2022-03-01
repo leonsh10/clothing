@@ -8,6 +8,8 @@ import contactRoute from "./api/routes/contactRoute";
 import productsRoute from "./api/routes/productsRoute";
 import aboutRoute from "./api/routes/aboutRoute";
 import fileupload from "express-fileupload";
+import genericErrorHandler from "./api/middlewares/genericErrorHandler";
+import errorHandler from "./api/middlewares/errorHandler";
 
 mongoose.connect("mongodb://localhost:27017/clothing-store-db").then(() => {
   console.log("Mongodb is connected, port: 27017");
@@ -43,6 +45,9 @@ app.use("/users", usersRoute);
 app.use("/contact", contactRoute);
 app.use("/products", productsRoute);
 app.use("/about", aboutRoute);
+
+app.use(errorHandler);
+app.use(genericErrorHandler);
 
 app.listen(port, () => {
   console.log(`Store app listening on ${port}`);
