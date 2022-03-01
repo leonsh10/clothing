@@ -11,6 +11,13 @@
     <td class="text-start">{{ product.name }}</td>
     <td class="text-start">{{ product.sizes }}</td>
     <td class="text-start">{{ product.price }}</td>
+    <td class="text-start">
+      <router-link
+        class="btn btn-primary"
+        :to="{ name: 'View', params: { id: product._id } }"
+        >View</router-link
+      >
+    </td>
   </tr>
 </template>
 
