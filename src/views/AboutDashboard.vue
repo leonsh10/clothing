@@ -25,6 +25,7 @@
                 v-model="valid"
                 @submit.prevent="createAbout"
               >
+              <h5 style="color:green; text-align:center;" v-if="success">{{ success ? success : '' }} </h5>
                 <v-text-field
                   v-model="form.title"
                   :counter="20"
@@ -47,7 +48,7 @@
                   type="submit"
                   :disabled="!valid"
                   color="success"
-                  class="mr-4"
+                  class="mr-4 mt-3"
                 >
                   Add
                 </v-btn>
@@ -55,7 +56,7 @@
             </v-app>
           </div>
           <div
-            class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center"
+            class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center mt-5"
           >
             <div
               data-v-5d9d1fc2=""
@@ -148,6 +149,7 @@ export default {
   },
   data() {
     return {
+      success: null,
       form: {
         title: "",
         description: "",
@@ -171,7 +173,8 @@ export default {
   methods: {
     async createAbout() {
       await apiRequests.createAbout({ ...this.form });
-      alert("About Info u krijua me sukses");
+      this.success = 'Info has been added succesfully!'
+      this.fetchAbout()
       // this.$router.push('/');
     },
     async fetchAbout() {
@@ -186,3 +189,5 @@ export default {
   },
 };
 </script>
+
+

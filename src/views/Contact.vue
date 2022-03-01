@@ -9,7 +9,7 @@
           style="
             color: #30302f;
             font-family: Times New Roman;
-            margin-left: 10.5cm;
+            margin-left: 12cm;
             padding-bottom: 1cm;
           "
         >
@@ -17,6 +17,9 @@
         </h1>
 
         <form class="col-md-9 m-auto" @submit.prevent="createContact">
+          <div v-if="success">
+              <h4 style="color:green; text-align:center;">{{ success ? success : ' '}} </h4>
+            </div>
           <div class="row">
             <div class="form-group col-md-6 mb-3">
               <label
@@ -35,6 +38,7 @@
                 id="name"
                 name="name"
                 placeholder="Name"
+                required
               />
             </div>
             <div class="form-group col-md-6 mb-3">
@@ -53,6 +57,7 @@
                 id="email"
                 name="email"
                 placeholder="Email"
+                required
               />
             </div>
           </div>
@@ -72,6 +77,7 @@
               id="subject"
               name="subject"
               placeholder="Subject"
+              required
             />
           </div>
           <div class="mb-3">
@@ -90,6 +96,7 @@
               name="message"
               placeholder="Message"
               rows="8"
+              required
             ></textarea>
           </div>
           <div class="row">
@@ -135,12 +142,17 @@ export default {
         message: "",
       },
       error: null,
+      success: null
     };
   },
   methods: {
     async createContact() {
       await apiRequests.createContact({ ...this.form });
-      alert("Forma u dergua me sukses");
+      this.success = 'Form has been sent succesfully!'
+      this.form.name = ""
+      this.form.email = ""
+      this.form.subject = ""
+      this.form.message = ""
       // this.$router.push('/');
     },
   },
