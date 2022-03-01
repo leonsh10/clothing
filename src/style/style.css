@@ -232,6 +232,15 @@ div {
 #tempaltemo_footer .border-light {
   border-color: #2d343f !important;
 }
+.v-messages__wrapper {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+.banner-images {
+  height: 650px;
+  width: 600px;
+}
+
 /*
   // Extra small devices (portrait phones, less than 576px)
   // No media query since this is the default in Bootstrap
@@ -251,6 +260,13 @@ div {
 @media (min-width: 576px) {
   .tempaltemo-carousel .h1 {
     font-size: 1em !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner-images {
+    height: 400px !important;
+    width: 300px !important;
   }
 }
 

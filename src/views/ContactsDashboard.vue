@@ -17,11 +17,96 @@
             <h1 style="text-align: center">Contacts Dashboard</h1>
           </div>
           <div
-            class="row row-md-9 row-lg-9 row-sm-12 row-xs-12 justify-content-center p-4"
+            class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center"
           >
-            <v-card class="w-100 mb-5 mr-5">
-              <v-data-table :headers="headers" :items="desserts"></v-data-table>
-            </v-card>
+            <div
+              data-v-5d9d1fc2=""
+              class="mb-5 v-card v-sheet theme--light"
+              style="width: 90%"
+            >
+              <div
+                data-v-5d9d1fc2=""
+                class="v-data-table v-data-table--has-bottom theme--light"
+              >
+                <div class="v-data-table__wrapper">
+                  <table>
+                    <colgroup>
+                      <col class="" />
+                      <col class="" />
+                      <col class="" />
+                      <col class="" />
+                    </colgroup>
+                    <thead class="v-data-table-header">
+                      <tr>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Title: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Name</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Description: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Email</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Description: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Subject</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Description: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Message</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <TableDataContact
+                        v-for="contact in contactList"
+                        :key="contact._id"
+                        :contact="contact"
+                      />
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -37,89 +122,35 @@
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import SideBar from "./sideBar.vue";
+import TableDataContact from "@/components/TableDataContact.vue";
+import apiRequests from "../utils/apiRequests";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
     Header,
     Footer,
     SideBar,
+    TableDataContact
   },
+  
   data: () => ({
     valid: true,
     search: "",
-    headers: [
-      {
-        text: "Name",
-        align: "start",
-        filterable: false,
-        value: "name",
-      },
-      { text: "Email", value: "email" },
-      { text: "Subject", value: "subject" },
-      { text: "Message", value: "message" },
-    ],
-    desserts: [
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-      {
-        name: "Frozen Yogurt",
-        email: 159,
-        subject: 6.0,
-        message: 24,
-      },
-    ],
   }),
+  created() {
+    this.fetchContact();
+  },
+  methods : {
+    async fetchContact() {
+      const result = await apiRequests.getContactsList();
+      this.$store.dispatch("fetchContact", result);
+    },
+  },
+   computed: {
+    ...mapGetters({
+      contactList: "contactList",
+    }),
+  },
 };
 </script>

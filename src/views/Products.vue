@@ -843,7 +843,7 @@
                           <a href="#"
                             ><img
                               class="img-fluid brand-img"
-                              src="https://picsum.photos/1024/480/?image=52"
+                              src="https://technext.github.io/zay-shop/assets/img/brand_01.png"
                               alt="Brand Logo"
                           /></a>
                         </div>
@@ -851,7 +851,7 @@
                           <a href="#"
                             ><img
                               class="img-fluid brand-img"
-                              src="https://picsum.photos/1024/480/?image=52"
+                              src="https://technext.github.io/zay-shop/assets/img/brand_02.png"
                               alt="Brand Logo"
                           /></a>
                         </div>
@@ -859,7 +859,7 @@
                           <a href="#"
                             ><img
                               class="img-fluid brand-img"
-                              src="https://picsum.photos/1024/480/?image=52"
+                              src="https://technext.github.io/zay-shop/assets/img/brand_03.png"
                               alt="Brand Logo"
                           /></a>
                         </div>
@@ -867,7 +867,7 @@
                           <a href="#"
                             ><img
                               class="img-fluid brand-img"
-                              src="https://picsum.photos/1024/480/?image=52"
+                              src="https://technext.github.io/zay-shop/assets/img/brand_04.png"
                               alt="Brand Logo"
                           /></a>
                         </div>

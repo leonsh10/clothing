@@ -88,6 +88,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="main_nav">
+          <b-nav-item href="/">Home</b-nav-item>
           <b-nav-item
             href="/products"
             v-on:click="addClass"

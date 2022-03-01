@@ -30,49 +30,150 @@
       <b-carousel
         id="carousel-1"
         v-model="slide"
-        :interval="4000"
-        controls
+        :interval="3000"
         indicators
         background="#ababab"
         img-width="1024"
-        img-height="480"
+        img-height="400"
         style="text-shadow: 1px 1px 2px #333"
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
       >
-        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=52">
-          <div style="height: 100%">
-            <h1>Test</h1>
-          </div>
+        <b-carousel-slide style="backgroud-color: #efefef">
+          <template #img>
+            <div
+              class="d-flex flex-row row-md-12 row-sm-6 row-lg-12 row-xs-6 flex-wrap"
+              style="background: #efefef !important"
+            >
+              <div
+                class="d-flex flex-column col-md-6 col-lg-6 col-sm-6 col-xs-6 justify-content-center"
+                style="align-items: end"
+              >
+                <div style="width: 400px">
+                  <h1 class="h1 text-success">Store eCommerce</h1>
+                  <h1 class="h2">Perfect eCommerce Site</h1>
+                  <p>
+                    Store is an eCommerce website. Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Est amet, sunt totam modi nisi
+                    error quod nulla quas dolor eos cupiditate dolorum quasi,
+                    perferendis consequatur eligendi at saepe perspiciatis
+                    excepturi?
+                  </p>
+                </div>
+              </div>
+              <div
+                class="d-flex flex-column col-md-6 col-lg-6 col-sm-6 col-xs-6 justify-content-center"
+                style="align-items: start"
+              >
+                <img
+                  src="https://technext.github.io/zay-shop/assets/img/banner_img_01.jpg"
+                  style="height: 650px; width: 600px"
+                  class="banner-images"
+                />
+              </div>
+            </div>
+          </template>
         </b-carousel-slide>
 
-        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
+        <b-carousel-slide style="backgroud-color: #efefef">
+          <template #img>
+            <div
+              class="d-flex flex-row row-md-12 row-sm-6 row-lg-12 row-xs-6 pr-5 pl-5 flex-wrap"
+              style="background: #efefef !important"
+            >
+              <div
+                class="d-flex flex-column col-md-6 col-lg-6 col-sm-6 col-xs-6 justify-content-center"
+                style="align-items: end"
+              >
+                <div style="width: 400px">
+                  <h1 class="h1">Proident occaecat</h1>
+                  <h1 class="h2">Ullamco laboris nisi ut</h1>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Dolore temporibus esse quia modi provident ducimus sed? Quia
+                    dolore molestiae ipsa voluptates rerum tempora sequi quos
+                    maiores vel, praesentium eaque neque?
+                  </p>
+                </div>
+              </div>
+              <div
+                class="d-flex flex-column col-md-6 col-lg-6 col-sm-6 col-xs-6 justify-content-center"
+                style="align-items: start"
+              >
+                <img
+                  src="https://technext.github.io/zay-shop/assets/img/banner_img_02.jpg"
+                  style="height: 650px; width: 600px"
+                  class="banner-images"
+                />
+              </div>
+            </div>
+          </template>
+        </b-carousel-slide>
+
+        <b-carousel-slide style="backgroud-color: #efefef">
+          <template #img>
+            <div
+              class="d-flex flex-row row-md-12 row-sm-6 row-lg-12 row-xs-6 pr-5 pl-5 flex-wrap"
+              style="background: #efefef !important"
+            >
+              <div
+                class="d-flex flex-column col-md-6 col-lg-6 col-sm-6 col-xs-6 justify-content-center"
+                style="align-items: end"
+              >
+                <div style="width: 400px">
+                  <h1 class="h1">Proident occaecat</h1>
+                  <h1 class="h2">Aliquip ex ea commodo consequat</h1>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Dolore temporibus esse quia modi provident ducimus sed? Quia
+                    dolore molestiae ipsa voluptates rerum tempora sequi quos
+                    maiores vel, praesentium eaque neque?.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="d-flex flex-column col-md-6 col-lg-6 col-sm-6 col-xs-6 justify-content-center"
+                style="align-items: start"
+              >
+                <img
+                  src="https://technext.github.io/zay-shop/assets/img/banner_img_03.jpg"
+                  style="height: 650px; width: 600px"
+                  class="banner-images"
+                />
+              </div>
+            </div>
+          </template>
+        </b-carousel-slide>
+
+        <!-- <b-carousel-slide
+          img-src="https://technext.github.io/zay-shop/assets/img/banner_img_02.jpg"
+        >
           <h1>Hello world!</h1>
         </b-carousel-slide>
 
         <b-carousel-slide
-          img-src="https://picsum.photos/1024/480/?image=58"
-        ></b-carousel-slide>
+          img-src="https://technext.github.io/zay-shop/assets/img/banner_img_03.jpg"
+        ></b-carousel-slide> -->
 
-        <b-carousel-slide>
+        <!-- <b-carousel-slide>
           <template #img>
             <img
               class="d-block img-fluid w-100"
               width="1024"
-              height="480"
-              src="https://picsum.photos/1024/480/?image=55"
+              height="300"
+              src="https://technext.github.io/zay-shop/assets/img/banner_img_03.jpg"
               alt="image slot"
             />
           </template>
-        </b-carousel-slide>
+        </b-carousel-slide> -->
 
-        <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
+        <!-- <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             eros felis, tincidunt a tincidunt eget, convallis vel est. Ut
             pellentesque ut lacus vel interdum.
           </p>
-        </b-carousel-slide>
+        </b-carousel-slide> -->
       </b-carousel>
     </div>
 
@@ -217,7 +318,7 @@
         <div class="col-12 col-md-4 p-5 mt-3">
           <a href="#"
             ><img
-              src="https://picsum.photos/1024/480/?image=55"
+              src="https://technext.github.io/zay-shop/assets/img/category_img_01.jpg"
               class="rounded-circle img-fluid border"
           /></a>
           <h5 class="text-center mt-3 mb-3">Watches</h5>
@@ -226,7 +327,7 @@
         <div class="col-12 col-md-4 p-5 mt-3">
           <a href="#"
             ><img
-              src="https://picsum.photos/1024/480/?image=55"
+              src="https://technext.github.io/zay-shop/assets/img/category_img_02.jpg"
               class="rounded-circle img-fluid border"
           /></a>
           <h2 class="h5 text-center mt-3 mb-3">Shoes</h2>
@@ -235,7 +336,7 @@
         <div class="col-12 col-md-4 p-5 mt-3">
           <a href="#"
             ><img
-              src="https://picsum.photos/1024/480/?image=55"
+              src="https://technext.github.io/zay-shop/assets/img/category_img_03.jpg"
               class="rounded-circle img-fluid border"
           /></a>
           <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
@@ -260,7 +361,7 @@
             <div class="card h-100">
               <a href="#">
                 <img
-                  src="https://picsum.photos/1024/480/?image=55"
+                  src="https://technext.github.io/zay-shop/assets/img/feature_prod_01.jpg"
                   class="card-img-top"
                   alt="..."
                 />
@@ -321,7 +422,7 @@
             <div class="card h-100">
               <a href="#">
                 <img
-                  src="https://picsum.photos/1024/480/?image=55"
+                  src="https://technext.github.io/zay-shop/assets/img/feature_prod_02.jpg"
                   class="card-img-top"
                   alt="..."
                 />
@@ -382,7 +483,7 @@
             <div class="card h-100">
               <a href="#">
                 <img
-                  src="https://picsum.photos/1024/480/?image=55"
+                  src="https://technext.github.io/zay-shop/assets/img/feature_prod_03.jpg"
                   class="card-img-top"
                   alt="..."
                 />

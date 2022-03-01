@@ -6,8 +6,15 @@ const schema = mongoose.Schema(
     sizes: String,
     price: Number,
     files: String,
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
-  { typeKey: "$type" }
+  // { typeKey: "$type" },
+  {
+    versionKey: false,
+  }
 );
 
 const model = mongoose.model("products", schema);

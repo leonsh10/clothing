@@ -57,9 +57,66 @@
           <div
             class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center"
           >
-            <v-card class="mb-5" style="width: 90%">
-              <v-data-table :headers="headers" :items="desserts"></v-data-table>
-            </v-card>
+            <div
+              data-v-5d9d1fc2=""
+              class="mb-5 v-card v-sheet theme--light"
+              style="width: 90%"
+            >
+              <div
+                data-v-5d9d1fc2=""
+                class="v-data-table v-data-table--has-bottom theme--light"
+              >
+                <div class="v-data-table__wrapper">
+                  <table>
+                    <colgroup>
+                      <col class="" />
+                      <col class="" />
+                      <col class="" />
+                      <col class="" />
+                    </colgroup>
+                    <thead class="v-data-table-header">
+                      <tr>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Title: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Title</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Description: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Description</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <TableDataAbout
+                        v-for="entry in aboutList"
+                        :key="entry._id"
+                        :about="entry"
+                      />
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -76,12 +133,18 @@ import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import SideBar from "./sideBar.vue";
 import apiRequests from "../utils/apiRequests";
+import { mapGetters } from "vuex";
+import TableDataAbout from "@/components/TableDataAbout.vue";
 
 export default {
   components: {
     Header,
     Footer,
     SideBar,
+    TableDataAbout,
+  },
+  created() {
+    this.fetchAbout();
   },
   data() {
     return {
@@ -103,58 +166,6 @@ export default {
           (v && v.length <= 200) ||
           "Description must be less than 200 characters",
       ],
-      search: "",
-      headers: [
-        {
-          text: "Title",
-          align: "start",
-          filterable: false,
-          value: "name",
-        },
-        { text: "Description", value: "description" },
-      ],
-      desserts: [
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-        {
-          name: "Frozen Yogurt",
-          description: "Lorem ipsum Lorem ipsum Lorem ipsum",
-        },
-      ],
     };
   },
   methods: {
@@ -163,6 +174,15 @@ export default {
       alert("About Info u krijua me sukses");
       // this.$router.push('/');
     },
+    async fetchAbout() {
+      const result = await apiRequests.getAboutList();
+      this.$store.dispatch("fetchAbout", result);
+    },
+  },
+  computed: {
+    ...mapGetters({
+      aboutList: "aboutList",
+    }),
   },
 };
 </script>

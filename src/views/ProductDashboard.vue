@@ -53,15 +53,6 @@
                   placeholder="example: 250"
                 ></v-text-field>
 
-                <!-- <v-file-input
-                  class="mt-2 w-100"
-                  v-model="photo"
-                  :rules="photoRules"
-                  label="File input"
-                  prepend-icon="fa fa-upload"
-                  required
-                ></v-file-input> -->
-
                 <v-btn
                   :disabled="!valid"
                   color="success"
@@ -76,16 +67,112 @@
           <div
             class="row row-md-10 row-lg-10 row-sm-12 row-xs-12 justify-content-center"
           >
-            <v-card class="mb-5" style="width: 90%">
-              <v-data-table :headers="headers" :items="desserts"></v-data-table>
-            </v-card>
+            <div
+              data-v-5d9d1fc2=""
+              class="mb-5 v-card v-sheet theme--light"
+              style="width: 90%"
+            >
+              <div
+                data-v-5d9d1fc2=""
+                class="v-data-table v-data-table--has-bottom theme--light"
+              >
+                <div class="v-data-table__wrapper">
+                  <table>
+                    <colgroup>
+                      <col class="" />
+                      <col class="" />
+                      <col class="" />
+                      <col class="" />
+                    </colgroup>
+                    <thead class="v-data-table-header">
+                      <tr>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Image: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Image</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Title: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Title</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Sizes: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Sizes</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Price: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Price</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Actions: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Actions</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <TableData
+                        v-for="entry in productsList"
+                        :key="entry._id"
+                        :product="entry"
+                      />
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- image, title, size, price -->
       </div>
     </div>
-
     <Footer />
   </div>
 </template>
@@ -95,12 +182,29 @@ import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import SideBar from "./sideBar.vue";
 import apiRequests from "../utils/apiRequests";
+import { mapGetters } from "vuex";
+import TableData from "@/components/TableData.vue";
 
 export default {
   components: {
     Header,
     Footer,
     SideBar,
+    TableData,
+  },
+  created() {
+    this.fetchProducts();
+  },
+  methods: {
+    async createProduct() {
+      const newProduct = await apiRequests.createProduct({ ...this.form });
+      this.$router.push({ name: "View", params: { id: newProduct._id } });
+      // this.$router.push(`/view/${newRealEstate._id}`);
+    },
+    async fetchProducts() {
+      const result = await apiRequests.getProductsList();
+      this.$store.dispatch("fetchProducts", result);
+    },
   },
   data() {
     return {
@@ -123,87 +227,15 @@ export default {
         (v) => !!v || "Price is required",
         (v) => (v && v.length <= 4) || "Sizes must be less than 4 characters",
       ],
-      headers: [
-        {
-          text: "Image",
-          align: "start",
-          filterable: false,
-          value: "image",
-        },
-        { text: "Title", value: "name" },
-        { text: "Sizes", value: "sizes" },
-        { text: "Price", value: "price" },
-      ],
-      desserts: [
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-        {
-          image: "test",
-          name: "Frozen Yogurt",
-          sizes: "M/L",
-          price: 24,
-        },
-      ],
     };
   },
-  methods: {
-    async createProduct() {
-      const newProduct = await apiRequests.createProduct({ ...this.form });
-      this.$router.push({ name: "View", params: { id: newProduct._id } });
-      // this.$router.push(`/view/${newRealEstate._id}`);
-    },
+
+  computed: {
+    ...mapGetters({
+      productsList: "productsList",
+    }),
   },
 };
 </script>
+
+<style scoped></style>
