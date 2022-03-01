@@ -10,7 +10,6 @@ import Dashboard from "../views/Dashboard.vue";
 import ProductDashboard from "../views/ProductDashboard.vue";
 import AboutDashboard from "../views/AboutDashboard.vue";
 import ContactsDashboard from "../views/ContactsDashboard.vue";
-import UsersDashboard from "../views/UsersDashboard.vue";
 
 Vue.use(VueRouter);
 const routes = [
@@ -58,11 +57,6 @@ const routes = [
     path: "/contactsDashboard",
     name: "contactsDashboard",
     component: ContactsDashboard,
-  },
-  {
-    path: "/usersDashboard",
-    name: "usersDashboard",
-    component: UsersDashboard,
   },
   {
     path: "/aboutDashboard",
