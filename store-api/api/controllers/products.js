@@ -28,7 +28,10 @@ export default {
     return res.json(foundItem);
   }),
   post: asyncHandler(async (req, res, next) => {
-    const product = await ProductsModel.create(req.body);
+    const product = await ProductsModel.create({
+      ...req.body,
+      createdBy: req.body.userId,
+    });
     if (!product) {
       next(new ApiError("Cannot create product!", statusCodes.BAD_REQUEST));
       return;
@@ -41,7 +44,13 @@ export default {
 
     const updatedProduct = await ProductsModel.findOneAndUpdate(
       { _id: product._id },
-      product,
+      {
+        $set: {
+          ...product,
+          lastEditBy: product.userId,
+          lastEditAt: new Date(Date.now()).toISOString(),
+        },
+      },
       { new: true }
     );
     if (!updatedProduct) {
@@ -67,6 +76,8 @@ export default {
       {
         $set: {
           isDeleted: true,
+          // lastEditBy: user._id,
+          // lastEditAt: new Date(Date.now()).toISOString(),
         },
       },
       { new: true }
@@ -108,28 +119,25 @@ export default {
     }
   }),
   deleteFile: asyncHandler(async (req, res) => {
-    const { productId, filename } = req.params;
+    const { id, filename } = req.params;
 
     FileService.deleteFiles([filename]);
 
-    const productData = await ProductsModel.findOne(
-      { _id: productId },
-      { files: 1 }
-    );
+    const productData = await ProductsModel.findOne({ _id: id }, { files: 1 });
 
     const updatedFilenames = productData.files
       .replace(`${filename};`, "")
       .replace(filename, "");
 
     await ProductsModel.updateOne(
-      { _id: productId },
+      { _id: id },
       {
         files: updatedFilenames,
       }
     );
 
     const updatedProduct = await ProductsModel.findOne(
-      { _id: productId },
+      { _id: id },
       {
         files: updatedFilenames,
       }

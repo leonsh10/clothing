@@ -29,9 +29,6 @@ productsRoute
 
 productsRoute
   .route("/:id/removeFile/:filename")
-  .put(
-    validate(productsSchema.validateProductId),
-    productsController.deleteFile
-  );
+  .put(validate(productsSchema.validateRemove), productsController.deleteFile);
 
 export default productsRoute;

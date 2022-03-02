@@ -25,7 +25,9 @@
                 v-model="valid"
                 @submit.prevent="createAbout"
               >
-              <h5 style="color:green; text-align:center;" v-if="success">{{ success ? success : '' }} </h5>
+                <h5 style="color: green; text-align: center" v-if="success">
+                  {{ success ? success : "" }}
+                </h5>
                 <v-text-field
                   v-model="form.title"
                   :counter="20"
@@ -173,8 +175,10 @@ export default {
   methods: {
     async createAbout() {
       await apiRequests.createAbout({ ...this.form });
-      this.success = 'Info has been added succesfully!'
-      this.fetchAbout()
+      this.success = "Info has been added succesfully!";
+      this.form.title = "";
+      this.form.description = "";
+      this.fetchAbout();
       // this.$router.push('/');
     },
     async fetchAbout() {
@@ -189,5 +193,3 @@ export default {
   },
 };
 </script>
-
-

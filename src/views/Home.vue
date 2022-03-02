@@ -359,13 +359,21 @@
         <div class="row">
           <div class="col-12 col-md-4 mb-4">
             <div class="card h-100">
-              <a href="#">
-                <img
-                  src="https://technext.github.io/zay-shop/assets/img/feature_prod_01.jpg"
+              <router-link
+                :to="{
+                  name: 'Single Page Product',
+                  params: { id: productsList[0]._id },
+                }"
+              >
+                <!--v-if="srcfirst"
+                  :src="srcfirst" -->
+                <!-- <img
                   class="card-img-top"
                   alt="..."
-                />
-              </a>
+                  src="https://technext.github.io/zay-shop/assets/img/feature_prod_01.jpg"
+                /> -->
+                <CardImage :productImage="productsList[0].files" />
+              </router-link>
               <div class="card-body">
                 <ul class="list-unstyled d-flex justify-content-between">
                   <li>
@@ -405,14 +413,15 @@
                       "
                     ></i>
                   </li>
-                  <li class="text-muted text-right">$240.00</li>
+                  <li class="text-muted text-right">
+                    ${{ productsList[0].price }}
+                  </li>
                 </ul>
-                <a href="#" class="h2 text-decoration-none text-dark"
-                  >Gym Weight</a
-                >
+                <a href="#" class="h2 text-decoration-none text-dark">{{
+                  productsList[0].name
+                }}</a>
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
-                  in culpa qui officia deserunt.
+                  {{ productsList[0].description }}
                 </p>
                 <p class="text-muted">Reviews (24)</p>
               </div>
@@ -420,13 +429,19 @@
           </div>
           <div class="col-12 col-md-4 mb-4">
             <div class="card h-100">
-              <a href="#">
-                <img
+              <router-link
+                :to="{
+                  name: 'Single Page Product',
+                  params: { id: productsList[1]._id },
+                }"
+              >
+                <!-- <img
                   src="https://technext.github.io/zay-shop/assets/img/feature_prod_02.jpg"
                   class="card-img-top"
                   alt="..."
-                />
-              </a>
+                /> -->
+                <CardImage :productImage="productsList[1].files" />
+              </router-link>
               <div class="card-body">
                 <ul class="list-unstyled d-flex justify-content-between">
                   <li>
@@ -466,14 +481,15 @@
                       "
                     ></i>
                   </li>
-                  <li class="text-muted text-right">$480.00</li>
+                  <li class="text-muted text-right">
+                    ${{ productsList[1].price }}
+                  </li>
                 </ul>
-                <a href="#" class="h2 text-decoration-none text-dark"
-                  >Cloud Nike Shoes</a
-                >
+                <a href="#" class="h2 text-decoration-none text-dark">{{
+                  productsList[1].name
+                }}</a>
                 <p class="card-text">
-                  Aenean gravida dignissim finibus. Nullam ipsum diam, posuere
-                  vitae pharetra sed, commodo ullamcorper.
+                  {{ productsList[1].description }}
                 </p>
                 <p class="text-muted">Reviews (48)</p>
               </div>
@@ -481,13 +497,19 @@
           </div>
           <div class="col-12 col-md-4 mb-4">
             <div class="card h-100">
-              <a href="#">
-                <img
+              <router-link
+                :to="{
+                  name: 'Single Page Product',
+                  params: { id: productsList[2]._id },
+                }"
+              >
+                <!-- <img
                   src="https://technext.github.io/zay-shop/assets/img/feature_prod_03.jpg"
                   class="card-img-top"
                   alt="..."
-                />
-              </a>
+                /> -->
+                <CardImage :productImage="productsList[2].files" />
+              </router-link>
               <div class="card-body">
                 <ul class="list-unstyled d-flex justify-content-between">
                   <li>
@@ -527,14 +549,15 @@
                       "
                     ></i>
                   </li>
-                  <li class="text-muted text-right">$360.00</li>
+                  <li class="text-muted text-right">
+                    ${{ productsList[2].price }}
+                  </li>
                 </ul>
-                <a href="#" class="h2 text-decoration-none text-dark"
-                  >Summer Addides Shoes</a
-                >
+                <a href="#" class="h2 text-decoration-none text-dark">{{
+                  productsList[2].name
+                }}</a>
                 <p class="card-text">
-                  Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar
-                  sagittis diam, et scelerisque ipsum lobortis nec.
+                  {{ productsList[2].description }}
                 </p>
                 <p class="text-muted">Reviews (74)</p>
               </div>
@@ -546,16 +569,63 @@
 
     <Footer />
   </div>
+
+  <!-- srcfirst() {
+      if (productsList) {
+        const firstFilename = productsList[0].files?.split(";")[0];
+
+        return firstFilename
+          ? `http://localhost:3000/static/${firstFilename}`
+          : null;
+      }
+    },
+    srcsecond() {
+      if (productsList) {
+        const secondFilename = productsList[1].files?.split(";")[0];
+
+        return secondFilename
+          ? `http://localhost:3000/static/${secondFilename}`
+          : null;
+      }
+    },
+    srcthird() {
+      if (productsList) {
+        const thirdFilename = productsList[2].files?.split(";")[0];
+
+        return thirdFilename
+          ? `http://localhost:3000/static/${thirdFilename}`
+          : null;
+      }
+    }, -->
 </template>
 
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
+import apiRequests from "../utils/apiRequests";
+import { mapGetters } from "vuex";
+import CardImage from "@/components/CardImage.vue";
 export default {
   name: "Home",
   components: {
     Header,
     Footer,
+    CardImage,
+  },
+  created() {
+    this.fetchProducts();
+  },
+  methods: {
+    async fetchProducts() {
+      const result = await apiRequests.getProductsList();
+      this.$store.dispatch("fetchProducts", result);
+    },
+    onSlideStart() {
+      this.sliding = true;
+    },
+    onSlideEnd() {
+      this.sliding = false;
+    },
   },
   data() {
     return {
@@ -563,13 +633,10 @@ export default {
       sliding: null,
     };
   },
-  methods: {
-    onSlideStart() {
-      this.sliding = true;
-    },
-    onSlideEnd() {
-      this.sliding = false;
-    },
+  computed: {
+    ...mapGetters({
+      productsList: "productsList",
+    }),
   },
 };
 </script>
