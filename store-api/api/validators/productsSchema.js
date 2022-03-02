@@ -20,6 +20,10 @@ const productsSchema = {
       name: Joi.string().required(),
       sizes: Joi.string().required(),
       price: Joi.number().required(),
+      brand: Joi.string().required(),
+      description: Joi.string().required(),
+      color: Joi.string().required(),
+      specification: Joi.string().required(),
     }),
   },
   put: {
@@ -33,6 +37,10 @@ const productsSchema = {
       name: Joi.string().required(),
       sizes: Joi.string().required(),
       price: Joi.number().required(),
+      brand: Joi.string().required(),
+      description: Joi.string().required(),
+      color: Joi.string().required(),
+      specification: Joi.string().required(),
     }),
   },
 };

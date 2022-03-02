@@ -5,7 +5,7 @@
       <div class="container pb-5">
         <div v-if="this.product" class="row">
           <div class="col-lg-5 mt-5">
-            <div class="card mb-3" style="height: 847px">
+            <div class="card mb-3" style="height: 770px">
               <img
                 class="img-fluid"
                 v-if="src"
@@ -37,35 +37,35 @@
                     <h6>Brand:</h6>
                   </li>
                   <li class="list-inline-item">
-                    <p class="text-muted"><strong>Easy Wear</strong></p>
+                    <p class="text-muted">
+                      <strong>{{ this.product.brand }}</strong>
+                    </p>
                   </li>
                 </ul>
 
                 <h6>Description:</h6>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod temp incididunt ut labore et dolore magna aliqua.
-                  Quis ipsum suspendisse. Donec condimentum elementum convallis.
-                  Nunc sed orci a diam ultrices aliquet interdum quis nulla.
+                  {{ this.product.description }}
                 </p>
                 <ul class="list-inline">
                   <li class="list-inline-item">
                     <h6>Avaliable Color :</h6>
                   </li>
                   <li class="list-inline-item">
-                    <p class="text-muted"><strong>White / Black</strong></p>
+                    <p class="text-muted">
+                      <strong>{{ this.product.color }}</strong>
+                    </p>
                   </li>
                 </ul>
 
                 <h6>Specification:</h6>
                 <ul class="list-unstyled pb-3">
-                  <li>Lorem ipsum dolor sit</li>
-                  <li>Amet, consectetur</li>
-                  <li>Adipiscing elit,set</li>
-                  <li>Duis aute irure</li>
-                  <li>Ut enim ad minim</li>
-                  <li>Dolore magna aliqua</li>
-                  <li>Excepteur sint</li>
+                  <li
+                    v-for="code in splitedList(this.product.specification)"
+                    v-bind:key="code"
+                  >
+                    {{ code }}
+                  </li>
                 </ul>
 
                 <form action="" method="GET">
@@ -180,6 +180,9 @@ export default {
   methods: {
     async fetchProduct() {
       this.product = await apiRequests.getProduct(this.$route.params.id);
+    },
+    splitedList(row) {
+      return row !== null ? row.split(" ") : "";
     },
   },
   computed: {

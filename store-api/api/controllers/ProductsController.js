@@ -40,13 +40,6 @@ export default {
   put: asyncHandler(async (req, res, next) => {
     const product = req.body;
 
-    // const validationResult = productsSchema.validate(product);
-
-    // if (validationResult.error) {
-    //   next(new ApiError("Cannot update product!", statusCodes.BAD_REQUEST));
-    //   return;
-    // }
-
     const updatedProduct = await ProductsModel.findOneAndUpdate(
       { _id: product._id },
       product,
@@ -71,7 +64,7 @@ export default {
     }
 
     const deletedProduct = await ProductsModel.findOneAndUpdate(
-      { _id: id, isDeleted: false },
+      { _id: foundItem._id },
       {
         $set: {
           isDeleted: true,

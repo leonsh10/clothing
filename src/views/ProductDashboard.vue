@@ -19,11 +19,11 @@
           <div
             class="row row-md-9 row-lg-9 row-sm-12 row-xs-12 justify-content-center"
           >
-            <v-app id="inspire" style="height: 300px; width: 90%">
+            <v-app id="inspire" style="height: 600px; width: 90%">
               <v-form
                 ref="form"
                 v-model="valid"
-                style="height: 300px"
+                style="height: 600px"
                 @submit.prevent="createProduct"
               >
                 <v-text-field
@@ -53,10 +53,46 @@
                   placeholder="example: 250"
                 ></v-text-field>
 
+                <v-text-field
+                  v-model="form.brand"
+                  :counter="15"
+                  :rules="brandRules"
+                  label="Brand"
+                  required
+                  placeholder="example: Easy Wear"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="form.description"
+                  :counter="200"
+                  :rules="descriptionRules"
+                  label="Description"
+                  required
+                  placeholder="example: Lorem Ipsum"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="form.color"
+                  :counter="15"
+                  :rules="colorRules"
+                  label="Color"
+                  required
+                  placeholder="example: White / Black"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="form.specification"
+                  :counter="100"
+                  :rules="specificationRules"
+                  label="Specification"
+                  required
+                  placeholder="example: Lorem Ipsum"
+                ></v-text-field>
+
                 <v-btn
                   :disabled="!valid"
                   color="success"
-                  class="mr-4"
+                  class="mr-4 mt-2"
                   type="submit"
                 >
                   Add
@@ -212,6 +248,10 @@ export default {
         name: "",
         sizes: "",
         price: 0,
+        brand: "",
+        description: "",
+        color: "",
+        specification: "",
       },
       error: null,
       valid: true,
@@ -226,6 +266,26 @@ export default {
       priceRules: [
         (v) => !!v || "Price is required",
         (v) => (v && v.length <= 4) || "Sizes must be less than 4 characters",
+      ],
+      brandRules: [
+        (v) => !!v || "Brand is required",
+        (v) => (v && v.length <= 15) || "Brand must be less than 15 characters",
+      ],
+      descriptionRules: [
+        (v) => !!v || "Description is required",
+        (v) =>
+          (v && v.length <= 200) ||
+          "Description must be less than 200 characters",
+      ],
+      colorRules: [
+        (v) => !!v || "Color is required",
+        (v) => (v && v.length <= 15) || "Color must be less than 15 characters",
+      ],
+      specificationRules: [
+        (v) => !!v || "Specification is required",
+        (v) =>
+          (v && v.length <= 100) ||
+          "Specification must be less than 100 characters",
       ],
     };
   },

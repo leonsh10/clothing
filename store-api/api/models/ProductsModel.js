@@ -5,6 +5,10 @@ const schema = mongoose.Schema(
     name: String,
     sizes: String,
     price: Number,
+    brand: String,
+    description: String,
+    color: String,
+    specification: String,
     files: String,
     isDeleted: {
       type: Boolean,
