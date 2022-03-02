@@ -1,5 +1,4 @@
-import productsSchema from "../validators/productsSchema";
-import ProductsModel from "../models/ProductsModel";
+import ProductsModel from "../models/Product";
 import express from "express";
 const asyncHandler = require("../middlewares/asyncHandler");
 const { ApiError } = require("../utils/classes");

@@ -1,12 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import getAuthToken from "./api/middlewares/getAuthToken";
-import usersRoute from "./api/routes/usersRoute";
+import userRouter from "./api/routes/users";
 import cors from "cors";
 import helmet from "helmet";
-import contactRoute from "./api/routes/contactRoute";
-import productsRoute from "./api/routes/productsRoute";
-import aboutRoute from "./api/routes/aboutRoute";
+import contactRoute from "./api/routes/contact";
+import productsRoute from "./api/routes/products";
+import aboutRoute from "./api/routes/about";
 import fileupload from "express-fileupload";
 import genericErrorHandler from "./api/middlewares/genericErrorHandler";
 import errorHandler from "./api/middlewares/errorHandler";
@@ -41,7 +41,7 @@ app.use(express.json());
 
 app.use(getAuthToken);
 
-app.use("/users", usersRoute);
+app.use("/users", userRouter);
 app.use("/contact", contactRoute);
 app.use("/products", productsRoute);
 app.use("/about", aboutRoute);
