@@ -18,9 +18,17 @@
               ></a>
             </li>
             <li>
-              <a class="btn btn-success text-white mt-2" href="#"
+              <!-- <a class="btn btn-success text-white mt-2" href="#"
                 ><i class="fa fa-eye"></i
-              ></a>
+              ></a> -->
+              <router-link
+                class="btn btn-success text-white mt-2"
+                :to="{
+                  name: 'Single Page Product',
+                  params: { id: product._id },
+                }"
+                ><i class="fa fa-eye"></i
+              ></router-link>
             </li>
             <li>
               <a class="btn btn-success text-white mt-2" href="#"
@@ -31,7 +39,12 @@
         </div>
       </div>
       <div class="card-body">
-        <a href="#" class="h3 text-decoration-none">{{ product.name }}</a>
+        <!-- <a href="#" class="h3 text-decoration-none">{{ product.name }}</a> -->
+        <router-link
+          class="h3 text-decoration-none"
+          :to="{ name: 'Single Page Product', params: { id: product._id } }"
+          >{{ product.name }}</router-link
+        >
         <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
           <li>{{ product.sizes }}</li>
           <li class="pt-2">

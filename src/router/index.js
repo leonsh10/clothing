@@ -5,7 +5,7 @@ import Contact from "../views/Contact.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Products from "../views/Products.vue";
-import SinglePageProduct from "../views/SinglePageProduct.vue";
+// import SinglePageProduct from "../views/SinglePageProduct.vue";
 import Dashboard from "../views/Dashboard.vue";
 import ProductDashboard from "../views/ProductDashboard.vue";
 import AboutDashboard from "../views/AboutDashboard.vue";
@@ -33,10 +33,18 @@ const routes = [
     name: "Products",
     component: Products,
   },
+  // {
+  //   path: "/singlePageProduct",
+  //   name: "Single Page Product",
+  //   component: SinglePageProduct,
+  // },
   {
-    path: "/singlePageProduct",
+    path: "/singlePageProduct/:id",
     name: "Single Page Product",
-    component: SinglePageProduct,
+    component: () =>
+      import(
+        /* webpackChunkName: "singlePageProduct" */ "../views/SinglePageProduct.vue"
+      ),
   },
   {
     path: "/register",
