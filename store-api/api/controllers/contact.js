@@ -1,45 +1,81 @@
 import Contact from "../models/Contact";
 import contactSchema from "../validators/contact";
+const asyncHandler = require("../middlewares/asyncHandler");
+const { ApiError } = require("../utils/classes");
+const { statusCodes } = require("../config");
 
 export default {
-  list: async (req, res) => {
+  list: asyncHandler(async (req, res) => {
     const list = await Contact.find();
+    if (!list) {
+      next(new ApiError("Cannot list contacts!", statusCodes.BAD_REQUEST));
+      return;
+    }
     return res.json(list);
-  },
+  }),
 
-  get: async (req, res) => {
-    const { id } = req.query;
-    const foundItem = await Contact.find({ _id: id });
+  get: asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const foundItem = await Contact.findOne({ _id: id });
+    if (!foundItem) {
+      next(new ApiError("Cannot find contact!", statusCodes.BAD_REQUEST));
+      return;
+    }
     return res.json(foundItem);
-  },
+  }),
 
-  post: async (req, res) => {
-    const contact = await new Contact(req.body);
-    contact.save();
+  post: asyncHandler(async (req, res) => {
+    const contact = await Contact.create(req.body);
+    if (!contact) {
+      next(new ApiError("Cannot create contact!", statusCodes.BAD_REQUEST));
+      return;
+    }
     return res.json(contact);
-  },
+  }),
 
-  put: async (req, res) => {
+  put: asyncHandler(async (req, res) => {
     const contact = req.body;
 
-    const validationResult = contactSchema.validate(contact);
+    const updatedContact = await Contact.findOneAndUpdate(
+      {_id: contact._id},
+      contact,
+      { new: true}
+    );
 
-    if (validationResult.error) {
-      return res.status(401).json({
-        message: "Validation failed",
-        error: validationResult.error,
-      });
+
+    if (!updatedContact) {
+      next(new ApiError("Failed to update contact!", statusCodes.BAD_REQUEST));
+      return;
+    }
+    return res.json(updatedContact);
+  }),
+
+  delete: asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const foundItem = await Contact.findOne({
+      _id: id,
+      isDeleted: false,
+    });
+
+    if(!foundItem) {
+      next(new ApiError("Contact not found with id!", statusCodes.NOT_FOUND));
+      return;
     }
 
-    try {
-      await Contact.updateOne({ _id: contact.id }, contact);
-
-      const updatedContact = await Contact.findOne({
-        _id: contact.id,
-      });
-      return res.json(updatedContact);
-    } catch (err) {
-      return res.status(500).json({ error: err });
+    const deletedContact = await Contact.findOneAndUpdate(
+       { _id: foundItem._id },
+       {
+         $set: {
+           isDeleted: true
+         },
+       },
+       { new: true}
+    );
+    if(!deletedContact){
+      next(new ApiError("Failed to delete contact!", statusCodes.INTERNAL_ERROR));
+      return;
     }
-  },
+    return res.json(deletedContact);
+
+  })
 };
