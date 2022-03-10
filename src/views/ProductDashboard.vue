@@ -17,15 +17,18 @@
             <h1 style="text-align: center">Add Product</h1>
           </div>
           <div
-            class="row row-md-9 row-lg-9 row-sm-12 row-xs-12 justify-content-center"
+            class="row row-md-9 row-lg-9 row-sm-11 row-xs-11 justify-content-center"
           >
-            <v-app id="inspire" style="height: 600px; width: 90%">
+            <v-app id="inspire" style="height: 600px; width: 84%">
               <v-form
                 ref="form"
                 v-model="valid"
                 style="height: 600px"
                 @submit.prevent="createProduct"
               >
+                <h5 style="color: green; text-align: center" v-if="success">
+                  {{ success ? success : "" }}
+                </h5>
                 <v-text-field
                   v-model="form.name"
                   :counter="15"
@@ -199,6 +202,8 @@
                         v-for="entry in productsList"
                         :key="entry._id"
                         :product="entry"
+                        :fetchProducts="fetchProducts"
+                        :success="success"
                       />
                     </tbody>
                   </table>
@@ -244,6 +249,7 @@ export default {
   },
   data() {
     return {
+      success: null,
       form: {
         name: "",
         sizes: "",
@@ -255,10 +261,10 @@ export default {
       },
       error: null,
       valid: true,
-      nameRules: [
-        (v) => !!v || "Title is required",
-        (v) => (v && v.length <= 15) || "Title must be less than 10 characters",
-      ],
+      // nameRules: [
+      //   (v) => !!v || "Title is required",
+      //   (v) => (v && v.length <= 15) || "Title must be less than 10 characters",
+      // ],
       sizesRules: [
         (v) => !!v || "Sizes are required",
         (v) => (v && v.length <= 15) || "Sizes must be less than 15 characters",

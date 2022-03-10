@@ -1,8 +1,11 @@
 import ProductsModel from "../models/Product";
 import express from "express";
-const asyncHandler = require("../middlewares/asyncHandler");
-const { ApiError } = require("../utils/classes");
-const { statusCodes } = require("../config");
+// const asyncHandler = require("../middlewares/asyncHandler");
+import asyncHandler from "../middlewares/asyncHandler";
+// const { ApiError } = require("../utils/classes");
+import ApiError from "../utils/classes/ApiError";
+// const { statusCodes } = require("../config");
+import statusCodes from "../config/statusCodes";
 import FileService from "../services/FileService";
 
 export default {
@@ -76,8 +79,8 @@ export default {
       {
         $set: {
           isDeleted: true,
-          // lastEditBy: user._id,
-          // lastEditAt: new Date(Date.now()).toISOString(),
+          // lastEditBy: userId,
+          lastEditAt: new Date(Date.now()).toISOString(),
         },
       },
       { new: true }

@@ -39,7 +39,7 @@
 
                 <v-text-field
                   v-model="form.description"
-                  :counter="200"
+                  :counter="400"
                   :rules="descriptionRules"
                   label="Description"
                   required
@@ -121,14 +121,41 @@
                             style="font-size: 18px; width:100px;"
                           ></i>
                         </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Description: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Actions</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <TableDataAbout
-                        v-for="entry in aboutList"
-                        :key="entry._id"
-                        :about="entry"
-                      />
+                      <tr class="" v-for="about in aboutList" :key="about._id">
+                        <td class="text-start">{{ about.title }}</td>
+                        <td class="text-start">{{ about.description }}</td>
+                        <td class="text-start">
+                          <div class="d-flex">
+                            <button class="btn btn-primary">
+                              <i class="fa fa-edit"></i> Edit
+                            </button>
+                            <button
+                              class="btn btn-danger p-1"
+                              style="margin-left: 10px"
+                              @click="deleteAbout(about._id)"
+                            >
+                              <i class="fa fa-trash"></i> Delete
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -151,18 +178,17 @@ import Footer from "./Footer.vue";
 import SideBar from "./sideBar.vue";
 import apiRequests from "../utils/apiRequests";
 import { mapGetters } from "vuex";
-import TableDataAbout from "@/components/TableDataAbout.vue";
 
 export default {
   components: {
     Header,
     Footer,
     SideBar,
-    TableDataAbout,
   },
   created() {
     this.fetchAbout();
   },
+
   data() {
     return {
       success: null,
@@ -181,19 +207,34 @@ export default {
       descriptionRules: [
         (v) => !!v || "Description is required",
         (v) =>
-          (v && v.length <= 200) ||
-          "Description must be less than 200 characters",
+          (v && v.length <= 400) ||
+          "Description must be less than 400 characters",
       ],
     };
   },
   methods: {
+    makeToast() {
+      this.$bvToast.toast("Product deleted successfully!", {
+        title: "Success",
+        variant: "success",
+        autoHideDelay: 5000,
+        solid: true,
+      });
+    },
     async createAbout() {
       await apiRequests.createAbout({ ...this.form });
       this.success = "Info has been added succesfully!";
       this.form.title = "";
       this.form.description = "";
       this.fetchAbout();
-      // this.$router.push('/');
+    },
+    async deleteAbout(id) {
+      const result = await apiRequests.deleteAbout(id);
+
+      if (result) {
+        this.makeToast();
+        this.fetchAbout();
+      }
     },
     async fetchAbout() {
       const result = await apiRequests.getAboutList();

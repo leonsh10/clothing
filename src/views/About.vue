@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <Header />
-<!-- about -->
+    <!-- about -->
     <div
       class="modal fade bg-white"
       id="templatemo_search"
@@ -42,37 +42,70 @@
         </form>
       </div>
     </div>
-    
+
     <!--  -->
- <div class="hero_image" style="background-image: url(https://wallpapercave.com/wp/wp9005637.jpg);
-     height: 700px; 
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    width:100%;
-    height:660px;
-    display:table;
-    color: white;">
-                <div class="hero_content" style=" display:table-cell;
-    vertical-align: middle;
-    ">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8">
-                                    <h1 style="font-family: Times New Roman, Times, serif;">History</h1>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem sint officiis molestias perferendis doloremque? Id incidunt nisi architecto maxime quis repellendus vero natus nulla consequatur, laudantium tempora nostrum in ducimus.</p>
-                                    <button type="button" class="btn btn-primary btn-md  border-0" style="background-image: linear-gradient(to right, blue, gray); border-radius: 20px;">Read more</button> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div
+      class="hero_image"
+      style="
+        background-image: url(https://wallpapercave.com/wp/wp9005637.jpg);
+        height: 700px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 660px;
+        display: table;
+        color: white;
+      "
+    >
+      <div
+        class="hero_content"
+        style="display: table-cell; vertical-align: middle"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <h1 style="font-family: Times New Roman, Times, serif">
+                {{
+                  aboutList && aboutList[0].title ? aboutList[0].title : "NA"
+                }}
+              </h1>
+              <p>
+                {{
+                  aboutList && aboutList[0].description
+                    ? aboutList[0].description
+                    : "NA"
+                }}
+              </p>
+              <button
+                type="button"
+                class="btn btn-primary btn-md border-0"
+                style="
+                  background-image: linear-gradient(to right, blue, gray);
+                  border-radius: 20px;
+                "
+              >
+                Read more
+              </button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--  -->
     <figure class="text-center">
       <blockquote class="blockquote">
         <h1
-          style="padding: 30px 30px 5px 30px;margin-top: 8mm;font-size: 45px;font-weight: bold;font-family: Times New Roman, Times, serif; " >
-     Find your best clothes</h1>
+          style="
+            padding: 30px 30px 5px 30px;
+            margin-top: 8mm;
+            font-size: 45px;
+            font-weight: bold;
+            font-family: Times New Roman, Times, serif;
+          "
+        >
+          Find your best clothes
+        </h1>
         <p>A well-known quote, contained in a blockquote element.</p>
       </blockquote>
     </figure>
@@ -95,16 +128,14 @@
                 font-family: Times New Roman, Times, serif;
               "
             >
-              About us
+              {{ aboutList && aboutList[1].title ? aboutList[1].title : "NA" }}
             </h1>
             <p class="lead">
-              Crow's nest schooner ho scallywag hail-shot gabion
-              salmagundi.lorem ipsum consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua.Ut enim ad
-              minim veniam, quis nostrud exercitation ullamco l aboris nisi ut
-              aliquip.et dolore magna aliquaquis nostrud exercitation ullamco l
-              .Ut enim ad minim veniam, quis nostrud of conduct lugsail hulk ye
-              long clothes.
+              {{
+                aboutList && aboutList[1].description
+                  ? aboutList[1].description
+                  : "NA"
+              }}
             </p>
             <a href="#" class="btn btn-outline-dark">Read More</a>
           </div>
@@ -116,17 +147,27 @@
 
     <div class="features">
       <div class="container">
-       <figure class="text-center">
-      <blockquote class="blockquote">
-        <h1
-          style="padding: 30px 30px 5px 30px;margin-top: 8mm;font-size: 30px;font-family: Times New Roman, Times, serif; " >
-     Features</h1>
-        <p>The main factors of our company</p>
-      </blockquote>
-    </figure>
-        <div class="row" style="margin-bottom:3cm">
+        <figure class="text-center">
+          <blockquote class="blockquote">
+            <h1
+              style="
+                padding: 30px 30px 5px 30px;
+                margin-top: 8mm;
+                font-size: 30px;
+                font-family: Times New Roman, Times, serif;
+              "
+            >
+              Features
+            </h1>
+            <p>The main factors of our company</p>
+          </blockquote>
+        </figure>
+        <div class="row" style="margin-bottom: 3cm">
           <div class="col-4 mt-5">
-            <i class="fa fa-camera-retro fa-4x" style="margin-left: 4.5cm; margin-bottom: 5mm" ></i>
+            <i
+              class="fa fa-camera-retro fa-4x"
+              style="margin-left: 4.5cm; margin-bottom: 5mm"
+            ></i>
             <img class="center" alt="" />
             <h4 class="text-center">Graphical and Numerical reports</h4>
             <p class="text-center">
@@ -135,7 +176,11 @@
             </p>
           </div>
           <div class="col-4 mt-5">
-            <i class="fa fa-bell fa-4x" aria-hidden="true" style="margin-left: 4.5cm; margin-bottom: 5mm" ></i>
+            <i
+              class="fa fa-bell fa-4x"
+              aria-hidden="true"
+              style="margin-left: 4.5cm; margin-bottom: 5mm"
+            ></i>
             <img class="center" src="" alt="" />
             <h4 class="text-center">Happy-hour pricing</h4>
             <p class="text-center">
@@ -144,7 +189,10 @@
             </p>
           </div>
           <div class="col-4 mt-5">
-            <i class="fa fa-user-circle-o fa-4x" aria-hidden="true" style="margin-left: 4.5cm; margin-bottom: 5mm"
+            <i
+              class="fa fa-user-circle-o fa-4x"
+              aria-hidden="true"
+              style="margin-left: 4.5cm; margin-bottom: 5mm"
             ></i>
             <img class="center" src="" alt="" />
             <h4 class="text-center">Jobs</h4>
@@ -153,8 +201,12 @@
             </p>
           </div>
 
-  <div class="col-4 mt-5">
-    <i class="fa fa-handshake-o fa-4x" aria-hidden="true"  style="margin-left: 4.5cm; margin-bottom: 5mm"></i>
+          <div class="col-4 mt-5">
+            <i
+              class="fa fa-handshake-o fa-4x"
+              aria-hidden="true"
+              style="margin-left: 4.5cm; margin-bottom: 5mm"
+            ></i>
             <img class="center" src="" alt="" />
             <h4 class="text-center">Our deals with others</h4>
             <p class="text-center">
@@ -162,31 +214,32 @@
             </p>
           </div>
 
- <div class="col-4 mt-5">
-    <i class="fa fa-cc-paypal fa-4x" aria-hidden="true"  style="margin-left: 4.5cm; margin-bottom: 5mm"></i>
+          <div class="col-4 mt-5">
+            <i
+              class="fa fa-cc-paypal fa-4x"
+              aria-hidden="true"
+              style="margin-left: 4.5cm; margin-bottom: 5mm"
+            ></i>
             <img class="center" src="" alt="" />
             <h4 class="text-center">Online shopping</h4>
-            <p class="text-center">
-            Safe online shopping
-            </p>
+            <p class="text-center">Safe online shopping</p>
           </div>
 
-           <div class="col-4 mt-5">
-    <i class="fa fa-scissors fa-4x" aria-hidden="true"  style="margin-left: 4.5cm; margin-bottom: 5mm"></i>
+          <div class="col-4 mt-5">
+            <i
+              class="fa fa-scissors fa-4x"
+              aria-hidden="true"
+              style="margin-left: 4.5cm; margin-bottom: 5mm"
+            ></i>
             <img class="center" src="" alt="" />
             <h4 class="text-center">Materials</h4>
             <p class="text-center">
               Best value and is the most comfortable option
             </p>
           </div>
-
-         
         </div>
       </div>
     </div>
-
-
-
 
     <section class="features6 cid-raSLS2Jnck" id="features6-g">
       <div class="container" style="margin-bottom: 5cm">
@@ -199,17 +252,18 @@
                 padding-left: 3.3cm;
               "
             >
-              <strong> Our Team!</strong>
+              <strong>{{
+                aboutList && aboutList[2].title ? aboutList[2].title : "NA"
+              }}</strong>
             </h3>
             <div
               class="mbr-white mbr-section-text mbr-fonts-style align-center display-7"
             >
-              She is the founder of the first confectionery school of the studio
-              in the city. The master pastry chef with ten years of experience.
-              She won the confectionery championship in 2013. Also, she is the
-              author of books. She has articles in specialized journals. She
-              teaches pastry courses at a pastry school. Put zour own info in
-              this Bootstrap landing page template.
+              {{
+                aboutList && aboutList[2].description
+                  ? aboutList[2].description
+                  : "NA"
+              }}
             </div>
           </div>
           <div class="col-sm-12 col-md-6 img-block align-center">
@@ -225,76 +279,116 @@
       </div>
     </section>
 
-     <figure class="text-center">
+    <figure class="text-center">
       <blockquote class="blockquote">
         <h1
-          style="padding: 30px 30px 5px 30px;margin-top: 8mm;font-size: 30px;font-family: Times New Roman, Times, serif; " >
-    Some words from our team</h1>
+          style="
+            padding: 30px 30px 5px 30px;
+            margin-top: 8mm;
+            font-size: 30px;
+            font-family: Times New Roman, Times, serif;
+          "
+        >
+          Some words from our team
+        </h1>
         <p>A well-known quote, contained in a blockquote element.</p>
       </blockquote>
     </figure>
 
     <div class="container mt-5 mb-5">
-    <div class="row g-2">
-        <div class="col-md-4" style=" border: none; margin-bottom:3cm;">
-             <div class="card p-3 text-center px-4" style="margin-right:1cm;">
-                   <div class="user-image" style="margin-top:4mm;"> <img src="https://i.imgur.com/ACeArwY.jpg" class="rounded-circle" width="80"> </div>
-                <div class="user-content">
-                    <h5 class="mb-0">Veera Duncan</h5> <span>Software Architect</span>
-                   <figure class="text-center mb-0" style="margin-top:3mm;">
-              <blockquote class="blockquote">
-                <p class="pb-3"> 
-                  <span class="lead font-italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.orem ipsum dolor sit amet, consectetur adipiscing.</span>
-                   </p>
-              </blockquote>
-              <figcaption class="blockquote-footer mb-0">
-                Thomas Edison
-              </figcaption>
-            </figure>
-                </div>
-                
+      <div class="row g-2">
+        <div class="col-md-4" style="border: none; margin-bottom: 3cm">
+          <div class="card p-3 text-center px-4" style="margin-right: 1cm">
+            <div class="user-image" style="margin-top: 4mm">
+              <img
+                src="https://i.imgur.com/ACeArwY.jpg"
+                class="rounded-circle"
+                width="80"
+              />
             </div>
-        </div>
-       <div class="col-md-4" style=" border: none; margin-bottom:3cm;">
-            <div class="card p-3 text-center px-4" style="margin-right:1cm;">
-                   <div class="user-image" style="margin-top:4mm;"> <img src="https://i.imgur.com/ACeArwY.jpg" class="rounded-circle" width="80"> </div>
-                <div class="user-content">
-                    <h5 class="mb-0">Veera Duncan</h5> <span>Software Architect</span>
-                   <figure class="text-center mb-0" style="margin-top:3mm;">
-              <blockquote class="blockquote">
-                <p class="pb-3"> 
-                  <span class="lead font-italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.orem ipsum dolor sit amet, consectetur adipiscing.</span>
-                   </p>
-              </blockquote>
-              <figcaption class="blockquote-footer mb-0">
-                Thomas Edison
-              </figcaption>
-            </figure>
-                </div>
-                
+            <div class="user-content">
+              <h5 class="mb-0">Veera Duncan</h5>
+              <span>Software Architect</span>
+              <figure class="text-center mb-0" style="margin-top: 3mm">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic"
+                      >Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.orem ipsum dolor sit amet, consectetur
+                      adipiscing.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  Thomas Edison
+                </figcaption>
+              </figure>
             </div>
+          </div>
         </div>
-        <div class="col-md-4" style=" border: none; margin-bottom:3cm;">
-            <div class="card p-3 text-center px-4">
-                <div class="user-image" style="margin-top:4mm;"> <img src="https://i.imgur.com/ACeArwY.jpg" class="rounded-circle" width="80"> </div>
-                <div class="user-content">
-                    <h5 class="mb-0">Veera Duncan</h5> <span>Software Architect</span>
-                   <figure class="text-center mb-0" style="margin-top:3mm;">
-              <blockquote class="blockquote">
-                <p class="pb-3"> 
-                  <span class="lead font-italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.orem ipsum dolor sit amet, consectetur adipiscing.</span>
-                   </p>
-              </blockquote>
-              <figcaption class="blockquote-footer mb-0">
-                Thomas Edison
-              </figcaption>
-            </figure>
-                </div>
-               
+        <div class="col-md-4" style="border: none; margin-bottom: 3cm">
+          <div class="card p-3 text-center px-4" style="margin-right: 1cm">
+            <div class="user-image" style="margin-top: 4mm">
+              <img
+                src="https://i.imgur.com/ACeArwY.jpg"
+                class="rounded-circle"
+                width="80"
+              />
             </div>
+            <div class="user-content">
+              <h5 class="mb-0">Veera Duncan</h5>
+              <span>Software Architect</span>
+              <figure class="text-center mb-0" style="margin-top: 3mm">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic"
+                      >Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.orem ipsum dolor sit amet, consectetur
+                      adipiscing.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  Thomas Edison
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
+        <div class="col-md-4" style="border: none; margin-bottom: 3cm">
+          <div class="card p-3 text-center px-4">
+            <div class="user-image" style="margin-top: 4mm">
+              <img
+                src="https://i.imgur.com/ACeArwY.jpg"
+                class="rounded-circle"
+                width="80"
+              />
+            </div>
+            <div class="user-content">
+              <h5 class="mb-0">Veera Duncan</h5>
+              <span>Software Architect</span>
+              <figure class="text-center mb-0" style="margin-top: 3mm">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic"
+                      >Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.orem ipsum dolor sit amet, consectetur
+                      adipiscing.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  Thomas Edison
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
 
     <Footer />
   </div>
@@ -305,10 +399,27 @@
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
+import apiRequests from "../utils/apiRequests";
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     Header,
     Footer,
+  },
+  created() {
+    this.fetchAbout();
+  },
+  methods: {
+    async fetchAbout() {
+      const result = await apiRequests.getAboutList();
+      this.$store.dispatch("fetchAbout", result);
+    },
+  },
+  computed: {
+    ...mapGetters({
+      aboutList: "aboutList",
+    }),
   },
 };
 </script>
