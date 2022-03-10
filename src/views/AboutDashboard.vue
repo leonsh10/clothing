@@ -90,7 +90,7 @@
                           ><i
                             aria-hidden="true"
                             class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
-                            style="font-size: 18px"
+                            style="font-size: 18px; width:150px;"
                           ></i>
                         </th>
                         <th
@@ -104,7 +104,21 @@
                           ><i
                             aria-hidden="true"
                             class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
-                            style="font-size: 18px"
+                            style="font-size: 18px; width:150px"
+                          ></i>
+                        </th>
+                         <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Description: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Actions</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px; width:100px;"
                           ></i>
                         </th>
                       </tr>
