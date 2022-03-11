@@ -21,8 +21,10 @@
           >
             <v-app id="inspire" style="height: 200px; width: 90%">
               <v-form
+              ref="form"
                 style="height: 200px"
                 v-model="valid"
+                lazy-validation
                 @submit.prevent="createAbout"
               >
                 <v-text-field
@@ -36,7 +38,7 @@
 
                 <v-text-field
                   v-model="form.description"
-                  :counter="200"
+                  :counter="400"
                   :rules="descriptionRules"
                   label="Description"
                   required
@@ -47,7 +49,7 @@
                   type="submit"
                   :disabled="!valid"
                   color="success"
-                  class="mr-4"
+                  class="mr-4 mt-3"
                 >
                   Add
                 </v-btn>
@@ -55,7 +57,7 @@
             </v-app>
           </div>
           <div
-            class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center"
+            class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center mt-5"
           >
             <div
               data-v-5d9d1fc2=""
@@ -104,14 +106,41 @@
                             style="font-size: 18px"
                           ></i>
                         </th>
+                        <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Description: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Actions</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <TableDataAbout
-                        v-for="entry in aboutList"
-                        :key="entry._id"
-                        :about="entry"
-                      />
+                      <tr class="" v-for="about in aboutList" :key="about._id">
+                        <td class="text-start">{{ about.title }}</td>
+                        <td class="text-start">{{ about.description }}</td>
+                        <td class="text-start">
+                          <div class="d-flex">
+                            <button class="btn btn-primary">
+                              <i class="fa fa-edit"></i> Edit
+                            </button>
+                            <button
+                              class="btn btn-danger p-1"
+                              style="margin-left: 10px"
+                              @click="deleteAbout(about._id)"
+                            >
+                              <i class="fa fa-trash"></i> Delete
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -134,23 +163,22 @@ import Footer from "./Footer.vue";
 import SideBar from "./sideBar.vue";
 import apiRequests from "../utils/apiRequests";
 import { mapGetters } from "vuex";
-import TableDataAbout from "@/components/TableDataAbout.vue";
 
 export default {
   components: {
     Header,
     Footer,
     SideBar,
-    TableDataAbout,
   },
   created() {
     this.fetchAbout();
   },
+
   data() {
     return {
       form: {
-        title: "",
-        description: "",
+        title: '',
+        description: '',
       },
       error: null,
       valid: true,
@@ -163,16 +191,46 @@ export default {
       descriptionRules: [
         (v) => !!v || "Description is required",
         (v) =>
-          (v && v.length <= 200) ||
-          "Description must be less than 200 characters",
+          (v && v.length <= 400) ||
+          "Description must be less than 400 characters",
       ],
     };
   },
   methods: {
+     reset() {
+      this.$refs.form.reset()
+    },
+    makeToast() {
+      this.$bvToast.toast("About deleted successfully!", {
+        title: "Success",
+        variant: "success",
+        autoHideDelay: 5000,
+        solid: true,
+      });
+    },
+    successAddToast() {
+      this.$bvToast.toast("About added successfully!", {
+        title: "Success",
+        variant: "success",
+        autoHideDelay: 5000,
+        solid: true,
+      });
+    },
     async createAbout() {
-      await apiRequests.createAbout({ ...this.form });
-      alert("About Info u krijua me sukses");
-      // this.$router.push('/');
+      const response = await apiRequests.createAbout({ ...this.form });
+      if(response){
+      this.reset()
+      this.successAddToast()
+      this.fetchAbout();
+      }
+    },
+    async deleteAbout(id) {
+      const result = await apiRequests.deleteAbout(id);
+
+      if (result) {
+        this.makeToast();
+        this.fetchAbout();
+      }
     },
     async fetchAbout() {
       const result = await apiRequests.getAboutList();

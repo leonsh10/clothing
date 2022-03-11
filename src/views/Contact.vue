@@ -9,7 +9,7 @@
           style="
             color: #30302f;
             font-family: Times New Roman;
-            margin-left: 10.5cm;
+            margin-left: 12cm;
             padding-bottom: 1cm;
           "
         >
@@ -135,13 +135,40 @@ export default {
         message: "",
       },
       error: null,
+      success: null
     };
   },
   methods: {
+     makeToast() {
+      this.$bvToast.toast("Contact has been sent successfully", {
+        title: "Success",
+        variant: "success",
+        autoHideDelay: 2500,
+        solid: true,
+      });
+    },
+     makeFailToast() {
+      this.$bvToast.toast("Please fill all fields!", {
+        title: "Error",
+        variant: "danger",
+        autoHideDelay: 2500,
+        solid: true,
+      });
+    },
+    clearForm(){
+        this.form = {}
+    },
     async createContact() {
-      await apiRequests.createContact({ ...this.form });
-      alert("Forma u dergua me sukses");
-      // this.$router.push('/');
+
+      if(this.form.name == '' || this.form.email == '' 
+      || this.form.subject == '' || this.form.message == '') {
+        this.makeFailToast()
+      }
+      else{
+        await apiRequests.createContact({ ...this.form });
+        this.makeToast()
+        this.clearForm()
+      }
     },
   },
 };

@@ -86,7 +86,7 @@
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav>
+      <b-collapse id="nav-collapse" is-nav >
         <b-navbar-nav class="main_nav">
           <b-nav-item href="/">Home</b-nav-item>
           <b-nav-item
@@ -152,6 +152,19 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (min-width: 1890px) {
+
+.main_nav{
+ margin-left:550px !important;
+}
+}
+
+@media screen and (min-width: 1686px) {
+
+.main_nav{
+ margin-left:230px !important;
+}
+}
 .main_header {
   width: 100%;
   height: 70px;

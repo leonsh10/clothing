@@ -21,8 +21,27 @@
               </h1>
 
               <h1 style="font-size: 20px">
-                <span style="color: #8c8c8c; font-size: 17px">Price:</span>
-                {{ this.product.price }}
+                <span style="color: #8c8c8c; font-size: 17px">Brand:</span>
+                {{ this.product.brand }}
+              </h1>
+
+              <h1 style="font-size: 20px">
+                <span style="color: #8c8c8c; font-size: 17px"
+                  >Description:</span
+                >
+                {{ this.product.description }}
+              </h1>
+
+              <h1 style="font-size: 20px">
+                <span style="color: #8c8c8c; font-size: 17px">Color:</span>
+                {{ this.product.color }}
+              </h1>
+
+              <h1 style="font-size: 20px">
+                <span style="color: #8c8c8c; font-size: 17px"
+                  >Specification:</span
+                >
+                {{ this.product.specification }}
               </h1>
             </div>
             <Dropzone

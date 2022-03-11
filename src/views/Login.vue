@@ -1,7 +1,7 @@
 <template>
   <div style="background-color: #ebebeb">
     <Header />
-    <div>
+    <div class="image.responsive">
       <img
         style="position: absolute; bottom: 131px; right: 781px"
         width="500"
@@ -306,5 +306,25 @@ input:focus {
 ::placeholder {
   font-size: 15px;
   color: #eeeeee;
+}
+
+@media screen and (max-width: 800px) {
+  .image.responsive {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  
+  }
+
+  img{
+    width:374px; /* The width is 100%, when the viewport is 800px or smaller */
+    height:374px;
+  }
+
+  .vue-tempalte{
+    width:370px;
+    height:470px;
+    margin-left:1px;
+    margin:0 auto;
+  }
+
 }
 </style>

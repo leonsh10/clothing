@@ -17,15 +17,18 @@
             <h1 style="text-align: center">Add Product</h1>
           </div>
           <div
-            class="row row-md-9 row-lg-9 row-sm-12 row-xs-12 justify-content-center"
+            class="row row-md-9 row-lg-9 row-sm-11 row-xs-11 justify-content-center"
           >
-            <v-app id="inspire" style="height: 300px; width: 90%">
+            <v-app id="inspire" style="height: 600px; width: 84%">
               <v-form
                 ref="form"
                 v-model="valid"
-                style="height: 300px"
+                style="height: 600px"
                 @submit.prevent="createProduct"
               >
+                <h5 style="color: green; text-align: center" v-if="success">
+                  {{ success ? success : "" }}
+                </h5>
                 <v-text-field
                   v-model="form.name"
                   :counter="15"
@@ -53,10 +56,46 @@
                   placeholder="example: 250"
                 ></v-text-field>
 
+                <v-text-field
+                  v-model="form.brand"
+                  :counter="15"
+                  :rules="brandRules"
+                  label="Brand"
+                  required
+                  placeholder="example: Easy Wear"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="form.description"
+                  :counter="200"
+                  :rules="descriptionRules"
+                  label="Description"
+                  required
+                  placeholder="example: Lorem Ipsum"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="form.color"
+                  :counter="15"
+                  :rules="colorRules"
+                  label="Color"
+                  required
+                  placeholder="example: White / Black"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="form.specification"
+                  :counter="100"
+                  :rules="specificationRules"
+                  label="Specification"
+                  required
+                  placeholder="example: Lorem Ipsum"
+                ></v-text-field>
+
                 <v-btn
                   :disabled="!valid"
                   color="success"
-                  class="mr-4"
+                  class="mr-4 mt-2"
                   type="submit"
                 >
                   Add
@@ -163,6 +202,8 @@
                         v-for="entry in productsList"
                         :key="entry._id"
                         :product="entry"
+                        :fetchProducts="fetchProducts"
+                        :success="success"
                       />
                     </tbody>
                   </table>
@@ -196,8 +237,12 @@ export default {
     this.fetchProducts();
   },
   methods: {
+     reset() {
+      this.$refs.form.reset()
+    },
     async createProduct() {
       const newProduct = await apiRequests.createProduct({ ...this.form });
+      this.reset()
       this.$router.push({ name: "View", params: { id: newProduct._id } });
       // this.$router.push(`/view/${newRealEstate._id}`);
     },
@@ -208,17 +253,22 @@ export default {
   },
   data() {
     return {
+      success: null,
       form: {
         name: "",
         sizes: "",
         price: 0,
+        brand: "",
+        description: "",
+        color: "",
+        specification: "",
       },
       error: null,
       valid: true,
-      nameRules: [
-        (v) => !!v || "Title is required",
-        (v) => (v && v.length <= 15) || "Title must be less than 10 characters",
-      ],
+      // nameRules: [
+      //   (v) => !!v || "Title is required",
+      //   (v) => (v && v.length <= 15) || "Title must be less than 10 characters",
+      // ],
       sizesRules: [
         (v) => !!v || "Sizes are required",
         (v) => (v && v.length <= 15) || "Sizes must be less than 15 characters",
@@ -226,6 +276,26 @@ export default {
       priceRules: [
         (v) => !!v || "Price is required",
         (v) => (v && v.length <= 4) || "Sizes must be less than 4 characters",
+      ],
+      brandRules: [
+        (v) => !!v || "Brand is required",
+        (v) => (v && v.length <= 15) || "Brand must be less than 15 characters",
+      ],
+      descriptionRules: [
+        (v) => !!v || "Description is required",
+        (v) =>
+          (v && v.length <= 200) ||
+          "Description must be less than 200 characters",
+      ],
+      colorRules: [
+        (v) => !!v || "Color is required",
+        (v) => (v && v.length <= 15) || "Color must be less than 15 characters",
+      ],
+      specificationRules: [
+        (v) => !!v || "Specification is required",
+        (v) =>
+          (v && v.length <= 100) ||
+          "Specification must be less than 100 characters",
       ],
     };
   },

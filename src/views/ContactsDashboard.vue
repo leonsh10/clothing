@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="row row-md-11 row-lg-11 row-sm-11 row-xs-11">
+    <div class="row row-md-11 row-lg-11 row-sm-11 row-xs-11 ">
       <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2">
         <SideBar />
       </div>
@@ -17,7 +17,7 @@
             <h1 style="text-align: center">Contacts Dashboard</h1>
           </div>
           <div
-            class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center"
+            class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center mt-5"
           >
             <div
               data-v-5d9d1fc2=""
@@ -94,14 +94,38 @@
                             style="font-size: 18px"
                           ></i>
                         </th>
+                          <th
+                          role="columnheader"
+                          scope="col"
+                          aria-label="Description: Not sorted. Activate to sort ascending."
+                          aria-sort="none"
+                          class="text-start sortable"
+                        >
+                          <span>Actions</span
+                          ><i
+                            aria-hidden="true"
+                            class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light"
+                            style="font-size: 18px"
+                          ></i>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <TableDataContact
-                        v-for="contact in contactList"
-                        :key="contact._id"
-                        :contact="contact"
-                      />
+                      <tr v-for="contact in contactList" :key="contact._id">
+                         <td class="text-start">{{ contact.name }}</td>
+                        <td class="text-start">{{ contact.email }}</td>
+                         <td class="text-start">{{ contact.subject }}</td>
+                        <td class="text-start">{{ contact.message }}</td>
+                        <td class="text-start"> <div class="d-flex">
+                            <button
+                              class="btn btn-danger p-1"
+                              style="margin-left: 10px"
+                              @click="deleteContact(contact._id)"
+                            >
+                              <i class="fa fa-trash"></i> Delete
+                            </button>
+                          </div> </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -122,7 +146,6 @@
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 import SideBar from "./sideBar.vue";
-import TableDataContact from "@/components/TableDataContact.vue";
 import apiRequests from "../utils/apiRequests";
 import { mapGetters } from "vuex";
 
@@ -131,7 +154,6 @@ export default {
     Header,
     Footer,
     SideBar,
-    TableDataContact
   },
   
   data: () => ({
@@ -142,6 +164,22 @@ export default {
     this.fetchContact();
   },
   methods : {
+     makeToast() {
+      this.$bvToast.toast("Contact deleted successfully!", {
+        title: "Success",
+        variant: "success",
+        autoHideDelay: 2000,
+        solid: true,
+      });
+    },
+    async deleteContact(id) {
+      const result = await apiRequests.deleteContact(id);
+
+      if (result) {
+        this.makeToast();
+        this.fetchContact();
+      }
+    },
     async fetchContact() {
       const result = await apiRequests.getContactsList();
       this.$store.dispatch("fetchContact", result);

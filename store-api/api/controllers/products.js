@@ -1,9 +1,11 @@
-import productsSchema from "../validators/productsSchema";
-import ProductsModel from "../models/ProductsModel";
+import ProductsModel from "../models/Product";
 import express from "express";
-const asyncHandler = require("../middlewares/asyncHandler");
-const { ApiError } = require("../utils/classes");
-const { statusCodes } = require("../config");
+// const asyncHandler = require("../middlewares/asyncHandler");
+import asyncHandler from "../middlewares/asyncHandler";
+// const { ApiError } = require("../utils/classes");
+import ApiError from "../utils/classes/ApiError";
+// const { statusCodes } = require("../config");
+import statusCodes from "../config/statusCodes";
 import FileService from "../services/FileService";
 
 export default {
@@ -29,7 +31,10 @@ export default {
     return res.json(foundItem);
   }),
   post: asyncHandler(async (req, res, next) => {
-    const product = await ProductsModel.create(req.body);
+    const product = await ProductsModel.create({
+      ...req.body,
+      createdBy: req.body.userId,
+    });
     if (!product) {
       next(new ApiError("Cannot create product!", statusCodes.BAD_REQUEST));
       return;
@@ -40,16 +45,15 @@ export default {
   put: asyncHandler(async (req, res, next) => {
     const product = req.body;
 
-    // const validationResult = productsSchema.validate(product);
-
-    // if (validationResult.error) {
-    //   next(new ApiError("Cannot update product!", statusCodes.BAD_REQUEST));
-    //   return;
-    // }
-
     const updatedProduct = await ProductsModel.findOneAndUpdate(
       { _id: product._id },
-      product,
+      {
+        $set: {
+          ...product,
+          lastEditBy: product.userId,
+          lastEditAt: new Date(Date.now()).toISOString(),
+        },
+      },
       { new: true }
     );
     if (!updatedProduct) {
@@ -71,10 +75,12 @@ export default {
     }
 
     const deletedProduct = await ProductsModel.findOneAndUpdate(
-      { _id: id, isDeleted: false },
+      { _id: foundItem._id },
       {
         $set: {
           isDeleted: true,
+          // lastEditBy: userId,
+          lastEditAt: new Date(Date.now()).toISOString(),
         },
       },
       { new: true }
@@ -116,28 +122,25 @@ export default {
     }
   }),
   deleteFile: asyncHandler(async (req, res) => {
-    const { productId, filename } = req.params;
+    const { id, filename } = req.params;
 
     FileService.deleteFiles([filename]);
 
-    const productData = await ProductsModel.findOne(
-      { _id: productId },
-      { files: 1 }
-    );
+    const productData = await ProductsModel.findOne({ _id: id }, { files: 1 });
 
     const updatedFilenames = productData.files
       .replace(`${filename};`, "")
       .replace(filename, "");
 
     await ProductsModel.updateOne(
-      { _id: productId },
+      { _id: id },
       {
         files: updatedFilenames,
       }
     );
 
     const updatedProduct = await ProductsModel.findOne(
-      { _id: productId },
+      { _id: id },
       {
         files: updatedFilenames,
       }

@@ -125,7 +125,7 @@
             </li>
           </ul>
           <p class="">
-            <a href="/contact" class="btn btn-tertiary">Contact Us</a>
+            <a href="/contact" class="btn btn-success">Contact Us</a>
           </p>
         </div>
       </div>
