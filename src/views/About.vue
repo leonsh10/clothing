@@ -67,14 +67,14 @@
             <div class="col-md-8">
               <h1 style="font-family: Times New Roman, Times, serif">
 
-                {{ aboutList[0].title ?  aboutList[0].title : "NA"}}
+                {{ aboutList[0] && aboutList[0].title ?  aboutList[0].title : "NA"}}
                 <!-- {{
                   aboutList && aboutList[0].title ? aboutList[0].title : "NA"
                 }} -->
               </h1>
               <p>
                 {{
-                  aboutList[0].description
+                 aboutList[0] &&  aboutList[0].description
                     ? aboutList[0].description
                     : "NA"
                 }}
@@ -130,11 +130,11 @@
                 font-family: Times New Roman, Times, serif;
               "
             >
-              {{ aboutList[1].title ? aboutList[1].title : "NA" }}
+              {{ aboutList[1] && aboutList[1].title ? aboutList[1].title : "NA" }}
             </h1>
             <p class="lead">
               {{
-                aboutList[1].description
+                aboutList[1] && aboutList[1].description
                   ? aboutList[1].description
                   : "NA"
               }}
@@ -256,7 +256,7 @@
             >
               <strong>
                 {{
-                aboutList[2].title ? aboutList[2].title : "NA"
+                aboutList[2] && aboutList[2].title ? aboutList[2].title : "NA"
               }}
               </strong>
             </h3>
@@ -264,7 +264,7 @@
               class="mbr-white mbr-section-text mbr-fonts-style align-center display-7"
             >
               {{
-                aboutList[2].description
+                aboutList[2] && aboutList[2].description
                   ? aboutList[2].description
                   : "NA"
               }}
