@@ -200,7 +200,7 @@ export default {
   },
   methods: {
     makeToast() {
-      this.$bvToast.toast("Product deleted successfully!", {
+      this.$bvToast.toast("About deleted successfully!", {
         title: "Success",
         variant: "success",
         autoHideDelay: 5000,

@@ -10,7 +10,7 @@ import getFilesDetails from "./products/getFilesDetails";
 import getProduct from "./products/getProduct";
 import getProductsList from "./products/getProductsList";
 import deleteProduct from "./products/deleteProduct";
-
+import deleteContact from "./contact/deleteContact";
 export default {
   getContactsList,
   createContact,
@@ -24,4 +24,5 @@ export default {
   deleteProduct,
   getAboutById,
   deleteAbout,
+  deleteContact,
 };

@@ -6,7 +6,7 @@ const { statusCodes } = require("../config");
 
 export default {
   list: asyncHandler(async (req, res) => {
-    const list = await Contact.find();
+    const list = await Contact.find( {isDeleted: false});
     if (!list) {
       next(new ApiError("Cannot list contacts!", statusCodes.BAD_REQUEST));
       return;

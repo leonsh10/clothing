@@ -66,13 +66,15 @@
           <div class="row">
             <div class="col-md-8">
               <h1 style="font-family: Times New Roman, Times, serif">
-                {{
+
+                {{ aboutList[0].title ?  aboutList[0].title : "NA"}}
+                <!-- {{
                   aboutList && aboutList[0].title ? aboutList[0].title : "NA"
-                }}
+                }} -->
               </h1>
               <p>
                 {{
-                  aboutList && aboutList[0].description
+                  aboutList[0].description
                     ? aboutList[0].description
                     : "NA"
                 }}
@@ -128,11 +130,11 @@
                 font-family: Times New Roman, Times, serif;
               "
             >
-              {{ aboutList && aboutList[1].title ? aboutList[1].title : "NA" }}
+              {{ aboutList[1].title ? aboutList[1].title : "NA" }}
             </h1>
             <p class="lead">
               {{
-                aboutList && aboutList[1].description
+                aboutList[1].description
                   ? aboutList[1].description
                   : "NA"
               }}
@@ -252,15 +254,17 @@
                 padding-left: 3.3cm;
               "
             >
-              <strong>{{
-                aboutList && aboutList[2].title ? aboutList[2].title : "NA"
-              }}</strong>
+              <strong>
+                {{
+                aboutList[2].title ? aboutList[2].title : "NA"
+              }}
+              </strong>
             </h3>
             <div
               class="mbr-white mbr-section-text mbr-fonts-style align-center display-7"
             >
               {{
-                aboutList && aboutList[2].description
+                aboutList[2].description
                   ? aboutList[2].description
                   : "NA"
               }}
@@ -403,10 +407,16 @@ import apiRequests from "../utils/apiRequests";
 import { mapGetters } from "vuex";
 
 export default {
-  components: {
+   components: {
     Header,
     Footer,
   },
+  data(){
+    return {
+      
+    }
+  },
+ 
   created() {
     this.fetchAbout();
   },
