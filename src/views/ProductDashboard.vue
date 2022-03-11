@@ -237,8 +237,12 @@ export default {
     this.fetchProducts();
   },
   methods: {
+     reset() {
+      this.$refs.form.reset()
+    },
     async createProduct() {
       const newProduct = await apiRequests.createProduct({ ...this.form });
+      this.reset()
       this.$router.push({ name: "View", params: { id: newProduct._id } });
       // this.$router.push(`/view/${newRealEstate._id}`);
     },

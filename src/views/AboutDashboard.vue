@@ -21,13 +21,12 @@
           >
             <v-app id="inspire" style="height: 200px; width: 90%">
               <v-form
+              ref="form"
                 style="height: 200px"
                 v-model="valid"
+                lazy-validation
                 @submit.prevent="createAbout"
               >
-                <h5 style="color: green; text-align: center" v-if="success">
-                  {{ success ? success : "" }}
-                </h5>
                 <v-text-field
                   v-model="form.title"
                   :counter="20"
@@ -177,10 +176,9 @@ export default {
 
   data() {
     return {
-      success: null,
       form: {
-        title: "",
-        description: "",
+        title: '',
+        description: '',
       },
       error: null,
       valid: true,
@@ -199,6 +197,9 @@ export default {
     };
   },
   methods: {
+     reset() {
+      this.$refs.form.reset()
+    },
     makeToast() {
       this.$bvToast.toast("About deleted successfully!", {
         title: "Success",
@@ -207,12 +208,21 @@ export default {
         solid: true,
       });
     },
+    successAddToast() {
+      this.$bvToast.toast("About added successfully!", {
+        title: "Success",
+        variant: "success",
+        autoHideDelay: 5000,
+        solid: true,
+      });
+    },
     async createAbout() {
-      await apiRequests.createAbout({ ...this.form });
-      this.success = "Info has been added succesfully!";
-      this.form.title = "";
-      this.form.description = "";
+      const response = await apiRequests.createAbout({ ...this.form });
+      if(response){
+      this.reset()
+      this.successAddToast()
       this.fetchAbout();
+      }
     },
     async deleteAbout(id) {
       const result = await apiRequests.deleteAbout(id);
