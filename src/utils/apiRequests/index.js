@@ -4,6 +4,7 @@ import getAboutList from "./about/getAbout";
 import createAbout from "./about/createAbout";
 import getAboutById from "./about/getAboutById";
 import deleteAbout from "./about/deleteAbout";
+import editAbout from "./about/editAbout";
 import removeFile from "./products/removeFile";
 import createProduct from "./products/createProduct";
 import getFilesDetails from "./products/getFilesDetails";
@@ -24,5 +25,6 @@ export default {
   deleteProduct,
   getAboutById,
   deleteAbout,
+  editAbout,
   deleteContact,
 };
