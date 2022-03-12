@@ -64,20 +64,12 @@
       >
         <div class="container">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" v-if="this.aboutList[0]">
               <h1 style="font-family: Times New Roman, Times, serif">
-
-                {{ aboutList[0] && aboutList[0].title ?  aboutList[0].title : "NA"}}
-                <!-- {{
-                  aboutList && aboutList[0].title ? aboutList[0].title : "NA"
-                }} -->
+                {{ aboutList[0].title }}
               </h1>
               <p>
-                {{
-                 aboutList[0] &&  aboutList[0].description
-                    ? aboutList[0].description
-                    : "NA"
-                }}
+                {{ aboutList[0].description }}
               </p>
               <button
                 type="button"
@@ -121,7 +113,7 @@
           />
         </div>
         <div class="col-lg-6">
-          <div class="p-5 mt-4">
+          <div class="p-5 mt-4" v-if="this.aboutList[1]">
             <h1
               class="display-4"
               style="
@@ -130,14 +122,10 @@
                 font-family: Times New Roman, Times, serif;
               "
             >
-              {{ aboutList[1] && aboutList[1].title ? aboutList[1].title : "NA" }}
+              {{ aboutList[1].title }}
             </h1>
             <p class="lead">
-              {{
-                aboutList[1] && aboutList[1].description
-                  ? aboutList[1].description
-                  : "NA"
-              }}
+              {{ aboutList[1].description }}
             </p>
             <a href="#" class="btn btn-outline-dark">Read More</a>
           </div>
@@ -246,7 +234,7 @@
     <section class="features6 cid-raSLS2Jnck" id="features6-g">
       <div class="container" style="margin-bottom: 5cm">
         <div class="row justify-content-center align-items-center">
-          <div class="col-sm-12 text-block col-md-6">
+          <div class="col-sm-12 text-block col-md-6" v-if="this.aboutList[2]">
             <h3
               class="mbr-white mbr-section-title mbr-fonts-style align-center display-2"
               style="
@@ -255,19 +243,13 @@
               "
             >
               <strong>
-                {{
-                aboutList[2] && aboutList[2].title ? aboutList[2].title : "NA"
-              }}
+                {{ aboutList[2].title }}
               </strong>
             </h3>
             <div
               class="mbr-white mbr-section-text mbr-fonts-style align-center display-7"
             >
-              {{
-                aboutList[2] && aboutList[2].description
-                  ? aboutList[2].description
-                  : "NA"
-              }}
+              {{ aboutList[2].description }}
             </div>
           </div>
           <div class="col-sm-12 col-md-6 img-block align-center">
@@ -407,16 +389,14 @@ import apiRequests from "../utils/apiRequests";
 import { mapGetters } from "vuex";
 
 export default {
-   components: {
+  components: {
     Header,
     Footer,
   },
-  data(){
-    return {
-      
-    }
+  data() {
+    return {};
   },
- 
+
   created() {
     this.fetchAbout();
   },
