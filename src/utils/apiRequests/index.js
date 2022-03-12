@@ -11,6 +11,7 @@ import getFilesDetails from "./products/getFilesDetails";
 import getProduct from "./products/getProduct";
 import getProductsList from "./products/getProductsList";
 import deleteProduct from "./products/deleteProduct";
+import editProduct from "./products/editProduct";
 import deleteContact from "./contact/deleteContact";
 export default {
   getContactsList,
@@ -23,6 +24,7 @@ export default {
   getProduct,
   getProductsList,
   deleteProduct,
+  editProduct,
   getAboutById,
   deleteAbout,
   editAbout,

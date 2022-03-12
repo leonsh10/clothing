@@ -14,13 +14,30 @@
     <td class="text-start">
       <div class="d-flex">
         <router-link
+          style="
+            padding-top: 0.25rem;
+            padding-right: 0.8rem;
+            padding-bottom: 0.25rem;
+            padding-left: 0.8rem;
+          "
           class="btn btn-primary"
           :to="{ name: 'View', params: { id: product._id } }"
-          ><i class="fa fa-edit"></i> Edit</router-link
+          ><i class="fa fa-eye"></i> View</router-link
         >
+        <EditProduct
+          :product="product"
+          :fetchProducts="fetchProducts"
+          style="width: 0px"
+        />
         <button
-          class="btn btn-danger p-2"
-          style="margin-left: 10px"
+          class="btn btn-danger"
+          style="
+            margin-left: 10px
+            padding-top: 0.25rem;
+            padding-right: 0.8rem;
+            padding-bottom: 0.25rem;
+            padding-left: 0.8rem;
+          "
           @click="deleteProduct"
         >
           <i class="fa fa-trash"></i> Delete
@@ -31,8 +48,12 @@
 </template>
 
 <script>
+import EditProduct from "@/components/edit/EditProduct.vue";
 import apiRequests from "../utils/apiRequests";
 export default {
+  components: {
+    EditProduct,
+  },
   props: {
     product: Object,
     fetchProducts: Function,

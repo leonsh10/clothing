@@ -2,7 +2,13 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="#0d6efd" dark v-bind="attrs" v-on="on">
+        <v-btn
+          color="#0d6efd"
+          dark
+          v-bind="attrs"
+          v-on="on"
+          style="text-transform: inherit; font-size: 16px !important"
+        >
           <i class="fa fa-edit"></i> Edit
         </v-btn>
       </template>

@@ -1,12 +1,12 @@
 import apiCaller from "../apiCaller.js";
 import { getAuth } from "firebase/auth";
 
-const createAbout = async (aboutBody) => {
+const editProduct = async (productBody) => {
   const token = await getAuth().currentUser.getIdToken();
   const userId = getAuth().currentUser.uid;
-  const { data } = await apiCaller.post(
-    "about/create",
-    { ...aboutBody, userId },
+  const { data } = await apiCaller.put(
+    "products/update",
+    { ...productBody, userId },
     {
       authorization: `Bearer ${token}`,
     }
@@ -15,4 +15,4 @@ const createAbout = async (aboutBody) => {
   return data;
 };
 
-export default createAbout;
+export default editProduct;

@@ -1,10 +1,7 @@
 import ProductsModel from "../models/Product";
 import express from "express";
-// const asyncHandler = require("../middlewares/asyncHandler");
 import asyncHandler from "../middlewares/asyncHandler";
-// const { ApiError } = require("../utils/classes");
 import ApiError from "../utils/classes/ApiError";
-// const { statusCodes } = require("../config");
 import statusCodes from "../config/statusCodes";
 import FileService from "../services/FileService";
 
@@ -79,7 +76,6 @@ export default {
       {
         $set: {
           isDeleted: true,
-          // lastEditBy: userId,
           lastEditAt: new Date(Date.now()).toISOString(),
         },
       },
