@@ -90,7 +90,9 @@
             <li><a href="/about">About Us</a></li>
             <li><a href="/products">Products</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/login">Login</a></li>
+            <li v-if="!user.loggedIn"><a href="/login">Login</a></li>
+            <li v-if="!user.loggedIn"><a href="/login">Register</a></li>
+            <li v-if="user.loggedIn && user.data.email.includes('admin')"><a href="/dashboard">Dashboard</a></li>
           </ul>
         </div>
         <div class="col-md">
@@ -142,8 +144,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   components: {},
+   computed: {
+    ...mapGetters({
+      user: "user",
+    }),
+  },
 };
 </script>
 
