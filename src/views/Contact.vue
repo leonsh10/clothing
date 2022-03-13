@@ -9,7 +9,8 @@
           style="
             color: #30302f;
             font-family: Times New Roman;
-            margin-left: 12cm;
+            display: flex;
+            justify-content: center;
             padding-bottom: 1cm;
           "
         >
@@ -135,11 +136,11 @@ export default {
         message: "",
       },
       error: null,
-      success: null
+      success: null,
     };
   },
   methods: {
-     makeToast() {
+    makeToast() {
       this.$bvToast.toast("Contact has been sent successfully", {
         title: "Success",
         variant: "success",
@@ -147,7 +148,7 @@ export default {
         solid: true,
       });
     },
-     makeFailToast() {
+    makeFailToast() {
       this.$bvToast.toast("Please fill all fields!", {
         title: "Error",
         variant: "danger",
@@ -155,19 +156,21 @@ export default {
         solid: true,
       });
     },
-    clearForm(){
-        this.form = {}
+    clearForm() {
+      this.form = {};
     },
     async createContact() {
-
-      if(this.form.name == '' || this.form.email == '' 
-      || this.form.subject == '' || this.form.message == '') {
-        this.makeFailToast()
-      }
-      else{
+      if (
+        this.form.name == "" ||
+        this.form.email == "" ||
+        this.form.subject == "" ||
+        this.form.message == ""
+      ) {
+        this.makeFailToast();
+      } else {
         await apiRequests.createContact({ ...this.form });
-        this.makeToast()
-        this.clearForm()
+        this.makeToast();
+        this.clearForm();
       }
     },
   },

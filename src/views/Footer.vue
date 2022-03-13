@@ -2,7 +2,7 @@
   <footer class="footer-48201">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 pr-md-5">
+        <div class="col-md-4 pr-md-5 logo-responsive-upper">
           <a href="/" class="footer-site-logo d-block mb-4">
             <svg
               id="logo-17"
@@ -109,7 +109,7 @@
             <li><a href="#">Partners</a></li>
           </ul>
         </div>
-        <div class="col-md text-md-center">
+        <div class="col-md text-md-center logo-responsive">
           <ul class="social list-unstyled">
             <li>
               <a href="#"><span class="icon-facebook"></span></a>
@@ -148,6 +148,21 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 660px) {
+  .logo-responsive-upper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .logo-responsive {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+}
 body {
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",

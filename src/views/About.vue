@@ -65,10 +65,15 @@
         <div class="container">
           <div class="row">
             <div class="col-md-8" v-if="this.aboutList[0]">
-              <h1 style="font-family: Times New Roman, Times, serif">
+              <h1
+                style="
+                  font-family: Times New Roman, Times, serif;
+                  color: #e8d6d6;
+                "
+              >
                 {{ aboutList[0].title }}
               </h1>
-              <p>
+              <p style="color: #e8d6d6">
                 {{ aboutList[0].description }}
               </p>
               <button
@@ -124,7 +129,13 @@
             >
               {{ aboutList[1].title }}
             </h1>
-            <p class="lead">
+            <p
+              class="lead"
+              style="
+                font-family: Times New Roman, Times, serif;
+                font-size: 18px;
+              "
+            >
               {{ aboutList[1].description }}
             </p>
             <a href="#" class="btn btn-outline-dark">Read More</a>
@@ -152,15 +163,17 @@
             <p>The main factors of our company</p>
           </blockquote>
         </figure>
-        <div class="row" style="margin-bottom: 3cm">
+        <div class="row responsive-features" style="margin-bottom: 3cm">
           <div class="col-4 mt-5">
             <i
               class="fa fa-camera-retro fa-4x"
               style="margin-left: 4.5cm; margin-bottom: 5mm"
             ></i>
             <img class="center" alt="" />
-            <h4 class="text-center">Graphical and Numerical reports</h4>
-            <p class="text-center">
+            <h4 class="text-center text-features">
+              Graphical and Numerical reports
+            </h4>
+            <p class="text-center text-features">
               Graphical and numerical reports(daily, weekly,<br />monthly, and
               annually) and regular invoice<br />generation
             </p>
@@ -172,8 +185,8 @@
               style="margin-left: 4.5cm; margin-bottom: 5mm"
             ></i>
             <img class="center" src="" alt="" />
-            <h4 class="text-center">Happy-hour pricing</h4>
-            <p class="text-center">
+            <h4 class="text-center text-features">Happy-hour pricing</h4>
+            <p class="text-center text-features">
               Full management of articles and happy-hour <br />pricing
               felxibility
             </p>
@@ -185,8 +198,8 @@
               style="margin-left: 4.5cm; margin-bottom: 5mm"
             ></i>
             <img class="center" src="" alt="" />
-            <h4 class="text-center">Jobs</h4>
-            <p class="text-center">
+            <h4 class="text-center text-features">Jobs</h4>
+            <p class="text-center text-features">
               Job management opportunities from anywhere.Every month.
             </p>
           </div>
@@ -198,8 +211,8 @@
               style="margin-left: 4.5cm; margin-bottom: 5mm"
             ></i>
             <img class="center" src="" alt="" />
-            <h4 class="text-center">Our deals with others</h4>
-            <p class="text-center">
+            <h4 class="text-center text-features">Our deals with others</h4>
+            <p class="text-center text-features">
               Job management opportunities from anywhere.Every month.
             </p>
           </div>
@@ -211,8 +224,8 @@
               style="margin-left: 4.5cm; margin-bottom: 5mm"
             ></i>
             <img class="center" src="" alt="" />
-            <h4 class="text-center">Online shopping</h4>
-            <p class="text-center">Safe online shopping</p>
+            <h4 class="text-center text-features">Online shopping</h4>
+            <p class="text-center text-features">Safe online shopping</p>
           </div>
 
           <div class="col-4 mt-5">
@@ -222,8 +235,8 @@
               style="margin-left: 4.5cm; margin-bottom: 5mm"
             ></i>
             <img class="center" src="" alt="" />
-            <h4 class="text-center">Materials</h4>
-            <p class="text-center">
+            <h4 class="text-center text-features">Materials</h4>
+            <p class="text-center text-features">
               Best value and is the most comfortable option
             </p>
           </div>
@@ -239,7 +252,8 @@
               class="mbr-white mbr-section-title mbr-fonts-style align-center display-2"
               style="
                 font-family: Times New Roman, Times, serif;
-                padding-left: 3.3cm;
+                display: flex;
+                justify-content: center; ;
               "
             >
               <strong>
@@ -248,13 +262,15 @@
             </h3>
             <div
               class="mbr-white mbr-section-text mbr-fonts-style align-center display-7"
+              style="font-family: Times New Roman, Times, serif"
             >
               {{ aboutList[2].description }}
             </div>
           </div>
           <div class="col-sm-12 col-md-6 img-block align-center">
-            <div class="mbr-figure" style="padding-left: 1.5cm">
+            <div class="mbr-figure">
               <img
+                class="responsive-image"
                 src="https://aeworld.com/wp-content/uploads/2020/01/DIOR-MENS-WINTER-20-21-GROUPSHOT-BY-BRETT-LLOYD-FOR-DIOR.jpg"
                 alt="Mobirise Bootstrap landing page template"
                 title=""
@@ -413,3 +429,26 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@media screen and (max-width: 660px) {
+  .responsive-image {
+    width: 350px;
+    height: 300px;
+  }
+  .responsive-features {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .text-features {
+    margin-left: 185px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    height: fit-content;
+  }
+}
+</style>

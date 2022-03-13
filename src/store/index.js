@@ -11,6 +11,6 @@ export default new Vuex.Store({
     user,
     products,
     about,
-    contact
+    contact,
   },
 });

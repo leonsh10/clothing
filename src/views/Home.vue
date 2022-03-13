@@ -317,6 +317,7 @@
       <div class="row">
         <div class="col-12 col-md-4 p-5 mt-3">
           <router-link
+            v-if="user.loggedIn"
             :to="{
               name: 'Products',
             }"
@@ -324,19 +325,29 @@
               src="https://technext.github.io/zay-shop/assets/img/category_img_01.jpg"
               class="rounded-circle img-fluid border"
           /></router-link>
+          <router-link style="pointer-events: none" v-else to=""
+            ><img
+              src="https://technext.github.io/zay-shop/assets/img/category_img_01.jpg"
+              class="rounded-circle img-fluid border"
+          /></router-link>
           <h5 class="text-center mt-3 mb-3">Watches</h5>
           <p class="text-center">
             <router-link
+              v-if="user.loggedIn"
               :to="{
                 name: 'Products',
               }"
               class="btn btn-success"
               >Go Shop</router-link
             >
+            <router-link v-else to="" class="btn btn-success disabled"
+              >Go Shop</router-link
+            >
           </p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
           <router-link
+            v-if="user.loggedIn"
             :to="{
               name: 'Products',
             }"
@@ -344,19 +355,29 @@
               src="https://technext.github.io/zay-shop/assets/img/category_img_02.jpg"
               class="rounded-circle img-fluid border"
           /></router-link>
+          <router-link v-else style="pointer-events: none" to=""
+            ><img
+              src="https://technext.github.io/zay-shop/assets/img/category_img_02.jpg"
+              class="rounded-circle img-fluid border"
+          /></router-link>
           <h2 class="h5 text-center mt-3 mb-3">Shoes</h2>
           <p class="text-center">
             <router-link
+              v-if="user.loggedIn"
               :to="{
                 name: 'Products',
               }"
               class="btn btn-success"
               >Go Shop</router-link
             >
+            <router-link v-else to="" class="btn btn-success disabled"
+              >Go Shop</router-link
+            >
           </p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
           <router-link
+            v-if="user.loggedIn"
             :to="{
               name: 'Products',
             }"
@@ -364,13 +385,22 @@
               src="https://technext.github.io/zay-shop/assets/img/category_img_03.jpg"
               class="rounded-circle img-fluid border"
           /></router-link>
+          <router-link v-else style="pointer-events: none" to=""
+            ><img
+              src="https://technext.github.io/zay-shop/assets/img/category_img_03.jpg"
+              class="rounded-circle img-fluid border"
+          /></router-link>
           <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
           <p class="text-center">
             <router-link
+              v-if="user.loggedIn"
               :to="{
                 name: 'Products',
               }"
               class="btn btn-success"
+              >Go Shop</router-link
+            >
+            <router-link v-else to="" class="btn btn-success disabled"
               >Go Shop</router-link
             >
           </p>
@@ -395,7 +425,12 @@
               <router-link
                 :to="{
                   name: 'Single Page Product',
-                  params: { id: productsList[0] && productsList[0]._id ? productsList[0] : ' ' },
+                  params: {
+                    id:
+                      productsList[0] && productsList[0]._id
+                        ? productsList[0]
+                        : ' ',
+                  },
                 }"
               >
                 <!--v-if="srcfirst"
@@ -405,7 +440,13 @@
                   alt="..."
                   src="https://technext.github.io/zay-shop/assets/img/feature_prod_01.jpg"
                 /> -->
-                <CardImage :productImage="productsList[0] && productsList[0].files ? productsList[0].files : '' " />
+                <CardImage
+                  :productImage="
+                    productsList[0] && productsList[0].files
+                      ? productsList[0].files
+                      : ''
+                  "
+                />
               </router-link>
               <div class="card-body">
                 <ul class="list-unstyled d-flex justify-content-between">
@@ -447,14 +488,24 @@
                     ></i>
                   </li>
                   <li class="text-muted text-right">
-                    ${{productsList[0] && productsList[0].price ? productsList[0].price : ' ' }}
+                    ${{
+                      productsList[0] && productsList[0].price
+                        ? productsList[0].price
+                        : " "
+                    }}
                   </li>
                 </ul>
                 <a href="#" class="h2 text-decoration-none text-dark">{{
-                  productsList[0] && productsList[0].name ? productsList[0].name : ' '
+                  productsList[0] && productsList[0].name
+                    ? productsList[0].name
+                    : " "
                 }}</a>
                 <p class="card-text">
-                  {{ productsList[0] && productsList[0].description ? productsList[0].description : ' '}}
+                  {{
+                    productsList[0] && productsList[0].description
+                      ? productsList[0].description
+                      : " "
+                  }}
                 </p>
                 <p class="text-muted">Reviews (24)</p>
               </div>
@@ -465,7 +516,12 @@
               <router-link
                 :to="{
                   name: 'Single Page Product',
-                  params: { id: productsList[1] && productsList[1]._id ? productsList[1]._id : ' ' },
+                  params: {
+                    id:
+                      productsList[1] && productsList[1]._id
+                        ? productsList[1]._id
+                        : ' ',
+                  },
                 }"
               >
                 <!-- <img
@@ -473,7 +529,13 @@
                   class="card-img-top"
                   alt="..."
                 /> -->
-                <CardImage :productImage="productsList[1] && productsList[1].files ? productsList[1].files : ' ' " />
+                <CardImage
+                  :productImage="
+                    productsList[1] && productsList[1].files
+                      ? productsList[1].files
+                      : ' '
+                  "
+                />
               </router-link>
               <div class="card-body">
                 <ul class="list-unstyled d-flex justify-content-between">
@@ -515,14 +577,24 @@
                     ></i>
                   </li>
                   <li class="text-muted text-right">
-                    ${{ productsList[1] && productsList[1].price ? productsList[1].price : ' '}}
+                    ${{
+                      productsList[1] && productsList[1].price
+                        ? productsList[1].price
+                        : " "
+                    }}
                   </li>
                 </ul>
                 <a href="#" class="h2 text-decoration-none text-dark">{{
-                  productsList[1] && productsList[1].name ? productsList[1].name : ' '
+                  productsList[1] && productsList[1].name
+                    ? productsList[1].name
+                    : " "
                 }}</a>
                 <p class="card-text">
-                  {{ productsList[1] && productsList[1].description ? productsList[1].description : ' ' }}
+                  {{
+                    productsList[1] && productsList[1].description
+                      ? productsList[1].description
+                      : " "
+                  }}
                 </p>
                 <p class="text-muted">Reviews (48)</p>
               </div>
@@ -533,7 +605,12 @@
               <router-link
                 :to="{
                   name: 'Single Page Product',
-                  params: { id: productsList[2] && productsList[2]._id  ? productsList[2]._id : ''},
+                  params: {
+                    id:
+                      productsList[2] && productsList[2]._id
+                        ? productsList[2]._id
+                        : '',
+                  },
                 }"
               >
                 <!-- <img
@@ -541,7 +618,13 @@
                   class="card-img-top"
                   alt="..."
                 /> -->
-                <CardImage :productImage="productsList[2] && productsList[2].files ? productsList[2].files : ' '" />
+                <CardImage
+                  :productImage="
+                    productsList[2] && productsList[2].files
+                      ? productsList[2].files
+                      : ' '
+                  "
+                />
               </router-link>
               <div class="card-body">
                 <ul class="list-unstyled d-flex justify-content-between">
@@ -583,14 +666,24 @@
                     ></i>
                   </li>
                   <li class="text-muted text-right">
-                    ${{ productsList[2] && productsList[2].price ? productsList[2].price : ' ' }}
+                    ${{
+                      productsList[2] && productsList[2].price
+                        ? productsList[2].price
+                        : " "
+                    }}
                   </li>
                 </ul>
                 <a href="#" class="h2 text-decoration-none text-dark">{{
-                  productsList[2] && productsList[2].name ? productsList[2].name : ' '
+                  productsList[2] && productsList[2].name
+                    ? productsList[2].name
+                    : " "
                 }}</a>
                 <p class="card-text">
-                  {{ productsList[2] && productsList[2].description ? productsList[2].description : ' ' }}
+                  {{
+                    productsList[2] && productsList[2].description
+                      ? productsList[2].description
+                      : " "
+                  }}
                 </p>
                 <p class="text-muted">Reviews (74)</p>
               </div>
@@ -670,6 +763,16 @@ export default {
     ...mapGetters({
       productsList: "productsList",
     }),
+    ...mapGetters({
+      user: "user",
+    }),
   },
 };
 </script>
+
+<style scoped>
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+</style>
