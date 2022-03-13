@@ -121,3 +121,28 @@
   background-color: transparent;
 }
 </style>
+
+<style scoped>
+@media screen and (max-width: 660px) {
+
+  .sidebar-container {
+    width:100%;
+    
+  }
+  .sidebar-logo {
+  padding:  15px 10px 15px 180px;
+  font-size: 50px;
+  
+}
+  .sidebar-navigation li {
+  line-height: 35px;
+}
+  .sidebar-navigation li a {
+  padding: 15px 10px 15px 175px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+}
+</style>
+
