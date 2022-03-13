@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="row row-md-11 row-lg-11 row-sm-11 row-xs-11 ">
+    <div class="row row-md-11 row-lg-11 row-sm-11 row-xs-11">
       <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2">
         <SideBar />
       </div>
@@ -94,7 +94,7 @@
                             style="font-size: 18px"
                           ></i>
                         </th>
-                          <th
+                        <th
                           role="columnheader"
                           scope="col"
                           aria-label="Description: Not sorted. Activate to sort ascending."
@@ -112,11 +112,12 @@
                     </thead>
                     <tbody>
                       <tr v-for="contact in contactList" :key="contact._id">
-                         <td class="text-start">{{ contact.name }}</td>
+                        <td class="text-start">{{ contact.name }}</td>
                         <td class="text-start">{{ contact.email }}</td>
-                         <td class="text-start">{{ contact.subject }}</td>
+                        <td class="text-start">{{ contact.subject }}</td>
                         <td class="text-start">{{ contact.message }}</td>
-                        <td class="text-start"> <div class="d-flex">
+                        <td class="text-start">
+                          <div class="d-flex">
                             <button
                               class="btn btn-danger p-1"
                               style="margin-left: 10px"
@@ -124,7 +125,8 @@
                             >
                               <i class="fa fa-trash"></i> Delete
                             </button>
-                          </div> </td>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -155,7 +157,7 @@ export default {
     Footer,
     SideBar,
   },
-  
+
   data: () => ({
     valid: true,
     search: "",
@@ -163,8 +165,8 @@ export default {
   created() {
     this.fetchContact();
   },
-  methods : {
-     makeToast() {
+  methods: {
+    makeToast() {
       this.$bvToast.toast("Contact deleted successfully!", {
         title: "Success",
         variant: "success",
@@ -185,7 +187,7 @@ export default {
       this.$store.dispatch("fetchContact", result);
     },
   },
-   computed: {
+  computed: {
     ...mapGetters({
       contactList: "contactList",
     }),

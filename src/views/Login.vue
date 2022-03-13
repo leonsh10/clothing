@@ -1,15 +1,16 @@
 <template>
   <div style="background-color: #ebebeb">
     <Header />
-    <div class="image.responsive">
-      <img
-        style="position: absolute; bottom: 131px; right: 781px"
-        width="500"
-        height="500"
-        src="../assets/bg-1.jpg"
-      />
-    </div>
+
     <div class="vue-tempalte">
+      <div class="image.responsive">
+        <img
+          style="position: absolute; bottom: 122px; right: 783px"
+          width="500"
+          height="500"
+          src="../assets/bg-1.jpg"
+        />
+      </div>
       <form @submit.prevent="loginUser">
         <h3 style="margin-bottom: 24px; font-family: sans-serif">Sign In</h3>
 
@@ -85,19 +86,6 @@
           >
         </p>
 
-        <!-- <div class="social-icons">
-          <ul>
-            <li>
-              <a href="#"><i class="fa fa-google"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-facebook"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-            </li>
-          </ul>
-        </div> -->
       </form>
     </div>
     <Footer />
@@ -308,23 +296,20 @@ input:focus {
   color: #eeeeee;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   .image.responsive {
     width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-  
   }
 
-  img{
-    width:374px; /* The width is 100%, when the viewport is 800px or smaller */
-    height:374px;
+  img {
+    width: 374px; /* The width is 100%, when the viewport is 800px or smaller */
+    height: 374px;
   }
 
-  .vue-tempalte{
-    width:370px;
-    height:470px;
-    margin-left:1px;
-    margin:0 auto;
+  .vue-tempalte {
+    width: 370px;
+    height: 470px;
+    margin: 10px auto;
   }
-
 }
 </style>

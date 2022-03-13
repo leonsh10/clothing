@@ -36,9 +36,6 @@ const productsSchema = {
     }),
   },
   put: {
-    // params: Joi.object({
-
-    // }),
     body: Joi.object({
       _id: Joi.string()
         .regex(/^[0-9a-fA-F]{24}$/)
@@ -50,15 +47,9 @@ const productsSchema = {
       description: Joi.string().required(),
       color: Joi.string().required(),
       specification: Joi.string().required(),
+      userId: Joi.string(),
     }),
   },
 };
-// const productsSchema = Joi.object({
-//   // _id: Joi.string().required(),
-//   // name: Joi.string().required(),
-//   // sizes: Joi.string().required(),
-//   // price: Joi.number().required(),
-//   // files: Joi.any(),
-// });
 
 export default productsSchema;

@@ -15,14 +15,6 @@ export default {
   }),
 
   get: asyncHandler(async (req, res) => {
-    // const { id } = req.query;
-    // const foundItem = await About.findOne({ _id: id });
-    // if (!foundItem) {
-    //   next(new ApiError("Cannot find about!", statusCodes.BAD_REQUEST));
-    //   return;
-    // }
-    // return res.json(foundItem);
-
     const { id } = req.params;
     const foundItem = await About.findOne({ _id: id });
 
@@ -50,12 +42,6 @@ export default {
   put: asyncHandler(async (req, res) => {
     const about = req.body;
 
-    // const updatedAbout = await About.findOneAndUpdate(
-    //   { _id: about._id },
-    //   about,
-    //   { new: true }
-    // );
-
     const updatedAbout = await About.findOneAndUpdate(
       { _id: about._id },
       {
@@ -75,34 +61,6 @@ export default {
 
     return res.json(updatedAbout);
   }),
-  // delete: asyncHandler(async (req, res, next) => {
-  //   const { id } = req.params;
-  //   const foundItem = await About.findOne({
-  //     _id: id,
-  //     isDeleted: false,
-  //   });
-
-  //   if (!foundItem) {
-  //     next(new ApiError("About not found with id!", statusCodes.NOT_FOUND));
-  //     return;
-  //   }
-
-  //   const deletedAbout = await About.findOneAndUpdate(
-  //     { _id: foundItem._id },
-  //     {
-  //       $set: {
-  //         isDeleted: true,
-  //       },
-  //     },
-  //     { new: true }
-  //   );
-  //   if (!deletedAbout) {
-  //     next(new ApiError("Failed to delete about!", statusCodes.INTERNAL_ERROR));
-  //     return;
-  //   }
-
-  //   return res.json(deletedAbout);
-  // }),
   delete: asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const foundItem = await About.findOne({
@@ -120,7 +78,6 @@ export default {
       {
         $set: {
           isDeleted: true,
-          // lastEditBy: userId,
           lastEditAt: new Date(Date.now()).toISOString(),
         },
       },

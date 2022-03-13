@@ -35,7 +35,6 @@ const ProductSchema = new mongoose.Schema(
       default: null,
     },
   },
-  // { typeKey: "$type" },
   {
     versionKey: false,
   }

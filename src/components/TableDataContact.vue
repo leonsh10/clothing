@@ -4,11 +4,11 @@
     <td class="text-start">{{ contact.email }}</td>
     <td class="text-start">{{ contact.subject }}</td>
     <td class="text-start">{{ contact.message }}</td>
-      <b-button
-        class="btn btn-danger" style="margin-left:3px; color:white; margin-top:5px;"
-        >Delete</b-button
-      >
-     
+    <b-button
+      class="btn btn-danger"
+      style="margin-left: 3px; color: white; margin-top: 5px"
+      >Delete</b-button
+    >
   </tr>
 </template>
 

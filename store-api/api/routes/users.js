@@ -10,6 +10,5 @@ userRouter.post("/register", userController.register);
 
 userRouter.use(checkIfAdmin);
 
-// userRouter.get('/list', userController.list);
 
 export default userRouter;

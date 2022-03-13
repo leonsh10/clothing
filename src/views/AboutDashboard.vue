@@ -21,7 +21,7 @@
           >
             <v-app id="inspire" style="height: 200px; width: 90%">
               <v-form
-              ref="form"
+                ref="form"
                 style="height: 200px"
                 v-model="valid"
                 lazy-validation
@@ -127,13 +127,20 @@
                         <td class="text-start">{{ about.title }}</td>
                         <td class="text-start">{{ about.description }}</td>
                         <td class="text-start">
-                          <div class="d-flex">
-                            <button class="btn btn-primary">
-                              <i class="fa fa-edit"></i> Edit
-                            </button>
+                          <div class="d-flex p-3" style="width: 200px">
+                            <EditAbout
+                              :about="about"
+                              :fetchAbout="fetchAbout"
+                            />
                             <button
-                              class="btn btn-danger p-1"
-                              style="margin-left: 10px"
+                              class="btn btn-danger"
+                              style="
+                                margin-left: 20px;
+                                padding-top: 0.3rem;
+                                padding-right: 0.6rem;
+                                padding-bottom: 0.3rem;
+                                padding-left: 0.6rem;
+                              "
                               @click="deleteAbout(about._id)"
                             >
                               <i class="fa fa-trash"></i> Delete
@@ -163,12 +170,14 @@ import Footer from "./Footer.vue";
 import SideBar from "./sideBar.vue";
 import apiRequests from "../utils/apiRequests";
 import { mapGetters } from "vuex";
+import EditAbout from "@/components/edit/EditAbout.vue";
 
 export default {
   components: {
     Header,
     Footer,
     SideBar,
+    EditAbout,
   },
   created() {
     this.fetchAbout();
@@ -177,8 +186,8 @@ export default {
   data() {
     return {
       form: {
-        title: '',
-        description: '',
+        title: "",
+        description: "",
       },
       error: null,
       valid: true,
@@ -197,8 +206,8 @@ export default {
     };
   },
   methods: {
-     reset() {
-      this.$refs.form.reset()
+    reset() {
+      this.$refs.form.reset();
     },
     makeToast() {
       this.$bvToast.toast("About deleted successfully!", {
@@ -218,10 +227,10 @@ export default {
     },
     async createAbout() {
       const response = await apiRequests.createAbout({ ...this.form });
-      if(response){
-      this.reset()
-      this.successAddToast()
-      this.fetchAbout();
+      if (response) {
+        this.reset();
+        this.successAddToast();
+        this.fetchAbout();
       }
     },
     async deleteAbout(id) {

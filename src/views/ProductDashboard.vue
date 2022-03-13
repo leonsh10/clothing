@@ -237,14 +237,13 @@ export default {
     this.fetchProducts();
   },
   methods: {
-     reset() {
-      this.$refs.form.reset()
+    reset() {
+      this.$refs.form.reset();
     },
     async createProduct() {
       const newProduct = await apiRequests.createProduct({ ...this.form });
-      this.reset()
+      this.reset();
       this.$router.push({ name: "View", params: { id: newProduct._id } });
-      // this.$router.push(`/view/${newRealEstate._id}`);
     },
     async fetchProducts() {
       const result = await apiRequests.getProductsList();
@@ -265,10 +264,10 @@ export default {
       },
       error: null,
       valid: true,
-      // nameRules: [
-      //   (v) => !!v || "Title is required",
-      //   (v) => (v && v.length <= 15) || "Title must be less than 10 characters",
-      // ],
+      nameRules: [
+        (v) => !!v || "Title is required",
+        (v) => (v && v.length <= 15) || "Title must be less than 10 characters",
+      ],
       sizesRules: [
         (v) => !!v || "Sizes are required",
         (v) => (v && v.length <= 15) || "Sizes must be less than 15 characters",

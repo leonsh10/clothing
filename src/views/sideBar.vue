@@ -1,40 +1,44 @@
 <template>
-  
   <div class="sidebar-container">
-          <div class="sidebar__profile" style="margin-top:20%; align-self: center;text-align:center; margin-bottom:1cm;">
-            <img src="https://cdn-icons-png.flaticon.com/512/194/194938.png" alt="Profile Photo" style=" border-radius:50%;
-            width: 30%;">
-      </div>
-  <div class="sidebar-logo">
-    Clothing Store
+    <div
+      class="sidebar__profile"
+      style="
+        margin-top: 20%;
+        align-self: center;
+        text-align: center;
+        margin-bottom: 1cm;
+      "
+    >
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/194/194938.png"
+        alt="Profile Photo"
+        style="border-radius: 50%; width: 30%"
+      />
+    </div>
+    <div class="sidebar-logo">Clothing Store</div>
+    <ul class="sidebar-navigation">
+      <li>
+        <a href="/productsDashboard">
+          <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="/aboutDashboard">
+          <i class="fa fa-home" aria-hidden="true"></i> About
+        </a>
+      </li>
+
+      <li>
+        <a href="/contactsDashboard">
+          <i class="fa fa-users" aria-hidden="true"></i> Contacts
+        </a>
+      </li>
+    </ul>
   </div>
-  <ul class="sidebar-navigation">
-     <li>
-      <a href="/productsDashboard">
-        <i class="fa fa-tachometer" aria-hidden="true"></i> Products
-      </a>
-    </li>
-    <li>
-      <a href="/aboutDashboard">
-        <i class="fa fa-home" aria-hidden="true"></i> About
-      </a>
-    </li>
-  
-    <li>
-      <a href="/contactsDashboard">
-        <i class="fa fa-users" aria-hidden="true"></i> Contacts
-      </a>
-    </li>
-   
-  </ul>
-</div>
 </template>
-    
 
-<script>
-</script>
-<style >
-
+<script></script>
+<style>
 .sidebar-container {
   position:relative;
   width:270px;
@@ -44,6 +48,10 @@
   overflow-y: auto;
   background: #000000;
   color: #fff;
+}
+
+.content-container {
+  padding-top: 20px;
 }
 
 .sidebar-logo {
@@ -86,9 +94,9 @@
 }
 
 .sidebar-navigation li::before {
-  background-color: #2574A9;
+  background-color: #2574a9;
   position: absolute;
-  content: '';
+  content: "";
   height: 100%;
   left: 0;
   top: 0;
@@ -112,7 +120,4 @@
 .sidebar-navigation .header::before {
   background-color: transparent;
 }
-
-
-
 </style>

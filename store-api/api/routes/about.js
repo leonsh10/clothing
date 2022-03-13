@@ -5,11 +5,6 @@ import aboutSchema from "../validators/about";
 
 const aboutRoute = express.Router();
 
-// aboutRoute.get("/list", AboutController.list);
-// aboutRoute.get("/get", AboutController.get);
-// aboutRoute.post("/create", AboutController.post);
-// aboutRoute.put("/update", AboutController.put);
-
 aboutRoute.get("/list", aboutController.list);
 
 aboutRoute
