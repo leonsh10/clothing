@@ -437,8 +437,7 @@ export default {
   }
   .responsive-features {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
   .text-features {
     margin-left: 185px;
