@@ -61,19 +61,6 @@
           >Register</b-button
         >
 
-        <!-- <div class="social-icons">
-          <ul>
-            <li>
-              <a href="#"><i class="fa fa-google"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-facebook"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-            </li>
-          </ul>
-        </div> -->
       </form>
     </div>
     <Footer />
@@ -105,7 +92,6 @@ export default {
           email: this.form.email,
           password: this.form.password,
         });
-        // apiRequests.get('/users/list');
         this.$router.push("/login");
       } catch (err) {
         this.error = err;

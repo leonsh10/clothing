@@ -91,15 +91,6 @@
                             this.product.sizes
                           }}</span>
                         </li>
-                        <!-- <li class="list-inline-item">
-                          <span class="btn btn-success btn-size">M</span>
-                        </li>
-                        <li class="list-inline-item">
-                          <span class="btn btn-success btn-size">L</span>
-                        </li>
-                        <li class="list-inline-item">
-                          <span class="btn btn-success btn-size">XL</span>
-                        </li> -->
                       </ul>
                     </div>
                     <div class="col-auto">

@@ -1,7 +1,6 @@
 <template>
   <div class="about">
     <Header />
-    <!-- about -->
     <div
       class="modal fade bg-white"
       id="templatemo_search"
