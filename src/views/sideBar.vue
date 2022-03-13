@@ -1,20 +1,17 @@
 <template>
   
   <div class="sidebar-container">
-       
           <div class="sidebar__profile" style="margin-top:20%; align-self: center;text-align:center; margin-bottom:1cm;">
             <img src="https://cdn-icons-png.flaticon.com/512/194/194938.png" alt="Profile Photo" style=" border-radius:50%;
             width: 30%;">
       </div>
   <div class="sidebar-logo">
-    
     Clothing Store
   </div>
   <ul class="sidebar-navigation">
-  
      <li>
       <a href="/productsDashboard">
-        <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+        <i class="fa fa-tachometer" aria-hidden="true"></i> Products
       </a>
     </li>
     <li>
@@ -23,7 +20,6 @@
       </a>
     </li>
   
-   
     <li>
       <a href="/contactsDashboard">
         <i class="fa fa-users" aria-hidden="true"></i> Contacts
@@ -32,39 +28,32 @@
    
   </ul>
 </div>
-
-
 </template>
     
 
 <script>
 </script>
-<style>
+<style >
 
 .sidebar-container {
-  position: fixed;
-  width: 250px;
+  position:relative;
+  width:270px;
   height: 100%;
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
   background: #000000;
   color: #fff;
-  
-}
-
-.content-container {
-  padding-top: 20px;
 }
 
 .sidebar-logo {
-  padding: 10px 15px 10px 30px;
-  font-size: 20px;
-  background-color: #0d6097;
+  padding: 10px 10px 10px 75px;
+  font-size: 30px;
+  background-color: #214fb3;
 }
 
 .sidebar-navigation {
-  padding: 0;
+  padding:0;
   margin: 0;
   list-style-type: none;
   position: relative;
@@ -75,13 +64,14 @@
   position: relative;
   display: inline-block;
   width: 100%;
-  line-height: 20px;
+  line-height: 30px;
 }
 
 .sidebar-navigation li a {
-  padding: 10px 15px 10px 30px;
+  padding: 10px 10px 10px 75px;
   display: block;
   color: #fff;
+  text-decoration: none;
 }
 
 .sidebar-navigation li .fa {
