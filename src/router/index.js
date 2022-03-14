@@ -7,7 +7,6 @@ import Register from "../views/Register.vue";
 import Products from "../views/Products.vue";
 // import SinglePageProduct from "../views/SinglePageProduct.vue";
 import Dashboard from "../views/Dashboard.vue";
-import ProductDashboard from "../views/ProductDashboard.vue";
 import AboutDashboard from "../views/AboutDashboard.vue";
 import ContactsDashboard from "../views/ContactsDashboard.vue";
 
@@ -55,11 +54,6 @@ const routes = [
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
-  },
-  {
-    path: "/productsDashboard",
-    name: "productsDashboard",
-    component: ProductDashboard,
   },
   {
     path: "/contactsDashboard",

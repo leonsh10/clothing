@@ -85,7 +85,6 @@
             >Sign Up</router-link
           >
         </p>
-
       </form>
     </div>
     <Footer />

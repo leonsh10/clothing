@@ -10,6 +10,7 @@
       >
         <div
           class="row justify-content-center row-md-9 row-lg-9 row-sm-12 row-xs-12"
+          style="height: 500px"
         >
           <div
             class="row row-md-9 row-lg-9 row-sm-12 row-xs-12 justify-content-center"
@@ -17,7 +18,7 @@
             <h1 style="text-align: center">Contacts Dashboard</h1>
           </div>
           <div
-            class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center mt-5"
+            class="row row-md-10 row-lg-10 row-sm-11 row-xs-11 justify-content-center"
           >
             <div
               data-v-5d9d1fc2=""

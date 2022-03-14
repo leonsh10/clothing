@@ -60,7 +60,6 @@
           class="butoni__sign-in"
           >Register</b-button
         >
-
       </form>
     </div>
     <Footer />

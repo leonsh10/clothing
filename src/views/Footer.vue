@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer-48201">
+  <footer class="footer-48201" style="margin-top: -24px">
     <div class="container">
       <div class="row">
         <div class="col-md-4 pr-md-5 logo-responsive-upper">
@@ -92,7 +92,9 @@
             <li><a href="/contact">Contact</a></li>
             <li v-if="!user.loggedIn"><a href="/login">Login</a></li>
             <li v-if="!user.loggedIn"><a href="/login">Register</a></li>
-            <li v-if="user.loggedIn && user.data.email.includes('admin')"><a href="/dashboard">Dashboard</a></li>
+            <li v-if="user.loggedIn && user.data.email.includes('admin')">
+              <a href="/dashboard">Dashboard</a>
+            </li>
           </ul>
         </div>
         <div class="col-md">
@@ -148,7 +150,7 @@ import { mapGetters } from "vuex";
 
 export default {
   components: {},
-   computed: {
+  computed: {
     ...mapGetters({
       user: "user",
     }),

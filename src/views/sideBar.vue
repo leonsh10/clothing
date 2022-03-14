@@ -1,25 +1,22 @@
 <template>
-  <div class="sidebar-container">
+  <div class="sidebar-container" style="min-height: 583px; margin-top: -12px">
     <div
       class="sidebar__profile"
-      style="
-        margin-top: 20%;
-        align-self: center;
-        text-align: center;
-        margin-bottom: 1cm;
-      "
+      style="margin-top: 10%; align-self: center; text-align: center"
     >
       <img
         src="https://cdn-icons-png.flaticon.com/512/194/194938.png"
         alt="Profile Photo"
         style="border-radius: 50%; width: 30%"
       />
+      <p class="mt-3" style="color: aqua">
+        {{ user ? user.data.email : "" }}
+      </p>
     </div>
-    <div class="sidebar-logo">Clothing Store</div>
     <ul class="sidebar-navigation">
       <li>
-        <a href="/productsDashboard">
-          <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+        <a href="/dashboard">
+          <i class="fa fa-tachometer" aria-hidden="true"></i> Products
         </a>
       </li>
       <li>
@@ -37,16 +34,26 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import { mapGetters } from "vuex";
+
+export default {
+  computed: {
+    ...mapGetters({
+      user: "user",
+    }),
+  },
+};
+</script>
 <style>
 .sidebar-container {
-  position:relative;
-  width:270px;
+  position: relative;
+  width: 270px;
   height: 100%;
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  background: #000000;
+  background: black;
   color: #fff;
 }
 
@@ -61,7 +68,7 @@
 }
 
 .sidebar-navigation {
-  padding:0;
+  padding: 0;
   margin: 0;
   list-style-type: none;
   position: relative;
@@ -80,6 +87,7 @@
   display: block;
   color: #fff;
   text-decoration: none;
+  opacity: 0.6;
 }
 
 .sidebar-navigation li .fa {
@@ -91,6 +99,12 @@
 .sidebar-navigation li a:focus {
   text-decoration: none;
   outline: none;
+}
+
+.sidebar-navigation li a:hover {
+  opacity: 1;
+  background: rgb(29, 29, 29);
+  /* color:green; */
 }
 
 .sidebar-navigation li::before {
@@ -124,25 +138,21 @@
 
 <style scoped>
 @media screen and (max-width: 660px) {
-
   .sidebar-container {
-    width:100%;
-    
+    width: 100%;
   }
   .sidebar-logo {
-  padding:  15px 10px 15px 180px;
-  font-size: 50px;
-  
-}
+    padding: 15px 10px 15px 180px;
+    font-size: 50px;
+  }
   .sidebar-navigation li {
-  line-height: 35px;
-}
+    line-height: 35px;
+  }
   .sidebar-navigation li a {
-  padding: 15px 10px 15px 175px;
-  display: block;
-  color: #fff;
-  text-decoration: none;
-}
+    padding: 15px 10px 15px 140px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+  }
 }
 </style>
-

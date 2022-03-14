@@ -144,8 +144,6 @@
             </div>
           </template>
         </b-carousel-slide>
-
-     
       </b-carousel>
     </div>
 
@@ -278,7 +276,6 @@
                   },
                 }"
               >
-             
                 <CardImage
                   :productImage="
                     productsList[0] && productsList[0].files
@@ -363,7 +360,6 @@
                   },
                 }"
               >
-              
                 <CardImage
                   :productImage="
                     productsList[1] && productsList[1].files
@@ -448,7 +444,6 @@
                   },
                 }"
               >
-              
                 <CardImage
                   :productImage="
                     productsList[2] && productsList[2].files
@@ -526,8 +521,6 @@
 
     <Footer />
   </div>
-
-  
 </template>
 
 <script>
