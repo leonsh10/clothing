@@ -1,91 +1,91 @@
 <template>
   <div style="background-color: #ebebeb">
     <Header />
-
-    <div class="vue-tempalte">
-      <div class="image.responsive">
-        <img
-          style="position: absolute; bottom: 122px; right: 783px"
-          width="500"
-          height="500"
-          src="../assets/bg-1.jpg"
-        />
+    <div
+      class="row justify-content-center"
+      style="padding-bottom: 30px !important"
+    >
+      <div class="column col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <img width="500" height="500" src="../assets/bg-1.jpg" />
       </div>
-      <form @submit.prevent="loginUser">
-        <h3 style="margin-bottom: 24px; font-family: sans-serif">Sign In</h3>
+      <div class="column col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <form @submit.prevent="loginUser">
+          <h3 style="margin-bottom: 24px; font-family: sans-serif">Sign In</h3>
 
-        <div v-if="error" class="alert alert-danger">{{ error }}</div>
+          <div v-if="error" class="alert alert-danger">{{ error }}</div>
 
-        <div class="form-group">
-          <label class="labels_style" style="margin-top: 6px"
-            >Email address</label
-          >
-          <input
-            type="email"
-            class="form-control form-control-lg"
-            style="margin-top: 8px"
-            name="email"
-            v-model="form.email"
-            required
-            placeholder="Email"
-          />
-        </div>
+          <div class="form-group">
+            <label class="labels_style" style="margin-top: 6px"
+              >Email address</label
+            >
+            <input
+              type="email"
+              class="form-control form-control-lg"
+              style="margin-top: 8px"
+              name="email"
+              v-model="form.email"
+              required
+              placeholder="Email"
+            />
+          </div>
 
-        <div class="form-group">
-          <label class="labels_style" style="margin-top: 22px">Password</label>
-          <input
-            type="password"
-            class="form-control form-control-lg"
-            name="password"
-            style="margin-top: 6px"
-            placeholder="Password"
-            v-model="form.password"
-            required
-          />
-        </div>
+          <div class="form-group">
+            <label class="labels_style" style="margin-top: 22px"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              name="password"
+              style="margin-top: 6px"
+              placeholder="Password"
+              v-model="form.password"
+              required
+            />
+          </div>
 
-        <b-button
-          style="
-            background: #e3b04b;
-            border: none;
-            width: 350px;
-            border-radius: 5px;
-          "
-          type="submit"
-          block
-          variant="primary"
-          class="butoni__sign-in"
-          >Sign In</b-button
-        >
-        <a href="#" style="text-decoration: none">
-          <p
-            style="font-family: sans-serif; font-size: 17px !important"
-            class="forgot-password text-right mt-2 mb-4"
-          >
-            Forgot Password
-          </p></a
-        >
-        <p
-          style="
-            font-family: sans-serif;
-            text-align: center;
-            font-size: 17px !important;
-            color: #7a7a7a;
-          "
-        >
-          Not a member?
-          <router-link
+          <b-button
             style="
-              text-decoration: none;
-              font-family: sans-serif;
-              color: #e3b04b;
-              font-size: 17px !important;
+              background: #e3b04b;
+              border: none;
+              width: 350px;
+              border-radius: 5px;
             "
-            to="/register"
-            >Sign Up</router-link
+            type="submit"
+            block
+            variant="primary"
+            class="butoni__sign-in"
+            >Sign In</b-button
           >
-        </p>
-      </form>
+          <a href="#" style="text-decoration: none">
+            <p
+              style="font-family: sans-serif; font-size: 17px !important"
+              class="forgot-password text-right mt-2 mb-4"
+            >
+              Forgot Password
+            </p></a
+          >
+          <p
+            style="
+              font-family: sans-serif;
+              font-size: 17px !important;
+              color: #7a7a7a;
+            "
+          >
+            Not a member?
+            <router-link
+              style="
+                text-decoration: none;
+                font-family: sans-serif;
+                color: #e3b04b;
+                font-size: 17px !important;
+              "
+              to="/register"
+              >Sign Up</router-link
+            >
+          </p>
+        </form>
+      </div>
     </div>
     <Footer />
   </div>
@@ -192,7 +192,6 @@ label {
 
 .forgot-password,
 .forgot-password a {
-  text-align: right;
   font-size: 13px;
   padding-top: 10px;
   color: #7a7a7a;

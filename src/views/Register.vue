@@ -1,66 +1,72 @@
 <template>
   <div style="background-color: #ebebeb">
     <Header />
-    <div>
-      <img
-        style="position: absolute; bottom: 122px; right: 783px"
-        width="500"
-        height="500"
-        src="../assets/bg-1.jpg"
-      />
-    </div>
-    <div class="vue-tempalte">
-      <form @submit.prevent="createUser">
-        <h3
-          style="margin-bottom: 24px; font-family: sans-serif; margin-top: 20px"
-        >
-          Register
-        </h3>
-
-        <div v-if="error" class="alert alert-danger">{{ error }}</div>
-
-        <div class="form-group">
-          <label class="labels_style" style="margin-top: 6px"
-            >Email address</label
+    <div
+      class="row justify-content-center"
+      style="padding-bottom: 30px !important"
+    >
+      <div class="column col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <img width="500" height="500" src="../assets/bg-1.jpg" />
+      </div>
+      <div class="column col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <form @submit.prevent="createUser">
+          <h3
+            style="
+              margin-bottom: 24px;
+              font-family: sans-serif;
+              margin-top: 20px;
+            "
           >
-          <input
-            type="email"
-            class="form-control form-control-lg"
-            style="margin-top: 8px"
-            name="email"
-            v-model="form.email"
-            required
-            placeholder="Email"
-          />
-        </div>
+            Register
+          </h3>
 
-        <div class="form-group">
-          <label class="labels_style" style="margin-top: 22px">Password</label>
-          <input
-            type="password"
-            class="form-control form-control-lg"
-            name="password"
-            style="margin-top: 6px"
-            placeholder="Password"
-            v-model="form.password"
-            required
-          />
-        </div>
+          <div v-if="error" class="alert alert-danger">{{ error }}</div>
 
-        <b-button
-          style="
-            background: #e3b04b;
-            border: none;
-            width: 350px;
-            border-radius: 5px;
-          "
-          type="submit"
-          block
-          variant="primary"
-          class="butoni__sign-in"
-          >Register</b-button
-        >
-      </form>
+          <div class="form-group">
+            <label class="labels_style" style="margin-top: 6px"
+              >Email address</label
+            >
+            <input
+              type="email"
+              class="form-control form-control-lg"
+              style="margin-top: 8px"
+              name="email"
+              v-model="form.email"
+              required
+              placeholder="Email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="labels_style" style="margin-top: 22px"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              name="password"
+              style="margin-top: 6px"
+              placeholder="Password"
+              v-model="form.password"
+              required
+            />
+          </div>
+
+          <b-button
+            style="
+              background: #e3b04b;
+              border: none;
+              width: 350px;
+              border-radius: 5px;
+            "
+            type="submit"
+            block
+            variant="primary"
+            class="butoni__sign-in"
+            >Register</b-button
+          >
+        </form>
+      </div>
     </div>
     <Footer />
   </div>
